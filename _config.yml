@@ -1,0 +1,15 @@
+# Configuração do GitHub Pages para o site Pinchavelho.
+# O site é HTML + CSS estático: os ficheiros .html não têm "front matter",
+# por isso o Jekyll copia-os tal como estão, sem os alterar.
+# Este ficheiro existe só para que a documentação interna (README.md em cada
+# pasta, para pessoas e para o bot Grok) NÃO seja publicada no site.
+# Explicação completa: README.md na raiz, secção "Documentação interna".
+
+exclude:
+  - "*.md"
+  - "**/*.md"
+  - Gemfile
+  - Gemfile.lock
+
+# Sem tema: o site tem o seu próprio CSS e não deve receber ficheiros do tema por defeito do GitHub Pages.
+theme: null
