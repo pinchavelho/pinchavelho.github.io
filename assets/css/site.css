@@ -93,3 +93,6 @@ details.limits ol{padding-left:1.2rem}details.limits li{margin:.8rem 0}details.l
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:var(--surface2);padding:.05rem .3rem;border-radius:4px;overflow-wrap:anywhere}
 @media (max-width:40rem){.choices{grid-template-columns:1fr}.products{grid-template-columns:1fr}}
 .faq details{max-width:46rem}
+.tablewrap{overflow-x:auto;margin:1rem 0}
+.tablewrap table{margin:0}
+.doc code{overflow-wrap:anywhere}

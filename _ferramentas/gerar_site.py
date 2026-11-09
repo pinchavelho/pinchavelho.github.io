@@ -398,7 +398,7 @@ def ritmello(lang):
 <details><summary>Can I use Pro on more than one computer?</summary><p>Yes, on your own browsers. The licence is personal: it is for you, not for sharing or reselling.</p></details>
 <details><summary>Do I need an account?</summary><p>No. Polar emails you a licence key after payment; you paste it into Ritmello’s Options.</p></details>
 </section>
-<section class="wrap"><p><a href="/ritmello/privacy.html">Privacy policy</a> · <a href="/ritmello/terms.html">Terms of sale &amp; EULA</a> · <a href="/ritmello/refund.html">Refund policy</a></p></section>
+<section class="wrap"><p><a href="/ritmello/transparency.html">Transparency report</a> · <a href="/ritmello/privacy.html">Privacy policy</a> · <a href="/ritmello/terms.html">Terms of sale &amp; EULA</a> · <a href="/ritmello/refund.html">Refund policy</a></p></section>
 """
         title = "Ritmello: video speed and sound control for online learning"
         desc = "Ritmello by Pinchavelho for Chrome: video speed from 0.1x to 16x, skips and shortcuts for free; Pro adds skip silences, A-B loop, bookmarks and clearer sound. No tracking. Pay what you think is fair, from %s." % MIN_ATUAL["en"]
@@ -452,7 +452,7 @@ def ritmello(lang):
 <details><summary>Posso usar o Pro em mais do que um computador?</summary><p>Sim, nos seus navegadores. A licença é pessoal: é para si, não para partilhar nem revender.</p></details>
 <details><summary>Preciso de uma conta?</summary><p>Não. A Polar envia-lhe uma chave de licença por email depois do pagamento; cola-a nas Opções do Ritmello.</p></details>
 </section>
-<section class="wrap"><p><a href="/pt/ritmello/privacy.html">Política de privacidade</a> · <a href="/pt/ritmello/terms.html">Termos de venda e EULA</a> · <a href="/pt/ritmello/refund.html">Política de reembolso</a></p></section>
+<section class="wrap"><p><a href="/pt/ritmello/transparency.html">Relatório de transparência</a> · <a href="/pt/ritmello/privacy.html">Política de privacidade</a> · <a href="/pt/ritmello/terms.html">Termos de venda e EULA</a> · <a href="/pt/ritmello/refund.html">Política de reembolso</a></p></section>
 """
         title = "Ritmello: velocidade e som de vídeos para quem aprende online"
         desc = "Ritmello by Pinchavelho para o Chrome: velocidade de 0,1x a 16x, saltos e atalhos grátis; o Pro junta saltar silêncios, loop A-B, marcadores e som mais claro. Sem rastreio. Pague o que achar justo, a partir de %s." % MIN_ATUAL["pt"]
@@ -546,6 +546,64 @@ def terms(lang):
     return page(lang, "/ritmello/terms.html", title, desc, body, current="ritmello")
 
 
+def md_inline(t):
+    """Markdown simples (só o que os textos usam): `código`, **negrito**, links e emails."""
+    out = []
+    for p in re.split(r"(`[^`]+`)", t):
+        if len(p) > 1 and p.startswith("`") and p.endswith("`"):
+            out.append("<code>%s</code>" % e(p[1:-1]))
+        else:
+            out.append(re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", linkify(p)))
+    return "".join(out)
+
+
+def md_block(src):
+    """Títulos ##, parágrafos, tabelas | a | b | e listas 1. (o texto de origem não tem HTML)."""
+    out, rows, items = [], [], []
+
+    def flush():
+        if rows:
+            head = rows[0]
+            body = [r for r in rows[1:] if not re.match(r"^[\s|:-]+$", "|".join(r))]
+            th = "".join('<th scope="col">%s</th>' % md_inline(c) for c in head)
+            tr = "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % md_inline(c) for c in r) for r in body)
+            out.append('<div class="tablewrap"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>' % (th, tr))
+            rows.clear()
+        if items:
+            out.append("<ol>%s</ol>" % "".join("<li>%s</li>" % md_inline(i) for i in items))
+            items.clear()
+
+    for l in src.splitlines():
+        l = l.strip()
+        if not l or l.startswith("<!--"):
+            flush()
+            continue
+        if l.startswith("|"):
+            rows.append([c.strip() for c in l.strip("|").split("|")])
+            continue
+        m = re.match(r"^\d+\. (.*)", l)
+        if m:
+            items.append(m.group(1))
+            continue
+        flush()
+        if l.startswith("## "):
+            out.append("<h2>%s</h2>" % md_inline(l[3:]))
+        else:
+            out.append("<p>%s</p>" % md_inline(l))
+    flush()
+    return "\n".join(out)
+
+
+def transparency(lang):
+    src = split_md(os.path.join(HERE, "textos", "TRANSPARENCIA-EN-PT.md"))[lang]
+    lines = [l for l in src.splitlines() if l.strip() and not l.startswith("<!--")]
+    h1 = lines[0].lstrip("# ").strip()
+    body = '<div class="wrap narrow doc"><h1>%s</h1>\n%s\n</div>' % (e(h1), md_block("\n".join(lines[1:])))
+    desc = {"en": "What Ritmello can access and why, every network connection it makes, where your data stays, and how to check it yourself.",
+            "pt": "O que o Ritmello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si."}[lang]
+    return page(lang, "/ritmello/transparency.html", h1, desc, body, current="ritmello")
+
+
 def privacy(lang):
     src = split_md(os.path.join(HERE, "textos", "PRIVACIDADE-1.6-EN-PT.md"))[lang]
     lines = [l.strip() for l in src.splitlines() if l.strip()]
@@ -570,7 +628,9 @@ def privacy(lang):
     if in_list:
         out.append("</ul>")
     note = {"en": "The extension will carry this same text from its next update.", "pt": "A extensão passa a levar este mesmo texto na próxima atualização."}[lang]
-    body = '<div class="wrap narrow doc"><h1>%s</h1><p class="meta">%s · %s</p>\n%s\n</div>' % (e(h1), e(meta), note, "\n".join(out))
+    tr = {"en": 'What Ritmello can access, every network connection it makes and how to check it yourself: <a href="/ritmello/transparency.html">transparency report</a>.',
+          "pt": 'O que o Ritmello pode aceder, todas as ligações de rede que faz e como verificar por si: <a href="/pt/ritmello/transparency.html">relatório de transparência</a>.'}[lang]
+    body = '<div class="wrap narrow doc"><h1>%s</h1><p class="meta">%s · %s</p><p class="callout">%s</p>\n%s\n</div>' % (e(h1), e(meta), note, tr, "\n".join(out))
     desc = {"en": "Ritmello's privacy policy: no tracking, no analytics, data stays on your device; the only network request is the licence check with Polar.",
             "pt": "Política de privacidade do Ritmello: sem rastreio nem analytics, os dados ficam no seu dispositivo; o único pedido de rede é a verificação da licença na Polar."}[lang]
     return page(lang, "/ritmello/privacy.html", h1, desc, body, current="ritmello")
@@ -678,7 +738,7 @@ def moved(lang, old, new):
 
 
 # ---------------------------------------------------------------- sitemap
-PAGES = ["/", "/ritmello/", "/ritmello/privacy.html", "/ritmello/terms.html", "/ritmello/refund.html",
+PAGES = ["/", "/ritmello/", "/ritmello/transparency.html", "/ritmello/privacy.html", "/ritmello/terms.html", "/ritmello/refund.html",
          "/vedello/", "/about.html", "/legal-notice.html"]
 
 
@@ -708,7 +768,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 if __name__ == "__main__":
     root = sys.argv[1] if len(sys.argv) > 1 else "."
     gens = {"index.html": home, "ritmello/index.html": ritmello, "ritmello/privacy.html": privacy,
-            "ritmello/terms.html": terms, "ritmello/refund.html": refund, "vedello/index.html": vedello,
+            "ritmello/terms.html": terms, "ritmello/transparency.html": transparency, "ritmello/refund.html": refund, "vedello/index.html": vedello,
             "about.html": about, "legal-notice.html": legal_notice}
     for rel, fn in gens.items():
         write(root, rel, fn("en"))
