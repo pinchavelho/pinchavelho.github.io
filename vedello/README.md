@@ -4,6 +4,8 @@
 
 **O que existe:** `index.html` (`/vedello/`): página de apresentação de uma app **em desenvolvimento**: o que vai fazer, o que não vai fazer (paywalls, "aceitar ou pagar", não é VPN) e o preço (mesmas regras do Ritmello). PT em `/pt/vedello/`.
 
-**Pendente (antes do lançamento):** permissões em linguagem simples, Política de Privacidade, Termos e Reembolso (`privacy.html`, `terms.html`, `refund.html`), aviso (i) com os limites confirmados, capturas, link de compra. Só quando o Vedello Pro existir.
+**Textos legais (rascunhos 1.0, 9/11/2026):** `privacy.html`, `terms.html` e `refund.html`, gerados a partir de `_ferramentas/textos/VEDELLO-*.md`, ligados na secção Preço. A rever antes de abrir as vendas.
+
+**Pendente (antes do lançamento):** permissões em linguagem simples, aviso (i) com os limites confirmados, capturas, link de compra.
 
 **Regras:** descrever como ferramenta de privacidade e consentimento, nunca "bloqueador de anúncios". Nunca prometer esconder paywalls nem muros de "aceitar ou pagar".
