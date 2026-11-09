@@ -5,8 +5,8 @@
 | Ficheiro | Endereço | Conteúdo |
 |---|---|---|
 | `index.html` | `/ritmello/` | página de produto: o que faz, capturas, Grátis vs Pro, preço à escolha, aviso (i) "They'll always win.", permissões, privacidade, perguntas |
-| `privacy.html` | `/ritmello/privacy.html` | Política de Privacidade 1.5 (igual à da extensão) |
-| `terms.html` | `/ritmello/terms.html` | Termos de Venda e Licença (EULA) 1.7 (iguais aos da extensão). O email de confirmação da Polar aponta para aqui |
+| `privacy.html` | `/ritmello/privacy.html` | Política de Privacidade 1.6 (sem morada nem NIF; remete para o aviso legal) |
+| `terms.html` | `/ritmello/terms.html` | Termos de Venda e Licença (EULA) 1.8 (sem morada nem NIF; remetem para o aviso legal). O email de confirmação da Polar aponta para aqui |
 | `refund.html` | `/ritmello/refund.html` | Política de Reembolso (sem reembolso por desistência; garantia legal) |
 
 A versão portuguesa está em `/pt/ritmello/`.

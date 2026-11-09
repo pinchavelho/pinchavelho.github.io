@@ -30,7 +30,7 @@ MIN_DEPOIS = {"en": "€2.99", "pt": "2,99 €"}
 FIM_MIN = {"en": "31 January 2027", "pt": "31 de janeiro de 2027"}
 INICIO_DEPOIS = {"en": "1 February 2027", "pt": "1 de fevereiro de 2027"}
 
-# Dados do vendedor (iguais aos Termos 1.7 e à Política 1.5 do Ritmello).
+# Dados do vendedor: só aparecem completos no Aviso legal (regra do Jose, 9/11/2026). Termos e Privacidade dizem "José Pinhão" e remetem para lá.
 VENDEDOR_NOME = "José Augusto Alves Pinhão"
 VENDEDOR_MORADA = "Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal"
 VENDEDOR_NIF = "218449283"
@@ -518,7 +518,7 @@ def split_md(path):
 
 
 def terms(lang):
-    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.7-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.8-EN-PT.md"))[lang]
     lines = [l for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1].strip()
     out = []
@@ -529,8 +529,8 @@ def terms(lang):
         out.append('<h2 id="s%s">%s. %s</h2>\n<p>%s</p>' % (n, n, e(head), linkify(rest)))
     refund = "/ritmello/refund.html" if lang == "en" else "/pt/ritmello/refund.html"
     privacy = "/ritmello/privacy.html" if lang == "en" else "/pt/ritmello/privacy.html"
-    call = ({"en": 'These terms include the End-User Licence Agreement (EULA, clause 8). Ritmello is proprietary software. See also the <a href="%s">refund policy</a> and the <a href="%s">privacy policy</a>. If translations differ, the English text prevails, without prejudice to mandatory consumer rights. This is the same text that ships inside the extension.',
-             "pt": 'Estes termos incluem o Contrato de Licença de Utilizador Final (EULA, cláusula 8). O Ritmello é software proprietário. Veja também a <a href="%s">política de reembolso</a> e a <a href="%s">política de privacidade</a>. Se as traduções divergirem, prevalece o texto inglês, sem prejuízo dos direitos imperativos do consumidor. É o mesmo texto que vai dentro da extensão.'}[lang]) % (refund, privacy)
+    call = ({"en": 'These terms include the End-User Licence Agreement (EULA, clause 8). Ritmello is proprietary software. See also the <a href="%s">refund policy</a> and the <a href="%s">privacy policy</a>. If translations differ, the English text prevails, without prejudice to mandatory consumer rights. The extension will carry this same text from its next update.',
+             "pt": 'Estes termos incluem o Contrato de Licença de Utilizador Final (EULA, cláusula 8). O Ritmello é software proprietário. Veja também a <a href="%s">política de reembolso</a> e a <a href="%s">política de privacidade</a>. Se as traduções divergirem, prevalece o texto inglês, sem prejuízo dos direitos imperativos do consumidor. A extensão passa a levar este mesmo texto na próxima atualização.'}[lang]) % (refund, privacy)
     body = '<div class="wrap narrow doc"><h1>%s</h1><p class="meta">%s</p><p class="callout">%s</p>\n%s\n</div>' % (e(h1), e(meta), call, "\n".join(out))
     title = h1
     desc = {"en": "Terms of sale and licence (EULA) for Ritmello Pro: pay what you think is fair from a minimum, 15-day free trial, right of withdrawal waiver, legal guarantee.",
@@ -539,7 +539,7 @@ def terms(lang):
 
 
 def privacy(lang):
-    src = split_md(os.path.join(HERE, "textos", "PRIVACIDADE-1.5-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "PRIVACIDADE-1.6-EN-PT.md"))[lang]
     lines = [l.strip() for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1]
     out, in_list = [], False
@@ -561,7 +561,7 @@ def privacy(lang):
             out.append("<p>%s</p>" % linkify(l))
     if in_list:
         out.append("</ul>")
-    note = {"en": "This is the same text that ships inside the extension.", "pt": "É o mesmo texto que vai dentro da extensão."}[lang]
+    note = {"en": "The extension will carry this same text from its next update.", "pt": "A extensão passa a levar este mesmo texto na próxima atualização."}[lang]
     body = '<div class="wrap narrow doc"><h1>%s</h1><p class="meta">%s · %s</p>\n%s\n</div>' % (e(h1), e(meta), note, "\n".join(out))
     desc = {"en": "Ritmello's privacy policy: no tracking, no analytics, data stays on your device; the only network request is the licence check with Polar.",
             "pt": "Política de privacidade do Ritmello: sem rastreio nem analytics, os dados ficam no seu dispositivo; o único pedido de rede é a verificação da licença na Polar."}[lang]
@@ -570,7 +570,7 @@ def privacy(lang):
 
 def refund(lang):
     if lang == "en":
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 9 November 2026 · Matches the Terms of sale, version 1.7</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 9 November 2026 · Matches the Terms of sale, version 1.8</p>
 <h2 id="s1">1. Try it first</h2>
 <p>Every Pro feature can be tried free for 15 days from installation, without sign-up, payment or card. Please use the trial to check that Ritmello Pro works for you before you buy.</p>
 <h2 id="s2">2. No refund for a change of mind</h2>
@@ -587,7 +587,7 @@ def refund(lang):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "Ritmello Pro – Refund policy", "Ritmello Pro refund policy: 15-day free trial first; no refund for a change of mind after the withdrawal waiver; the legal guarantee always applies."
     else:
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 9 de novembro de 2026 · De acordo com os Termos de venda, versão 1.7</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 9 de novembro de 2026 · De acordo com os Termos de venda, versão 1.8</p>
 <h2 id="s1">1. Experimente primeiro</h2>
 <p>Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias a contar da instalação, sem registo, sem pagamento e sem cartão. Use o teste para confirmar que o Ritmello Pro lhe serve antes de comprar.</p>
 <h2 id="s2">2. Sem reembolso por desistência</h2>
@@ -637,7 +637,7 @@ def legal_notice(lang):
 <h2>Complaints and disputes</h2><p>Please contact us first at <a href="mailto:{email}">{email}</a>. Electronic complaints book: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Alternative dispute resolution: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) or the competent ADR centre.</p>
 <h2>This website and your privacy</h2><p>No cookies, no analytics, no trackers and no third-party resources; fonts are self-hosted. Hosted by GitHub Pages (GitHub, Inc., USA), which may log visitors’ IP addresses for security, under <a href="{gh}">GitHub’s privacy statement</a>. For Ritmello, see its <a href="/ritmello/privacy.html">privacy policy</a>.</p>
 <h2>Intellectual property</h2><p>Pinchavelho, Ritmello, Vedello, the logos, icons and all site content are © 2026 {nome}, trading as Pinchavelho. All rights reserved. Chrome is a trademark of Google LLC. Fonts: Inter and Space Grotesk, used under the SIL Open Font License 1.1 (<a href="/assets/fonts/OFL-Inter.txt">Inter licence</a>, <a href="/assets/fonts/OFL-SpaceGrotesk.txt">Space Grotesk licence</a>).</p></div>"""
-        title, desc = "Legal notice", "Trader details for Pinchavelho (José Augusto Alves Pinhão, sole trader, Portugal), sales through Polar, complaints and intellectual property."
+        title, desc = "Legal notice", "Trader details for Pinchavelho (José Pinhão, sole trader, Portugal), sales through Polar, complaints and intellectual property."
     else:
         body = """<div class="wrap narrow doc"><h1>Aviso legal</h1><p class="meta">Última atualização: 9 de novembro de 2026</p>
 <h2>Quem somos</h2><dl class="trader"><dt>Comerciante</dt><dd>{nome}, que usa a designação “Pinchavelho” (empresário em nome individual)</dd><dt>Morada</dt><dd>{morada}</dd><dt>NIF</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Site</dt><dd><a href="https://pinchavelho.github.io/pt/">https://pinchavelho.github.io</a></dd></dl>
@@ -646,7 +646,7 @@ def legal_notice(lang):
 <h2>Reclamações e litígios</h2><p>Contacte-nos primeiro em <a href="mailto:{email}">{email}</a>. Livro de Reclamações Eletrónico: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Resolução alternativa de litígios: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) ou o centro de arbitragem competente.</p>
 <h2>Este site e a sua privacidade</h2><p>Sem cookies, analytics, rastreadores nem recursos de terceiros; as fontes estão alojadas no próprio site. Alojado no GitHub Pages (GitHub, Inc., EUA), que pode registar o endereço IP dos visitantes por segurança, ao abrigo da <a href="{gh}">declaração de privacidade do GitHub</a>. Para o Ritmello, veja a sua <a href="/pt/ritmello/privacy.html">política de privacidade</a>.</p>
 <h2>Propriedade intelectual</h2><p>Pinchavelho, Ritmello, Vedello, os logótipos, os ícones e todo o conteúdo do site são © 2026 {nome}, que usa a designação Pinchavelho. Todos os direitos reservados. Chrome é uma marca da Google LLC. Tipos de letra: Inter e Space Grotesk, usados ao abrigo da SIL Open Font License 1.1 (<a href="/assets/fonts/OFL-Inter.txt">licença da Inter</a>, <a href="/assets/fonts/OFL-SpaceGrotesk.txt">licença da Space Grotesk</a>).</p></div>"""
-        title, desc = "Aviso legal", "Dados do comerciante Pinchavelho (José Augusto Alves Pinhão, empresário em nome individual, Portugal), vendas através da Polar, reclamações e propriedade intelectual."
+        title, desc = "Aviso legal", "Dados do comerciante Pinchavelho (José Pinhão, empresário em nome individual, Portugal), vendas através da Polar, reclamações e propriedade intelectual."
     body = body.format(nome=VENDEDOR_NOME, morada=VENDEDOR_MORADA, nif=VENDEDOR_NIF, email=EMAIL, gh=gh)
     return page(lang, "/legal-notice.html", title, desc, body)
 
