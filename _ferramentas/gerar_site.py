@@ -394,7 +394,7 @@ def ritmello(lang):
 <details><summary>Does it work on every video?</summary><p>It works with the standard video and audio of web pages. On copy-protected videos the speed still works, but sound effects and skip silences turn off by themselves. Chrome’s own pages and the Chrome Web Store are closed to every extension.</p></details>
 <details><summary>What happens when the trial ends?</summary><p>The Pro features lock and Ritmello goes back to the free version. Your bookmarks stay on your computer. Nothing is charged: there is no card to charge.</p></details>
 <details><summary>Can I use Pro on more than one computer?</summary><p>Yes, on your own browsers. The licence is personal: it is for you, not for sharing or reselling.</p></details>
-<details><summary>Do I need an account?</summary><p>No. Polar emails you a licence key after payment; you paste it into Ritmello’s Options.</p></details>
+<details><summary>Do I need an account?</summary><p>No. After payment your licence key is in the Polar customer portal: open it from the link in Polar's confirmation email or sign in with the email you used to buy; you paste it into Ritmello’s Options.</p></details>
 </section>
 <section class="wrap"><p><a href="/ritmello/transparency.html">Transparency report</a> · <a href="/ritmello/privacy.html">Privacy policy</a> · <a href="/ritmello/terms.html">Terms of sale &amp; EULA</a> · <a href="/ritmello/refund.html">Refund policy</a></p></section>
 """
@@ -448,7 +448,7 @@ def ritmello(lang):
 <details><summary>Funciona em todos os vídeos?</summary><p>Funciona com o vídeo e o áudio normais das páginas web. Em vídeos protegidos contra cópia a velocidade continua a funcionar, mas os efeitos de som e saltar silêncios desligam-se sozinhos. As páginas do próprio Chrome e a Chrome Web Store estão fechadas a todas as extensões.</p></details>
 <details><summary>O que acontece quando o teste acaba?</summary><p>As funcionalidades Pro ficam bloqueadas e o Ritmello volta à versão gratuita. Os seus marcadores ficam no seu computador. Não é cobrado nada: não há cartão para cobrar.</p></details>
 <details><summary>Posso usar o Pro em mais do que um computador?</summary><p>Sim, nos seus navegadores. A licença é pessoal: é para si, não para partilhar nem revender.</p></details>
-<details><summary>Preciso de uma conta?</summary><p>Não. A Polar envia-lhe uma chave de licença por email depois do pagamento; cola-a nas Opções do Ritmello.</p></details>
+<details><summary>Preciso de uma conta?</summary><p>Não. Depois do pagamento, a chave de licença fica no portal de cliente da Polar: abra-o pelo link do email de confirmação ou entre com o email que usou na compra; cola-a nas Opções do Ritmello.</p></details>
 </section>
 <section class="wrap"><p><a href="/pt/ritmello/transparency.html">Relatório de transparência</a> · <a href="/pt/ritmello/privacy.html">Política de privacidade</a> · <a href="/pt/ritmello/terms.html">Termos de venda e EULA</a> · <a href="/pt/ritmello/refund.html">Política de reembolso</a></p></section>
 """
@@ -524,7 +524,7 @@ def split_md(path):
 
 
 def terms(lang):
-    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.8-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.9-EN-PT.md"))[lang]
     lines = [l for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1].strip()
     out = []
@@ -603,7 +603,7 @@ def transparency(lang):
 
 
 def privacy(lang):
-    src = split_md(os.path.join(HERE, "textos", "PRIVACIDADE-1.6-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "PRIVACIDADE-1.7-EN-PT.md"))[lang]
     lines = [l.strip() for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1]
     out, in_list = [], False
@@ -636,7 +636,7 @@ def privacy(lang):
 
 def refund(lang):
     if lang == "en":
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 9 November 2026 · Matches the Terms of sale, version 1.8</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 9 November 2026 · Matches the Terms of sale, version 1.9</p>
 <h2 id="s1">1. Try it first</h2>
 <p>Every Pro feature can be tried free for 15 days from installation, without sign-up, payment or card. Please use the trial to check that Ritmello Pro works for you before you buy.</p>
 <h2 id="s2">2. No refund for a change of mind</h2>
@@ -653,7 +653,7 @@ def refund(lang):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "Ritmello Pro – Refund policy", "Ritmello Pro refund policy: 15-day free trial first; no refund for a change of mind after the withdrawal waiver; the legal guarantee always applies."
     else:
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 9 de novembro de 2026 · De acordo com os Termos de venda, versão 1.8</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 9 de novembro de 2026 · De acordo com os Termos de venda, versão 1.9</p>
 <h2 id="s1">1. Experimente primeiro</h2>
 <p>Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias a contar da instalação, sem registo, sem pagamento e sem cartão. Use o teste para confirmar que o Ritmello Pro lhe serve antes de comprar.</p>
 <h2 id="s2">2. Sem reembolso por desistência</h2>
