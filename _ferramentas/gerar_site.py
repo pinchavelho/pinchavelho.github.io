@@ -30,7 +30,7 @@ MIN_DEPOIS = {"en": "€2.99", "pt": "2,99 €"}
 FIM_MIN = {"en": "31 January 2027", "pt": "31 de janeiro de 2027"}
 INICIO_DEPOIS = {"en": "1 February 2027", "pt": "1 de fevereiro de 2027"}
 
-# Dados do vendedor: só aparecem completos no Aviso legal (regra do Jose, 9/11/2026). Termos e Privacidade dizem "José Pinhão" e remetem para lá.
+# Dados do vendedor: completos (com NIF) só no Aviso legal (regra do Jose, 9/11/2026). Termos e Privacidade têm nome e morada, sem NIF.
 VENDEDOR_NOME = "José Augusto Alves Pinhão"
 VENDEDOR_MORADA = "Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal"
 VENDEDOR_NIF = "218449283"
