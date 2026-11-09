@@ -1,10 +1,10 @@
 # Ritmello by Pinchavelho – Privacy Policy
 
-Last updated: 3 November 2026 · Version 1.5 (Ritmello 0.0.3)
+Last updated: 9 November 2026 · Version 1.6
 
 Online: https://pinchavelho.github.io/ritmello/privacy.html
 
-Controller: José Augusto Alves Pinhão, trading as "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal. Email: opinchavelho@gmail.com.
+Controller: José Pinhão, trading as "Pinchavelho" (full identification, address and tax number in the legal notice: https://pinchavelho.github.io/legal-notice.html). Email: opinchavelho@gmail.com.
 
 1. What the extension does NOT do
 
@@ -75,9 +75,9 @@ We will update this page and the date above; material changes will be shown in t
 
 # Ritmello by Pinchavelho – Política de Privacidade
 
-Última atualização: 3 de novembro de 2026 · Versão 1.5 (Ritmello 0.0.3)
+Última atualização: 9 de novembro de 2026 · Versão 1.6
 
-Responsável: José Augusto Alves Pinhão, que usa a designação "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal. Email: opinchavelho@gmail.com.
+Responsável: José Pinhão, que usa a designação "Pinchavelho" (identificação completa, morada e NIF no aviso legal: https://pinchavelho.github.io/pt/legal-notice.html). Email: opinchavelho@gmail.com.
 
 1. O que a extensão NÃO faz
 

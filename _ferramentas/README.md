@@ -7,8 +7,8 @@
 | Ficheiro | Para quê |
 |---|---|
 | `gerar_site.py` | Escreve **todas** as páginas `.html` (EN e PT), o `404.html`, os redirecionamentos dos endereços antigos e o `sitemap.xml` |
-| `textos/TERMOS-1.7-EN-PT.md` | Termos de Venda e EULA do Ritmello 1.7 (igual ao `TERMS.md` da extensão) |
-| `textos/PRIVACIDADE-1.5-EN-PT.md` | Política de Privacidade do Ritmello 1.5 (igual ao `PRIVACY_POLICY.md` da extensão) |
+| `textos/TERMOS-1.8-EN-PT.md` | Termos de Venda e EULA do Ritmello 1.8 (a extensão tem de levar o mesmo texto na próxima 0.0.x) |
+| `textos/PRIVACIDADE-1.6-EN-PT.md` | Política de Privacidade do Ritmello 1.6 (a extensão tem de levar o mesmo texto na próxima 0.0.x) |
 
 **Como usar:** na raiz do repositório, `python3 -I _ferramentas/gerar_site.py .` e depois o `check_site.py` da skill `pinchavelho-site`.
 
