@@ -12,7 +12,7 @@
 - Âmbar e verde nunca como cor de texto sobre fundo claro (contraste insuficiente).
 - Manter acessibilidade: foco visível, link "saltar para o conteúdo" (`.skip`), `prefers-reduced-motion`.
 
-## Tokens (marca v1)
+## Tokens (marca v2 «Manípulo»; iguais aos da v1)
 
 | Token | Claro | Escuro |
 |---|---|---|
@@ -47,4 +47,4 @@ Cores fixas da marca: `--noite #0F1B2D`, `--ambar #FFB020`, `--azul #1E6FD9`, `-
 
 ## Como usar
 
-Editar `site.css`, depois ver todas as páginas em claro, escuro e a 375 px de largura. Uma mudança de identidade visual só entra depois de aprovada pelo Jose (a v2 "Manípulo" ainda está por aprovar).
+Editar `site.css`, depois ver todas as páginas em claro, escuro e a 375 px de largura. A identidade v2 "Manípulo" foi aprovada a 4/11/2026; mudanças de identidade só com aprovação do Jose e depois de atualizar a skill `pinchavelho-brand`.

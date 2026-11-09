@@ -1,4 +1,4 @@
-/* Pinchavelho site — tokens from IDENTIDADE_VISUAL.md. Amber/green are decorative only on light backgrounds. */
+/* Pinchavelho site — identidade v2 «Manípulo» (aprovada a 4/11/2026). Tokens da skill pinchavelho-brand. Âmbar e verde são só decorativos sobre fundo claro. */
 @font-face{font-family:"Inter";src:url(/assets/fonts/inter-var-latin.woff2) format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
 @font-face{font-family:"Space Grotesk";src:url(/assets/fonts/space-grotesk-var-latin.woff2) format("woff2");font-weight:500 700;font-style:normal;font-display:swap}
 :root{--noite:#0F1B2D;--ambar:#FFB020;--azul:#1E6FD9;--nevoa:#F5F7FA;--verde:#22A06B;
@@ -69,3 +69,26 @@ footer.site p{margin:.3rem 0}
 .visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .nopad{padding-bottom:0}.card.bare{background:none;border:0;padding:0}
 dl.trader dd{overflow-wrap:anywhere}
+/* v2 (nov 2026): produtos, preço à escolha, limites, perguntas */
+.brand img{height:44px;width:auto}
+.products{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.card ul{margin:.4rem 0 0;padding-left:1.2rem;color:var(--muted)}.card li{margin:.35rem 0}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1rem 0}
+.choice{display:flex;flex-direction:column;align-items:center;gap:.1rem;padding:.7rem .5rem;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);text-decoration:none;min-height:44px}
+a.choice:hover{border-color:var(--ambar)}
+.choice:first-child{border:2px solid var(--ambar)}
+.choice .amount{font:600 1.25rem/1.2 "Space Grotesk",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.choice .what{font-size:.85rem;color:var(--muted)}
+.choice.pending{background:var(--surface2);border-style:dashed}
+.choice.pending:first-child{border-style:dashed}
+details{border:1px solid var(--border);border-radius:4px 10px 4px 10px;background:var(--surface);padding:.2rem 1rem;margin:.6rem 0}
+summary{cursor:pointer;font-weight:600;padding:.6rem 0;min-height:44px;display:list-item}
+details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6rem}
+details p{color:var(--muted)}
+details.limits{background:var(--surface2);margin-top:1rem}
+details.limits h3{margin-top:.4rem}
+details.limits ol{padding-left:1.2rem}details.limits li{margin:.8rem 0}details.limits li p{margin:.15rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:var(--surface2);padding:.05rem .3rem;border-radius:4px;overflow-wrap:anywhere}
+@media (max-width:40rem){.choices{grid-template-columns:1fr}.products{grid-template-columns:1fr}}
+.faq details{max-width:46rem}

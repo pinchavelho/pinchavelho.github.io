@@ -9,7 +9,9 @@
 | `pt/index.html` → `/pt/` | `index.html` → `/` |
 | `pt/about.html` | `about.html` |
 | `pt/legal-notice.html` | `legal-notice.html` |
-| `pt/playpilot/` | `playpilot/` → `pt/playpilot/README.md` |
+| `pt/ritmello/` | `ritmello/` → `pt/ritmello/README.md` |
+| `pt/vedello/` | `vedello/` → `pt/vedello/README.md` |
+| `pt/playpilot/` | `playpilot/` (só redirecionamentos) |
 
 Não há `pt/404.html`: o GitHub Pages usa só o `404.html` da raiz.
 
@@ -21,4 +23,4 @@ Não há `pt/404.html`: o GitHub Pages usa só o `404.html` da raiz.
 - Os links internos apontam para páginas PT (`/pt/...`); o seletor de idioma aponta para a gémea EN.
 - Mesma CSP, mesmo CSS e mesmo rodapé (traduzido) que as páginas EN.
 
-**Como usar:** ao criar ou alterar uma página EN, fazer o mesmo aqui no mesmo pull request e acrescentar as duas ao `sitemap.xml`.
+**Como usar:** as páginas EN e PT são geradas juntas por `_ferramentas/gerar_site.py`; alterar lá as duas línguas no mesmo pull request.

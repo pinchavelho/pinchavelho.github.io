@@ -2,19 +2,17 @@
 
 > Documentação interna para pessoas e para o bot Grok. Não é publicada no site.
 
-**O que existe:** 5 capturas do PlayPilot, usadas na galeria `.shots` de `/playpilot/` e `/pt/playpilot/`.
+**O que existe:** 8 capturas **provisórias** do Ritmello (versão de teste 0.0.3), 4 em inglês e 4 em português, usadas na galeria `.shots` de `/ritmello/` e `/pt/ritmello/`.
 
 | Ficheiro | Mostra |
 |---|---|
-| `playpilot_01_speed_1280x800.png` | painel de velocidade |
-| `playpilot_02_audio_1280x800.png` | controlos de som |
-| `playpilot_03_download_1280x800.png` | transferências (**função a remover** no Ritmello: retirar esta captura) |
-| `playpilot_04_info_1280x800.png` | informação |
-| `playpilot_05_languages_dark_1280x800.png` | idiomas, modo escuro |
+| `ritmello_01_speed_<en/pt>_1280x800.png` | painel ao lado de um vídeo: velocidade, tempo restante, media da página |
+| `ritmello_02_study_<en/pt>_1280x800.png` | ferramentas de estudo (Pro): saltar silêncios, modo foco, loop A-B, marcador |
+| `ritmello_03_pro_<en/pt>_1280x800.png` | ecrã do Pro: Grátis vs Pro e preço à escolha |
+| `ritmello_04_audio_dark_<en/pt>_1280x800.png` | som (Pro) no modo escuro |
 
 **Regras**
-
-- Tamanho 1280×800 (o mesmo da Chrome Web Store), em PNG.
-- Nome: `<app>_<nº>_<assunto>_1280x800.png`.
-- Nas páginas: `width="1280" height="800"` e um `alt` que descreva o que se vê, em EN na página EN e em PT na página PT.
-- As capturas mostram só a app: sem dados pessoais, sem marcas de terceiros em destaque, nunca conteúdo protegido por DRM.
+- Imagens das versões 0.0.x são provisórias; as definitivas fazem-se com a 1.0.0. **Nunca mostrar o número da versão.**
+- 1280×800 (o tamanho da Chrome Web Store), PNG. Nome: `<app>_<nº>_<assunto>_<língua>_1280x800.png`.
+- O vídeo de demonstração é um gradiente gerado (sem conteúdo de terceiros nem marcas). Sem dados pessoais.
+- Nas páginas: `width="1280" height="800"` e um `alt` que descreva o que se vê, na língua da página.

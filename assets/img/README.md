@@ -2,25 +2,23 @@
 
 > Documentação interna para pessoas e para o bot Grok. Não é publicada no site.
 
-**O que existe (marca v1)**
+**O que existe (identidade v2 «Manípulo», de `identidade-visual/fase5-final/`)**
 
 | Ficheiro | Uso |
 |---|---|
-| `pinchavelho_horizontal_claro.svg` | logótipo no cabeçalho, modo claro (173×44) |
-| `pinchavelho_horizontal_escuro.svg` | logótipo no cabeçalho, modo escuro (via `<picture>`) |
-| `pinchavelho_horizontal_claro_1200.png` | imagem de partilha (`og:image`) |
-| `pinchavelho_simbolo.svg` | favicon SVG |
-| `pinchavelho_simbolo_512.png` | `apple-touch-icon` |
-| `favicon.ico` | cópia do favicon (o que as páginas usam é `/favicon.ico` na raiz) |
-| `playpilot-icon-128.png` | ícone da app PlayPilot (mostrado a 72 px na home e na página da app) |
-| `pinchavelho_cws_32.png` | símbolo de 32 px; não é usado por nenhuma página |
+| `pinchavelho-horizontal-claro.svg` | logótipo no cabeçalho, modo claro (216×44) |
+| `pinchavelho-horizontal-escuro.svg` | logótipo no cabeçalho, modo escuro (via `<picture>`) |
+| `pinchavelho-simbolo.svg` | manípulo livre (só fundos escuros); de reserva |
+| `pinchavelho-simbolo-placa.svg` | manípulo com placa Noite (fundos claros); de reserva |
+| `favicon.svg`, `favicon.ico` | favicon (o `.ico` também está na raiz) |
+| `apple-touch-icon.png` | 180×180, sem transparência |
+| `og-image-1200x630.png` | imagem de partilha (`og:image`, `twitter:card`) |
+| `ritmello-icon-128.png`, `ritmello-icone.svg` | ícone do Ritmello (mostrado a 72 px) |
+| `vedello-icon-128.png`, `vedello-icone.svg` | ícone do Vedello (estado ativo) |
 | `screens/` | capturas das apps → `screens/README.md` |
 
 **Regras**
-
-- Só PNG ou SVG locais. SVG sem scripts nem ligações externas.
-- Em cada `<img>`: `width`, `height` e `alt` (vazio `alt=""` só para imagens decorativas, como o ícone ao lado do nome da app).
-- O logótipo tem versões claro e escuro: usar sempre as duas com `<picture>`.
-- Logótipo, símbolo e ícones são da marca v1. A v2 "Manípulo" (Ritmello e Vedello) existe nas pastas do projeto, mas só entra aqui depois da aprovação do Jose. Para criar ou alterar ícones usar a skill `pinchavelho-logo`.
-
-**Pendente:** com a mudança de nome, `playpilot-icon-128.png` vai dar lugar ao ícone do Ritmello, e o Vedello vai precisar do seu.
+- Só PNG ou SVG locais. SVG sem scripts nem ligações externas (os SVG da v2 têm só metadados C2PA).
+- Em cada `<img>`: `width`, `height` e `alt` (vazio só para imagens decorativas, como o ícone ao lado do nome da app).
+- O manípulo livre nunca vai sobre fundo claro. Logótipo horizontal com pelo menos 140 px de largura.
+- Ficheiros da v1 apagados a 9/11/2026 (histórico do git e `identidade-visual/v1-backup`). Ícones novos: skill `pinchavelho-logo`.
