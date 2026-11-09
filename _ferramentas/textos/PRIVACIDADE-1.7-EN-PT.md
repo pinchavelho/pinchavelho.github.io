@@ -1,6 +1,6 @@
 # Ritmello by Pinchavelho – Privacy Policy
 
-Last updated: 9 November 2026 · Version 1.6
+Last updated: 9 November 2026 · Version 1.7
 
 Online: https://pinchavelho.github.io/ritmello/privacy.html
 
@@ -24,13 +24,15 @@ Skip silences (Pro) measures the volume of the sound that is already playing on 
 
 - Installation date (to run the free trial locally) and, only if you enter one, your Polar licence key, its activation ID/label and the last check result: chrome.storage.local, on your device (not synced). "Remove key" in Options deletes the key.
 
+- The interface language you choose: the extension's localStorage, on your device (not synced). Deleted when you uninstall.
+
 This storage is strictly necessary for the features you request (ePrivacy Directive art. 5(3)).
 
 3. Purchases, licence keys and trial
 
 The 15-day trial (all Pro features) runs locally (installation date on your device); no sign-up and no data is sent.
 
-Purchases are made on the checkout of Polar (Polar Software Inc., polar.sh), which acts as merchant of record: Polar is the seller of record, processes the payment (through its payment providers such as Stripe), charges and remits VAT/sales tax and issues the invoice/receipt. Polar collects your email address, billing country/address and payment details under its own privacy policy (https://polar.sh/legal/privacy) and sends you the licence key. We receive from Polar your email address, name if given, country, order date, amount and licence-key status – we never see your card details.
+Purchases are made on the checkout of Polar (Polar Software Inc., polar.sh), which acts as merchant of record: Polar is the seller of record, processes the payment (through its payment providers such as Stripe), charges and remits VAT/sales tax and issues the invoice/receipt. Polar collects your email address, billing country/address and payment details under its own privacy policy (https://polar.sh/legal/privacy) and makes the licence key available in its customer portal. We receive from Polar your email address, name if given, country, order date, amount and licence-key status – we never see your card details.
 
 - What the extension sends to Polar: only when you enter a key, the key, our organisation ID and a random activation label (e.g. "Ritmello 3fa9c21b") to https://api.polar.sh, to activate it and re-check it about once a day (an offline grace period applies). No browsing data, URLs or media information are sent.
 
@@ -75,7 +77,7 @@ We will update this page and the date above; material changes will be shown in t
 
 # Ritmello by Pinchavelho – Política de Privacidade
 
-Última atualização: 9 de novembro de 2026 · Versão 1.6
+Última atualização: 9 de novembro de 2026 · Versão 1.7
 
 Responsável: José Augusto Alves Pinhão, que usa a designação "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal (restantes dados do vendedor no aviso legal: https://pinchavelho.github.io/pt/legal-notice.html). Email: opinchavelho@gmail.com.
 
@@ -97,13 +99,15 @@ Saltar silêncios (Pro) mede, momento a momento, o volume do som que já está a
 
 - Data de instalação (para o teste grátis local) e, só se a introduzir, a sua chave de licença Polar, o ID/etiqueta da ativação e o resultado da última verificação: chrome.storage.local, no seu dispositivo (não sincronizado). "Remover chave" nas Opções apaga a chave.
 
+- O idioma da interface que escolher: localStorage da extensão, no seu dispositivo (não sincronizado). É apagado quando desinstala.
+
 Este armazenamento é estritamente necessário às funcionalidades que pede (art. 5.º(3) da Diretiva ePrivacy).
 
 3. Compras, chaves de licença e período de teste
 
 O teste de 15 dias (todas as funcionalidades Pro) funciona localmente (data de instalação no seu dispositivo); sem registo e sem envio de dados.
 
-As compras são feitas no checkout da Polar (Polar Software Inc., polar.sh), que atua como merchant of record (revendedor): a Polar é o vendedor registado, processa o pagamento (através dos seus prestadores, como a Stripe), cobra e entrega o IVA/impostos sobre vendas e emite a fatura/recibo. A Polar recolhe o seu email, país/morada de faturação e dados de pagamento ao abrigo da sua própria política (https://polar.sh/legal/privacy) e envia-lhe a chave de licença. Recebemos da Polar o seu email, nome se indicado, país, data, valor e estado da chave – nunca vemos os dados do cartão.
+As compras são feitas no checkout da Polar (Polar Software Inc., polar.sh), que atua como merchant of record (revendedor): a Polar é o vendedor registado, processa o pagamento (através dos seus prestadores, como a Stripe), cobra e entrega o IVA/impostos sobre vendas e emite a fatura/recibo. A Polar recolhe o seu email, país/morada de faturação e dados de pagamento ao abrigo da sua própria política (https://polar.sh/legal/privacy) e disponibiliza a chave de licença no seu portal de cliente. Recebemos da Polar o seu email, nome se indicado, país, data, valor e estado da chave – nunca vemos os dados do cartão.
 
 - O que a extensão envia à Polar: só quando introduz uma chave, a chave, o ID da nossa organização e uma etiqueta de ativação aleatória (ex.: "Ritmello 3fa9c21b") para https://api.polar.sh, para a ativar e voltar a verificar cerca de uma vez por dia (com período de graça sem ligação). Nenhum dado de navegação, URL ou informação sobre media é enviado.
 
