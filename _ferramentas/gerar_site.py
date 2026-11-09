@@ -255,10 +255,10 @@ R = {
              "Time left at your speed, and time saved", "Focus mode", "Volume boost up to 600%",
              "10-band equalizer with presets", "Clear voice and Night modes, mono, stereo balance",
              "Per-site memory (stored only on your computer)", "Custom shortcuts, including volume keys"],
-        shots=[("ritmello_01_speed_en_1280x800.png", "Ritmello's panel next to a lesson video: speed set to 1.5x, with the time left and the list of media on the page."),
-               ("ritmello_02_study_en_1280x800.png", "Study tools (Pro): skip silences, focus mode, an A-B loop and a bookmark."),
-               ("ritmello_03_pro_en_1280x800.png", "The Pro screen: Free and Pro side by side, and pay what you think is fair from the minimum."),
-               ("ritmello_04_audio_dark_en_1280x800.png", "Audio tools (Pro) in dark mode: volume boost, equalizer and Clear voice.")],
+        shots=[("ritmello_01_speed_en_1280x800.png", "Ritmello's speed panel next to a lesson video: 1.5x, with the time it ends at your speed and the on-screen indicator."),
+               ("ritmello_02_study_en_1280x800.png", "Study tools (Pro): skip silences, focus mode, an A-B loop, bookmarks and time saved."),
+               ("ritmello_03_focus_en_1280x800.png", "Focus mode (Pro): the rest of the page is dimmed around the video."),
+               ("ritmello_04_panel_en_1280x800.png", "Every video on the page (Pro): one panel with its own controls for each video and audio.")],
         limits_title="They’ll always win.",
         limits_intro="Some things we wanted to build are not possible, or not allowed. Here they are, before you buy.",
         idea="We thought of:", reason="Why not:", instead="What it does instead:",
@@ -281,10 +281,10 @@ R = {
              "Tempo restante ao seu ritmo e tempo poupado", "Modo foco", "Amplificação de volume até 600%",
              "Equalizador de 10 bandas com predefinições", "Modos Voz clara e Noite, mono, balanço estéreo",
              "Memória por site (guardada só no seu computador)", "Atalhos personalizados, incluindo teclas de volume"],
-        shots=[("ritmello_01_speed_pt_1280x800.png", "O painel do Ritmello ao lado de um vídeo de uma aula: velocidade a 1,5x, com o tempo restante e a lista de media da página."),
-               ("ritmello_02_study_pt_1280x800.png", "Ferramentas de estudo (Pro): saltar silêncios, modo foco, um loop A-B e um marcador."),
-               ("ritmello_03_pro_pt_1280x800.png", "O ecrã do Pro: Grátis e Pro lado a lado, e pague o que achar justo a partir do mínimo."),
-               ("ritmello_04_audio_dark_pt_1280x800.png", "Ferramentas de som (Pro) no modo escuro: amplificação de volume, equalizador e Voz clara.")],
+        shots=[("ritmello_01_speed_pt_1280x800.png", "O painel de velocidade do Ritmello ao lado de um vídeo de uma aula: 1,5x, com a hora a que acaba ao seu ritmo e o indicador no ecrã."),
+               ("ritmello_02_study_pt_1280x800.png", "Ferramentas de estudo (Pro): saltar silêncios, modo foco, um loop A-B, marcadores e tempo poupado."),
+               ("ritmello_03_focus_pt_1280x800.png", "Modo foco (Pro): o resto da página fica escurecido à volta do vídeo."),
+               ("ritmello_04_panel_pt_1280x800.png", "Todos os vídeos da página (Pro): um painel com controlos próprios para cada vídeo e áudio.")],
         limits_title="Eles vão ganhar sempre.",
         limits_intro="Algumas coisas que quisemos fazer não são possíveis ou não são permitidas. Aqui estão, antes de comprar.",
         idea="Pensámos em:", reason="Porque não:", instead="O que faz em vez disso:",
@@ -334,9 +334,15 @@ def buy_buttons(lang):
 def ritmello(lang):
     r = R[lang]
     en = lang == "en"
+    # Ampliar sem JS: cada captura liga para #zoom-N; o CSS mostra esse bloco (:target) por cima da página.
+    # Clicar na imagem ampliada (ou em "Fechar") volta a #see. A imagem ampliada só carrega quando aparece.
+    zoom_l, close_l = ("Enlarge image", "Close") if en else ("Ampliar imagem", "Fechar")
     shots = "".join(
-        '<figure><img src="/assets/img/screens/%s" alt="%s" width="1280" height="800" loading="lazy" decoding="async"><figcaption>%s</figcaption></figure>'
-        % (f, e(a), e(a)) for f, a in r["shots"])
+        '<figure><a class="zoomable" href="#zoom-%d" aria-label="%s: %s"><img src="/assets/img/screens/%s" alt="%s" width="1280" height="800" loading="lazy" decoding="async"></a><figcaption>%s</figcaption></figure>'
+        % (i, zoom_l, e(a), f, e(a), e(a)) for i, (f, a) in enumerate(r["shots"], 1))
+    shots_zoom = "".join(
+        '<div class="lightbox" id="zoom-%d"><a href="#see" aria-label="%s"><img src="/assets/img/screens/%s" alt="%s" width="1280" height="800" loading="lazy" decoding="async"><span class="lb-close">%s ×</span></a></div>'
+        % (i, close_l, f, e(a), close_l) for i, (f, a) in enumerate(r["shots"], 1))
     rows = "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), yes(lang), yes(lang)) for x in r["free"])
     rows += "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), no(lang), yes(lang)) for x in r["pro"])
     cws = '<span class="btn pending">%s</span>' % T[lang]["cws_soon"]
@@ -354,7 +360,7 @@ def ritmello(lang):
 <p class="lead">Speed, skips and clearer sound for the video and audio you learn from, on any website. Ritmello only enters a page when you click it. No tracking. No ads. No account.</p>
 <div class="actions">{cws}{buy}</div>
 <p class="note">For Google Chrome 124 or later. Every Pro feature can be tried free for 15 days.</p></div></div></section>
-<section class="wrap" aria-labelledby="see"><h2 id="see">See it</h2><p class="note">Images from a test version; they will be replaced at launch.</p><div class="shots">{shots}</div></section>
+<section class="wrap" aria-labelledby="see"><h2 id="see">See it</h2><p class="note">Click an image to enlarge it.</p><div class="shots">{shots}</div>{shots_zoom}</section>
 <section class="wrap" aria-labelledby="what"><h2 id="what">What it does</h2><div class="grid">
 <div class="card"><h3>Your speed</h3><p>From 0.1x to 16x, in steps of 0.1 or with one-click presets. The speed you pick stays as you move through the video.</p></div>
 <div class="card"><h3>Less waiting</h3><p>Skip 10 seconds with a key. With Pro, Ritmello speeds through the silences in lessons and talks, and tells you how much time you saved.</p></div>
@@ -408,7 +414,7 @@ def ritmello(lang):
 <p class="lead">Velocidade, saltos e som mais claro para os vídeos e áudios com que aprende, em qualquer site. O Ritmello só entra numa página quando clica nele. Sem rastreio. Sem anúncios. Sem conta.</p>
 <div class="actions">{cws}{buy}</div>
 <p class="note">Para o Google Chrome 124 ou mais recente. Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias.</p></div></div></section>
-<section class="wrap" aria-labelledby="see"><h2 id="see">Veja</h2><p class="note">Imagens de uma versão de teste; vão ser substituídas no lançamento.</p><div class="shots">{shots}</div></section>
+<section class="wrap" aria-labelledby="see"><h2 id="see">Veja</h2><p class="note">Clique numa imagem para a ampliar.</p><div class="shots">{shots}</div>{shots_zoom}</section>
 <section class="wrap" aria-labelledby="what"><h2 id="what">O que faz</h2><div class="grid">
 <div class="card"><h3>A sua velocidade</h3><p>De 0,1x a 16x, em passos de 0,1 ou com predefinições de um clique. A velocidade que escolhe mantém-se ao longo do vídeo.</p></div>
 <div class="card"><h3>Menos espera</h3><p>Salte 10 segundos com uma tecla. Com o Pro, o Ritmello acelera nos silêncios das aulas e palestras e diz-lhe quanto tempo poupou.</p></div>
@@ -451,7 +457,7 @@ def ritmello(lang):
         buynote = "" if RITMELLO_CHECKOUT else "A compra abre brevemente. "
     perm_rows = "".join('<tr><th scope="row"><code>%s</code></th><td>%s</td></tr>' % (e(a), e(b)) if not a.startswith(("Sites",)) else
                         '<tr><th scope="row">%s</th><td>%s</td></tr>' % (e(a), e(b)) for a, b in perms)
-    body = body.format(cws=cws, buy=buy_top, shots=shots, rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
+    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom, rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
                        md=MIN_DEPOIS[lang], buttons=buy_buttons(lang), buynote=buynote, limits=limits_block(lang), perms=perm_rows)
     return page(lang, "/ritmello/", title, desc, body, current="ritmello")
 
