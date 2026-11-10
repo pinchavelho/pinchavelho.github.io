@@ -524,7 +524,7 @@ def split_md(path):
 
 
 def terms(lang):
-    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.9-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.10-EN-PT.md"))[lang]
     lines = [l for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1].strip()
     out = []
@@ -646,7 +646,7 @@ def privacy(lang):
 
 def refund(lang, app="Ritmello", terms_v="1.9"):
     if lang == "en":
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 9 November 2026 · Matches the Terms of sale, version 1.9</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 10 November 2026 · Matches the Terms of sale, version 1.10</p>
 <h2 id="s1">1. Try it first</h2>
 <p>Every Pro feature can be tried free for 15 days from installation, without sign-up, payment or card. Please use the trial to check that Ritmello Pro works for you before you buy.</p>
 <h2 id="s2">2. No refund for a change of mind</h2>
@@ -663,7 +663,7 @@ def refund(lang, app="Ritmello", terms_v="1.9"):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "Ritmello Pro – Refund policy", "Ritmello Pro refund policy: 15-day free trial first; no refund for a change of mind after the withdrawal waiver; the legal guarantee always applies."
     else:
-        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 9 de novembro de 2026 · De acordo com os Termos de venda, versão 1.9</p>
+        body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Política de reembolso</h1><p class="meta">Última atualização: 10 de novembro de 2026 · De acordo com os Termos de venda, versão 1.10</p>
 <h2 id="s1">1. Experimente primeiro</h2>
 <p>Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias a contar da instalação, sem registo, sem pagamento e sem cartão. Use o teste para confirmar que o Ritmello Pro lhe serve antes de comprar.</p>
 <h2 id="s2">2. Sem reembolso por desistência</h2>
