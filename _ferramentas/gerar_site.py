@@ -680,7 +680,7 @@ def refund(lang, app="Ritmello", terms_v="1.9"):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "Ritmello Pro – Política de reembolso", "Política de reembolso do Ritmello Pro: primeiro 15 dias de teste grátis; sem reembolso por desistência depois da renúncia; a garantia legal aplica-se sempre."
     if app != "Ritmello":
-        body, h1, desc = (x.replace("Ritmello", app).replace("version 1.9", "version " + terms_v).replace("versão 1.9", "versão " + terms_v)
+        body, h1, desc = (re.sub(r"(version|versão) 1\.\d+", r"\g<1> " + terms_v, x.replace("Ritmello", app))
                           for x in (body, h1, desc))
     slug = app.lower()
     return page(lang, "/%s/refund.html" % slug, h1, desc, body, current=slug)
