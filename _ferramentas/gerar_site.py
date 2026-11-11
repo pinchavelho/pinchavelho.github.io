@@ -109,10 +109,12 @@ def page(lang, path, title, desc, body, current=None, noindex=False, alt_path=No
     alts = "" if noindex else (
         '<link rel="alternate" hreflang="en" href="%s">\n<link rel="alternate" hreflang="pt-PT" href="%s">\n'
         '<link rel="alternate" hreflang="x-default" href="%s">\n' % (en_url, pt_url, en_url))
+    # Nas páginas do PinchaHide o rodapé liga aos textos do PinchaHide; nas restantes, aos do PinchaPlay.
+    fapp, fslug = ("PinchaHide", "pinchahide") if current == "pinchahide" else ("PinchaPlay", "pinchaplay")
     foot_links = [
-        ("PinchaPlay: " + t["privacy"], "/pinchaplay/privacy.html"),
-        ("PinchaPlay: " + t["terms"], "/pinchaplay/terms.html"),
-        ("PinchaPlay: " + t["refunds"], "/pinchaplay/refund.html"),
+        (fapp + ": " + t["privacy"], "/%s/privacy.html" % fslug),
+        (fapp + ": " + t["terms"], "/%s/terms.html" % fslug),
+        (fapp + ": " + t["refunds"], "/%s/refund.html" % fslug),
         (t["legal"], "/legal-notice.html"),
         (t["about"], "/about.html"),
     ]
@@ -365,7 +367,7 @@ def pinchaplay(lang):
                  ("api.polar.sh", "Checks your Pro licence key with Polar, the shop, about once a day. Only after you enter a key.")]
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchaplay-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaPlay by Pinchavelho · extension for Chrome</p>
+<p class="eyebrow">PinchaPlay · extension for Chrome</p>
 <h1>Learn at your own pace.</h1>
 <p class="lead">Speed, skips and clearer sound for the video and audio you learn from, on any website. PinchaPlay only enters a page when you click it. No tracking. No ads. No account.</p>
 <div class="actions">{cws}{buy}</div>
@@ -409,7 +411,7 @@ def pinchaplay(lang):
 <section class="wrap"><p><a href="/pinchaplay/transparency.html">Transparency report</a> · <a href="/pinchaplay/privacy.html">Privacy policy</a> · <a href="/pinchaplay/terms.html">Terms of sale &amp; EULA</a> · <a href="/pinchaplay/refund.html">Refund policy</a></p></section>
 """
         title = "PinchaPlay: video speed and sound control for online learning"
-        desc = "PinchaPlay by Pinchavelho for Chrome: video speed from 0.1x to 16x, skips and shortcuts for free; Pro adds skip silences, A-B loop, bookmarks and clearer sound. No tracking. Pay what you think is fair, from %s." % MIN_ATUAL["en"]
+        desc = "PinchaPlay for Chrome: video speed from 0.1x to 16x, skips and shortcuts for free; Pro adds skip silences, A-B loop, bookmarks and clearer sound. No tracking. Pay what you think is fair, from %s." % MIN_ATUAL["en"]
         buynote = "" if PINCHAPLAY_CHECKOUT else "The purchase opens soon. "
     else:
         perms = [("storage", "Guarda as suas escolhas, marcadores e chave de licença só neste computador."),
@@ -419,7 +421,7 @@ def pinchaplay(lang):
                  ("api.polar.sh", "Verifica a sua chave Pro junto da Polar, a loja, cerca de uma vez por dia. Só depois de introduzir uma chave.")]
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchaplay-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaPlay by Pinchavelho · extensão para o Chrome</p>
+<p class="eyebrow">PinchaPlay · extensão para o Chrome</p>
 <h1>Aprenda ao seu ritmo.</h1>
 <p class="lead">Velocidade, saltos e som mais claro para os vídeos e áudios com que aprende, em qualquer site. O PinchaPlay só entra numa página quando clica nele. Sem rastreio. Sem anúncios. Sem conta.</p>
 <div class="actions">{cws}{buy}</div>
@@ -463,7 +465,7 @@ def pinchaplay(lang):
 <section class="wrap"><p><a href="/pt/pinchaplay/transparency.html">Relatório de transparência</a> · <a href="/pt/pinchaplay/privacy.html">Política de privacidade</a> · <a href="/pt/pinchaplay/terms.html">Termos de venda e EULA</a> · <a href="/pt/pinchaplay/refund.html">Política de reembolso</a></p></section>
 """
         title = "PinchaPlay: velocidade e som de vídeos para quem aprende online"
-        desc = "PinchaPlay by Pinchavelho para o Chrome: velocidade de 0,1x a 16x, saltos e atalhos grátis; o Pro junta saltar silêncios, loop A-B, marcadores e som mais claro. Sem rastreio. Pague o que achar justo, a partir de %s." % MIN_ATUAL["pt"]
+        desc = "PinchaPlay para o Chrome: velocidade de 0,1x a 16x, saltos e atalhos grátis; o Pro junta saltar silêncios, loop A-B, marcadores e som mais claro. Sem rastreio. Pague o que achar justo, a partir de %s." % MIN_ATUAL["pt"]
         buynote = "" if PINCHAPLAY_CHECKOUT else "A compra abre brevemente. "
     perm_rows = "".join('<tr><th scope="row"><code>%s</code></th><td>%s</td></tr>' % (e(a), e(b)) if not a.startswith(("Sites",)) else
                         '<tr><th scope="row">%s</th><td>%s</td></tr>' % (e(a), e(b)) for a, b in perms)
@@ -534,7 +536,7 @@ def split_md(path):
 
 
 def terms(lang):
-    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.11-EN-PT.md"))[lang]
+    src = split_md(os.path.join(HERE, "textos", "TERMOS-1.12-EN-PT.md"))[lang]
     lines = [l for l in src.splitlines() if l.strip()]
     h1, meta = lines[0].lstrip("# ").strip(), lines[1].strip()
     out = []
@@ -661,7 +663,7 @@ def privacy(lang):
 
 def refund(lang, app="PinchaPlay", terms_v="1.9"):
     if lang == "en":
-        body = """<div class="wrap narrow doc"><h1>PinchaPlay Pro – Refund policy</h1><p class="meta">Last updated: 11 November 2026 · Matches the Terms of sale, version 1.11</p>
+        body = """<div class="wrap narrow doc"><h1>PinchaPlay Pro – Refund policy</h1><p class="meta">Last updated: 11 November 2026 · Matches the Terms of sale, version 1.12</p>
 <h2 id="s1">1. Try it first</h2>
 <p>Every Pro feature can be tried free for 15 days from installation, without sign-up, payment or card. Please use the trial to check that PinchaPlay Pro works for you before you buy.</p>
 <h2 id="s2">2. No refund for a change of mind</h2>
@@ -678,7 +680,7 @@ def refund(lang, app="PinchaPlay", terms_v="1.9"):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "PinchaPlay Pro – Refund policy", "PinchaPlay Pro refund policy: 15-day free trial first; no refund for a change of mind after the withdrawal waiver; the legal guarantee always applies."
     else:
-        body = """<div class="wrap narrow doc"><h1>PinchaPlay Pro – Política de reembolso</h1><p class="meta">Última atualização: 11 de novembro de 2026 · De acordo com os Termos de venda, versão 1.11</p>
+        body = """<div class="wrap narrow doc"><h1>PinchaPlay Pro – Política de reembolso</h1><p class="meta">Última atualização: 11 de novembro de 2026 · De acordo com os Termos de venda, versão 1.12</p>
 <h2 id="s1">1. Experimente primeiro</h2>
 <p>Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias a contar da instalação, sem registo, sem pagamento e sem cartão. Use o teste para confirmar que o PinchaPlay Pro lhe serve antes de comprar.</p>
 <h2 id="s2">2. Sem reembolso por desistência</h2>
@@ -712,7 +714,7 @@ def pinchahide_legal(lang, fname, path, desc, callout=""):
 
 
 def pinchahide_terms(lang):
-    return pinchahide_legal(lang, "PINCHAHIDE-TERMOS-1.0-EN-PT.md", "/pinchahide/terms.html", {
+    return pinchahide_legal(lang, "PINCHAHIDE-TERMOS-1.1-EN-PT.md", "/pinchahide/terms.html", {
         "en": "Terms of sale and licence (EULA) for PinchaHide Pro: pay what you think is fair from a minimum, 15-day free trial, right of withdrawal waiver, legal guarantee.",
         "pt": "Termos de venda e licença (EULA) do PinchaHide Pro: pague o que achar justo a partir de um mínimo, 15 dias de teste, renúncia à livre resolução, garantia legal."})
 
@@ -726,7 +728,7 @@ def pinchahide_privacy(lang):
 
 
 def pinchahide_refund(lang):
-    return refund(lang, "PinchaHide", "1.0")
+    return refund(lang, "PinchaHide", "1.1")
 
 
 # ---------------------------------------------------------------- about, legal notice, 404, redirects
@@ -755,7 +757,7 @@ def legal_notice(lang):
     if lang == "en":
         body = """<div class="wrap narrow doc"><h1>Legal notice</h1><p class="meta">Last updated: 9 November 2026</p>
 <h2>Who we are</h2><dl class="trader"><dt>Trader</dt><dd>{nome}, trading as “Pinchavelho” (sole trader)</dd><dt>Address</dt><dd>{morada}</dd><dt>NIF / Tax ID</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Website</dt><dd><a href="https://pinchavelho.github.io/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay by Pinchavelho and PinchaHide (in development). Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
+<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay and PinchaHide (in development). Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
 <h2>Disclaimer</h2><p>Our software is provided “as is” to the extent permitted by law. Nothing in this notice limits your mandatory consumer rights, including the legal guarantee of conformity for paid features. You are responsible for how you use our tools: respect copyright and each website’s terms. Our tools do not host or provide any content, and never get around copy protection (DRM), encryption, paywalls or other technical protection measures.</p>
 <h2>Complaints and disputes</h2><p>Please contact us first at <a href="mailto:{email}">{email}</a>. Electronic complaints book: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Alternative dispute resolution: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) or the competent ADR centre.</p>
 <h2>This website and your privacy</h2><p>No cookies, no analytics, no trackers and no third-party resources; fonts are self-hosted. Hosted by GitHub Pages (GitHub, Inc., USA), which may log visitors’ IP addresses for security, under <a href="{gh}">GitHub’s privacy statement</a>. For PinchaPlay, see its <a href="/pinchaplay/privacy.html">privacy policy</a>.</p>
@@ -764,7 +766,7 @@ def legal_notice(lang):
     else:
         body = """<div class="wrap narrow doc"><h1>Aviso legal</h1><p class="meta">Última atualização: 9 de novembro de 2026</p>
 <h2>Quem somos</h2><dl class="trader"><dt>Comerciante</dt><dd>{nome}, que usa a designação “Pinchavelho” (empresário em nome individual)</dd><dt>Morada</dt><dd>{morada}</dd><dt>NIF</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Site</dt><dd><a href="https://pinchavelho.github.io/pt/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay by Pinchavelho e PinchaHide (em desenvolvimento). As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
+<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay e PinchaHide (em desenvolvimento). As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
 <h2>Exclusão de responsabilidade</h2><p>O nosso software é fornecido “tal como está”, na medida permitida por lei. Nada neste aviso limita os seus direitos imperativos de consumidor, incluindo a garantia legal de conformidade das funcionalidades pagas. É responsável pela forma como usa as nossas ferramentas: respeite os direitos de autor e os termos de cada site. As nossas ferramentas não alojam nem fornecem conteúdos e nunca contornam proteções contra cópia (DRM), cifragem, paywalls ou outras medidas técnicas de proteção.</p>
 <h2>Reclamações e litígios</h2><p>Contacte-nos primeiro em <a href="mailto:{email}">{email}</a>. Livro de Reclamações Eletrónico: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Resolução alternativa de litígios: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) ou o centro de arbitragem competente.</p>
 <h2>Este site e a sua privacidade</h2><p>Sem cookies, analytics, rastreadores nem recursos de terceiros; as fontes estão alojadas no próprio site. Alojado no GitHub Pages (GitHub, Inc., EUA), que pode registar o endereço IP dos visitantes por segurança, ao abrigo da <a href="{gh}">declaração de privacidade do GitHub</a>. Para o PinchaPlay, veja a sua <a href="/pt/pinchaplay/privacy.html">política de privacidade</a>.</p>

@@ -6,7 +6,7 @@
 |---|---|---|
 | `index.html` | `/pinchaplay/` | página de produto: o que faz, capturas, Grátis vs Pro, preço à escolha, aviso (i) "They'll always win.", permissões, privacidade, perguntas |
 | `privacy.html` | `/pinchaplay/privacy.html` | Política de Privacidade 1.8 (sem NIF; nome e morada mantêm-se, RGPD art. 13.º) |
-| `terms.html` | `/pinchaplay/terms.html` | Termos de Venda e Licença (EULA) 1.11 (sem NIF; nome e morada mantêm-se, DL 24/2014). O email de confirmação da Polar aponta para aqui |
+| `terms.html` | `/pinchaplay/terms.html` | Termos de Venda e Licença (EULA) 1.12, a versão em vigor (sem NIF; nome e morada mantêm-se, DL 24/2014). O email de confirmação da Polar aponta para aqui |
 | `refund.html` | `/pinchaplay/refund.html` | Política de Reembolso (sem reembolso por desistência; garantia legal) |
 | `transparency.html` | `/pinchaplay/transparency.html` | Relatório de transparência (permissões, ligações de rede, onde ficam os dados, como verificar, histórico com SHA-256 do pacote). A ficha da Chrome Web Store liga para aqui. Ligado a partir da página do PinchaPlay e da Privacidade |
 

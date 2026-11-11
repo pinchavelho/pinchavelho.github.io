@@ -7,9 +7,11 @@
 | Ficheiro | Para quê |
 |---|---|
 | `gerar_site.py` | Escreve **todas** as páginas `.html` (EN e PT), o `404.html`, os redirecionamentos dos endereços antigos e o `sitemap.xml` |
-| `textos/TERMOS-1.11-EN-PT.md` | Termos de Venda e EULA do PinchaPlay 1.11 (a extensão tem de levar o mesmo texto na 1.0.1) |
+| `textos/TERMOS-1.12-EN-PT.md` | Termos de Venda e EULA do PinchaPlay 1.12, a versão em vigor, publicada no site (11/11/2026). Junta a limitação do portal cativo/proxy e a frase "a versão em vigor é a do site". Só existe no site; o pacote 1.0.1 leva a 1.11 |
+| `textos/TERMOS-1.11-EN-PT.md` | Termos 1.11 do PinchaPlay (histórico): o texto dentro do pacote 1.0.1 (d6b8f640…) |
 | `textos/PRIVACIDADE-1.8-EN-PT.md` | Política de Privacidade do PinchaPlay 1.8 (a extensão tem de levar o mesmo texto na 1.0.1) |
-| `textos/TRANSPARENCIA-EN-PT.md` | Relatório de transparência do PinchaPlay (origem: `pinchaplay/loja/transparencia/` nos ficheiros do projeto). Atualizar o histórico em cada versão |
+| `textos/PINCHAHIDE-TERMOS-1.1-EN-PT.md` | Termos do PinchaHide 1.1, a versão em vigor, publicada no site (11/11/2026), com a limitação do portal cativo/proxy e a frase "a versão em vigor é a do site". Só existe no site |
+| `textos/PINCHAHIDE-TERMOS-1.0-EN-PT.md`, `textos/PINCHAHIDE-PRIVACIDADE-1.0-EN-PT.md` | Termos 1.0 (histórico) e Privacidade 1.0 do PinchaHide, iguais aos do pacote 1.0.0 (64188cf1…). O Reembolso do PinchaHide é o do PinchaPlay com o nome trocado (`refund(lang, "PinchaHide", "1.1")`) |
 | `textos/PINCHAHIDE-TERMOS-1.0-EN-PT.md`, `textos/PINCHAHIDE-PRIVACIDADE-1.0-EN-PT.md` | Termos e Privacidade do PinchaHide 1.0 (iguais aos de `pinchahide/loja/PinchaHide-1.0.0-fonte.zip`). O Reembolso do PinchaHide é o do PinchaPlay com o nome trocado (`refund(lang, "PinchaHide", "1.0")`) |
 | `textos/PINCHAHIDE-TRANSPARENCIA-EN-PT.md` | Relatório de transparência do PinchaHide (origem: `pinchahide/loja/transparencia/`). Atualizar o histórico em cada versão |
 
