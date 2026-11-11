@@ -13,7 +13,7 @@
 | `https://api.polar.sh/*` | Checks your Pro licence key with Polar, the shop, only after you enter a key, and again about once a day. |
 | `https://*/*`, `http://*/*` (optional) | Never granted at install. Asked one site at a time, only when you choose "Always on for this site" (Pro) and accept Chrome's prompt. |
 
-## Network connections (version 1.0.0, tested 9 November 2026)
+## Network connections (version 1.0.1, tested 11 November 2026)
 
 | Address | When |
 |---|---|
@@ -42,6 +42,7 @@ The privacy practices on the store listing are our own declaration, filled in to
 | Version | Date | SHA-256 of the package sent to the store | Result |
 |---|---|---|---|
 | 1.0.0 | 9 November 2026 | `e532065df56931c45234a50bb75b699cef0478b20c730c31395f7d48dc603664` | Automatic checks passed; published as "Ritmello", the earlier name of PinchaPlay |
+| 1.0.1 | 11 November 2026 | `d6b8f640bc636d0d1d58e98a80e4993d82d509c5e7144d1ef3a8127278478c70` | Automatic checks passed; first version named PinchaPlay |
 
 The Chrome Web Store repackages and signs each upload, so the file you download from the store has a different checksum; the files inside are the same.
 
@@ -67,7 +68,7 @@ Found something that doesn't match this page? Write to opinchavelho@gmail.com. W
 | `https://api.polar.sh/*` | Verifica a sua chave Pro com a Polar, a loja, só depois de introduzir uma chave, e de novo cerca de uma vez por dia. |
 | `https://*/*`, `http://*/*` (opcionais) | Nunca são dadas na instalação. São pedidas um site de cada vez, só quando escolhe "Ativar sempre neste site" (Pro) e aceita o pedido do Chrome. |
 
-## Ligações de rede (versão 1.0.0, testada a 9 de novembro de 2026)
+## Ligações de rede (versão 1.0.1, testada a 11 de novembro de 2026)
 
 | Endereço | Quando |
 |---|---|
@@ -96,6 +97,7 @@ As práticas de privacidade na ficha da loja são uma declaração nossa, preenc
 | Versão | Data | SHA-256 do pacote enviado à loja | Resultado |
 |---|---|---|---|
 | 1.0.0 | 9 de novembro de 2026 | `e532065df56931c45234a50bb75b699cef0478b20c730c31395f7d48dc603664` | Verificações automáticas aprovadas; publicado como "Ritmello", o nome anterior do PinchaPlay |
+| 1.0.1 | 11 de novembro de 2026 | `d6b8f640bc636d0d1d58e98a80e4993d82d509c5e7144d1ef3a8127278478c70` | Verificações automáticas aprovadas; primeira versão com o nome PinchaPlay |
 
 A Chrome Web Store volta a empacotar e assina cada envio, por isso o ficheiro descarregado da loja tem outra soma de verificação; os ficheiros lá dentro são os mesmos.
 
