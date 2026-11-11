@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Relatório de transparência do Vedello</title>
+<meta name="description" content="O que o Vedello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si.">
+<link rel="alternate" hreflang="en" href="https://pinchavelho.github.io/vedello/transparency.html">
+<link rel="alternate" hreflang="pt-PT" href="https://pinchavelho.github.io/pt/vedello/transparency.html">
+<link rel="alternate" hreflang="x-default" href="https://pinchavelho.github.io/vedello/transparency.html">
+<link rel="canonical" href="https://pinchavelho.github.io/pt/vedello/transparency.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Relatório de transparência do Vedello">
+<meta property="og:description" content="O que o Vedello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si.">
+<meta property="og:url" content="https://pinchavelho.github.io/pt/vedello/transparency.html">
+<meta property="og:site_name" content="Pinchavelho">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:image" content="https://pinchavelho.github.io/assets/img/og-image-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pinchavelho">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Saltar para o conteúdo</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="/pt/"><picture><source srcset="/assets/img/pinchavelho-horizontal-escuro.svg" media="(prefers-color-scheme: dark)"><img src="/assets/img/pinchavelho-horizontal-claro.svg" alt="Pinchavelho, página inicial" width="216" height="44"></picture></a>
+<nav class="main" aria-label="Principal"><ul><li><a href="/pt/">Início</a></li><li><a href="/pt/ritmello/">Ritmello</a></li><li><a href="/pt/vedello/" aria-current="page">Vedello</a></li><li><a href="/pt/about.html">Sobre</a></li><li><a class="lang" href="/vedello/transparency.html" hreflang="en" lang="en" aria-label="EN – English">EN</a></li></ul></nav>
+</div></header>
+<main id="main">
+<div class="wrap narrow doc"><h1>Relatório de transparência do Vedello</h1>
+<p><strong>Em resumo:</strong> o Vedello responde aos banners de cookies e bloqueia rastreadores dentro do seu navegador, com regras incluídas na extensão. As suas definições, contagens e histórico ficam no seu computador. A única ligação que o Vedello faz sozinho é verificar a sua chave Pro com a Polar, e só depois de introduzir uma chave.</p>
+<h2>Permissões e porquê</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Permissão</th><th scope="col">Porquê</th></tr></thead><tbody><tr><td><code>storage</code></td><td>Guarda as suas definições, as contagens, o histórico (Pro), a data de início do teste e a sua chave Pro só neste computador (sem sincronizar).</td></tr><tr><td><code>declarativeNetRequest</code></td><td>Deixa o próprio Chrome aplicar as regras incluídas no Vedello: enviar o sinal Global Privacy Control e, no Pro, bloquear rastreadores e tirar parâmetros de rastreio dos endereços. O Vedello não vê os pedidos.</td></tr><tr><td><code>activeTab</code></td><td>Mostra no popup o que o Vedello fez no separador atual e deixa &quot;Copiar link limpo&quot; funcionar no separador onde clica.</td></tr><tr><td><code>scripting</code></td><td>Põe os scripts do próprio pacote nas páginas para responder aos banners pela ferramenta de consentimento do site e enviar o sinal GPC. Sem código remoto.</td></tr><tr><td><code>alarms</code></td><td>Termina uma pausa com hora marcada e volta a verificar a chave Pro cerca de uma vez por dia.</td></tr><tr><td><code>contextMenus</code></td><td>Acrescenta &quot;Copiar link limpo&quot; ao menu do botão direito sobre um link (Pro).</td></tr><tr><td><code>privacy</code> (opcional)</td><td>Só pedida quando liga uma definição do Chrome nas Opções: desligar cookies de terceiros, APIs de publicidade e fugas de WebRTC, e enviar Do Not Track (Pro).</td></tr><tr><td><code>cookies</code> (opcional)</td><td>Só pedida quando liga &quot;Limpar os cookies de um site ao fechar o último separador&quot; (Pro). Só apaga cookies; não os lê para mais nada.</td></tr><tr><td>Todos os sites (<code>&lt;all_urls&gt;</code>)</td><td>Os banners de cookies aparecem em qualquer site, por isso o Vedello corre em todas as páginas para encontrar o banner e carregar em Rejeitar. Olha só para o banner (e, no Pro, para caixas de newsletter e para o endereço que copia). Nada sai do navegador.</td></tr></tbody></table></div>
+<h2>Ligações de rede (versão 1.0.0, testada a 11 de novembro de 2026)</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Endereço</th><th scope="col">Quando</th></tr></thead><tbody><tr><td><code>api.polar.sh</code></td><td>Só depois de introduzir uma chave Pro: ativação e, depois, uma verificação cerca de uma vez por dia. Não envia dados de navegação.</td></tr><tr><td><code>buy.polar.sh</code></td><td>Só quando marca a caixa e carrega em Continuar no ecrã do Pro: o checkout abre num separador novo.</td></tr><tr><td><code>pinchavelho.github.io</code></td><td>Só se clicar num link para o nosso site.</td></tr></tbody></table></div>
+<p>Abrimos páginas de teste locais com banners de várias plataformas de consentimento, uma caixa de newsletter, um paywall e links com parâmetros de rastreio, copiámos um endereço, abrimos todas as páginas do Vedello, carregámos em Continuar no ecrã do Pro, introduzimos uma chave de teste e registámos todos os pedidos, com a internet bloqueada. Não houve mais nenhum endereço. As listas de rastreadores incluídas no Vedello nomeiam muitos serviços de rastreio: são o que o Vedello bloqueia, não endereços que contacta.</p>
+<h2>Onde ficam os seus dados</h2>
+<p>Só no seu computador: definições, exceções por site, contagens, histórico (Pro), data do teste e chave Pro, no armazenamento da extensão no Chrome; o que foi feito em cada separador aberto, em memória até o separador fechar; e o idioma da interface que escolheu. Apague o histórico nas Opções, retire a chave com &quot;Remover chave&quot;, ou desinstale o Vedello para apagar tudo.</p>
+<h2>Chrome Web Store</h2>
+<p>As práticas de privacidade na ficha da loja são uma declaração nossa, preenchida de acordo com este relatório. O link para a ficha é acrescentado aqui quando a loja aprovar o Vedello.</p>
+<h2>Verifique por si</h2>
+<ol><li>Abra <code>chrome://extensions</code>, procure o Vedello e clique em <strong>Detalhes</strong> para ver as permissões exatas que o Chrome deu.</li><li>Ligue o <strong>Modo de programador</strong>, clique em <strong>Inspecionar vistas: service worker</strong>, abra o separador <strong>Network</strong> e use o Vedello: só podem aparecer os endereços acima.</li><li>Para um registo completo, abra <code>chrome://net-export</code>, grave enquanto navega com o Vedello e abra o ficheiro no visualizador NetLog.</li></ol>
+<h2>Histórico</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Versão</th><th scope="col">Data</th><th scope="col">SHA-256 do pacote enviado à loja</th><th scope="col">Resultado</th></tr></thead><tbody><tr><td>1.0.0</td><td>11 de novembro de 2026</td><td><code>1e91181b00b8220c10fc70e82113e18cc641d918a67520793e7b5546a06398e1</code></td><td>Verificações automáticas aprovadas</td></tr></tbody></table></div>
+<p>A Chrome Web Store volta a empacotar e assina cada envio, por isso o ficheiro que recebe da loja tem outra soma de verificação; os ficheiros lá dentro são os mesmos.</p>
+<p>São verificações feitas por nós. Não são uma auditoria independente nem uma certificação.</p>
+<h2>Comunicar um problema</h2>
+<p>Encontrou algo que não bate certo com esta página? Escreva para <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a>. Respondemos, corrigimos e registamos aqui.</p>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+<ul><li><a href="/pt/ritmello/privacy.html">Ritmello: Privacidade</a></li> <li><a href="/pt/ritmello/terms.html">Ritmello: Termos e EULA</a></li> <li><a href="/pt/ritmello/refund.html">Ritmello: Reembolsos</a></li> <li><a href="/pt/legal-notice.html">Aviso legal</a></li> <li><a href="/pt/about.html">Sobre</a></li></ul>
+<p>Ferramentas pequenas e honestas. Sem rastreio, sem publicidade. Este site não usa cookies, analytics nem recursos de terceiros.</p>
+<p>© 2026 Pinchavelho. Todos os direitos reservados. · <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a></p>
+</div></footer>
+</body>
+</html>

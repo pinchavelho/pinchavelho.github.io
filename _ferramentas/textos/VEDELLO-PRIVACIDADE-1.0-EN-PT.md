@@ -22,6 +22,7 @@ Clean Links (Pro) never reads your clipboard: when you copy a web address inside
 - Reports you prepare yourself on the "Report a site" page: stored on your device; nothing is sent unless you choose to copy the text or open your own email app.
 - What was done on each open tab (the tab's site and what Vedello did): chrome.storage.session, in memory only, deleted when the tab or the browser closes.
 - Installation date (to run the free trial locally) and, only if you enter one, your Polar licence key, its activation ID/label and the last check result: chrome.storage.local, on your device (not synced). "Remove key" in Options deletes the key.
+- The interface language you pick in Options (only if you change it from "automatic"): the extension's own local storage (localStorage) in Vedello's pages, on your device. Uninstalling deletes it.
 
 This storage is strictly necessary for the features you request (ePrivacy Directive art. 5(3)).
 
@@ -91,6 +92,7 @@ O Clean Links (Pro) nunca lê a sua área de transferência: quando copia um end
 - Relatórios que prepara na página "Reportar um site": guardados no seu dispositivo; nada é enviado, a não ser que escolha copiar o texto ou abrir a sua própria aplicação de email.
 - O que foi feito em cada separador aberto (o site do separador e o que o Vedello fez): chrome.storage.session, só em memória, apagado quando o separador ou o navegador fecha.
 - Data de instalação (para o teste gratuito correr localmente) e, só se introduzir uma, a sua chave de licença da Polar, o ID/etiqueta de ativação e o resultado da última verificação: chrome.storage.local, no seu dispositivo (não sincronizado). "Remover chave" nas Opções apaga a chave.
+- O idioma da interface que escolher nas Opções (só se o mudar de "automático"): armazenamento local (localStorage) das páginas do próprio Vedello, no seu dispositivo. Desinstalar apaga-o.
 
 Este armazenamento é estritamente necessário para as funcionalidades que pede (Diretiva ePrivacy, art. 5.º, n.º 3).
 
