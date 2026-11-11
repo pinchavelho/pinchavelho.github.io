@@ -6,7 +6,7 @@ Controller: José Augusto Alves Pinhão, trading as "Pinchavelho", Estrada V Cen
 
 ## 1. What the extension does NOT do
 
-PinchaHide does not collect, sell or share your browsing history, the pages you visit, what you type or what pages show. No analytics, no ads, no tracking, no remote code. PinchaHide is not an ad blocker: it refuses cookie banners and, with Pro, blocks tracking.
+PinchaHide does not collect, sell or share your browsing history, the pages you visit, what you type or what pages show. No analytics, no ads, no tracking, no remote code. PinchaHide focuses on consent and privacy: it refuses cookie banners and, with Pro, blocks tracking.
 
 Why PinchaHide asks for access to all websites: cookie banners appear on any site, so PinchaHide needs to run on every page to find the banner and press "Reject" (or hide it when there is no way to refuse, without ever accepting). On each page it looks only at the consent banner and, with Pro, at newsletter or "install the app" boxes and at the address you copy. It reads the site's consent record (IAB TCF) only to count, in the popup, how many purposes are still on. None of this leaves your browser.
 
@@ -76,7 +76,7 @@ Responsável: José Augusto Alves Pinhão, que usa a designação "Pinchavelho",
 
 ## 1. O que a extensão NÃO faz
 
-O PinchaHide não recolhe, não vende e não partilha o seu histórico de navegação, as páginas que visita, o que escreve nem o que as páginas mostram. Sem analítica, sem publicidade, sem rastreio, sem código remoto. O PinchaHide não é um bloqueador de anúncios: recusa banners de cookies e, com o Pro, bloqueia o rastreio.
+O PinchaHide não recolhe, não vende e não partilha o seu histórico de navegação, as páginas que visita, o que escreve nem o que as páginas mostram. Sem analítica, sem publicidade, sem rastreio, sem código remoto. O PinchaHide dedica-se ao consentimento e à privacidade: recusa banners de cookies e, com o Pro, bloqueia o rastreio.
 
 Porque é que o PinchaHide pede acesso a todos os sites: os banners de cookies aparecem em qualquer site, por isso o PinchaHide precisa de correr em todas as páginas para encontrar o banner e carregar em "Rejeitar" (ou escondê-lo quando não há forma de recusar, sem nunca aceitar). Em cada página olha apenas para o banner de consentimento e, com o Pro, para caixas de newsletter ou "instale a app" e para o endereço que copia. Lê o registo de consentimento do site (IAB TCF) só para contar, no popup, quantas finalidades continuam ligadas. Nada disto sai do seu navegador.
 
