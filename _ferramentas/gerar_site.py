@@ -697,7 +697,7 @@ def refund(lang, app="PinchaPlay", terms_v="1.9"):
 </div>""".replace("{email}", EMAIL)
         h1, desc = "PinchaPlay Pro – Política de reembolso", "Política de reembolso do PinchaPlay Pro: primeiro 15 dias de teste grátis; sem reembolso por desistência depois da renúncia; a garantia legal aplica-se sempre."
     if app != "PinchaPlay":
-        body, h1, desc = (re.sub(r"(version|versão) 1\.\d+", r"\g<1> " + terms_v, x.replace("PinchaPlay", app))
+        body, h1, desc = (re.sub(r"(version|versão) 1\.\d+", r"\g<1> " + terms_v, x.replace("PinchaPlay", app).replace("/pinchaplay/", "/%s/" % app.lower()))
                           for x in (body, h1, desc))
     slug = app.lower()
     return page(lang, "/%s/refund.html" % slug, h1, desc, body, current=slug)
