@@ -22,6 +22,8 @@ LASTMOD = "2026-11-09"
 # None = botões de compra aparecem como "brevemente" (sem ligação).
 # Quando o Jose criar o produto novo, pôr aqui o link (ex.: "https://buy.polar.sh/polar_cl_...")
 # e voltar a correr o script. NUNCA acrescentar custom_field_data ao link: pré-marcaria a caixa de renúncia.
+# Ficha do Ritmello na Chrome Web Store (publicado a 10-11/11/2026).
+RITMELLO_CWS = "https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn"
 RITMELLO_CHECKOUT = None
 # Valores rápidos (cêntimos) até 31/01/2027. A 1/02/2027: (299, 399, 599) e MIN_* abaixo.
 RITMELLO_VALORES = (199, 299, 499)
@@ -195,7 +197,7 @@ def product_card(lang, app):
         name, icon, href = "Ritmello", "/assets/img/ritmello-icon-128.png", url(lang, "/ritmello/")
         txt = {"en": "Speed, skips and clearer sound for the video and audio you learn from. Works on any site after one click. Free core features; Pro: pay what you think is fair, from %s." % MIN_ATUAL["en"],
                "pt": "Velocidade, saltos e som mais claro para os vídeos e áudios com que aprende. Funciona em qualquer site depois de um clique. O essencial é grátis; Pro: pague o que achar justo, a partir de %s." % MIN_ATUAL["pt"]}[lang]
-        pill = {"en": "Chrome · in testing", "pt": "Chrome · em testes"}[lang]
+        pill = {"en": "Chrome · available", "pt": "Chrome · disponível"}[lang]
     else:
         name, icon, href = "Vedello", "/assets/img/vedello-icon-128.png", url(lang, "/vedello/")
         txt = {"en": "Answers cookie banners with “reject” for you and sends a do-not-track signal. Everything runs on your computer.",
@@ -345,8 +347,8 @@ def ritmello(lang):
         % (i, close_l, f, e(a), close_l) for i, (f, a) in enumerate(r["shots"], 1))
     rows = "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), yes(lang), yes(lang)) for x in r["free"])
     rows += "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), no(lang), yes(lang)) for x in r["pro"])
-    cws = '<span class="btn pending">%s</span>' % T[lang]["cws_soon"]
-    buy_top = ('<a class="btn" href="#price">%s</a>' % ("Ritmello Pro: pay what you think is fair" if en else "Ritmello Pro: pague o que achar justo"))
+    cws = '<a class="btn" href="%s" rel="noopener">%s</a>' % (RITMELLO_CWS, "Add to Chrome, free" if en else "Adicionar ao Chrome, grátis")
+    buy_top = ('<a class="btn ghost" href="#price">%s</a>' % ("Ritmello Pro: pay what you think is fair" if en else "Ritmello Pro: pague o que achar justo"))
     if en:
         perms = [("storage", "Remembers your choices, bookmarks and licence key on this computer only."),
                  ("activeTab", "Ritmello only enters a page when you click its icon or press Alt+Shift+R. The access ends when you leave the page."),

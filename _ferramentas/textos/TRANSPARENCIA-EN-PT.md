@@ -29,7 +29,7 @@ On your computer only: settings, shortcuts, bookmarks, time saved, trial date an
 
 ## Chrome Web Store
 
-The privacy practices on the store listing are our own declaration, filled in to match this report. The link to the listing will be added here once the store approves Ritmello.
+The privacy practices on the store listing are our own declaration, filled in to match this report. Listing: https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn
 
 ## Check it yourself
 
@@ -83,7 +83,7 @@ Só no seu computador: definições, atalhos, marcadores, tempo poupado, data do
 
 ## Chrome Web Store
 
-As práticas de privacidade na ficha da loja são uma declaração nossa, preenchida de acordo com este relatório. O link para a ficha é acrescentado aqui quando a loja aprovar o Ritmello.
+As práticas de privacidade na ficha da loja são uma declaração nossa, preenchida de acordo com este relatório. Ficha: https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn
 
 ## Verifique por si
 

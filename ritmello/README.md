@@ -12,6 +12,8 @@
 
 A versão portuguesa está em `/pt/ritmello/`.
 
+**Link da loja:** `RITMELLO_CWS` no gerador (botão "Adicionar ao Chrome" e relatório de transparência).
+
 **Regras**
 - O Ritmello não transfere vídeos. Não pôr essa função em texto, tabela nem captura.
 - Não citar outros sites pelo nome nem dizer que é para estudantes/escolas/crianças (regra da Polar sobre menores): "para quem aprende online".
