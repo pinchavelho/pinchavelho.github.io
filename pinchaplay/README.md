@@ -1,0 +1,23 @@
+# pinchaplay/ — página e textos legais do PinchaPlay (em inglês)
+
+> Documentação interna para pessoas e para o bot Grok. Não é publicada no site. As páginas são geradas por `_ferramentas/gerar_site.py`.
+
+| Ficheiro | Endereço | Conteúdo |
+|---|---|---|
+| `index.html` | `/pinchaplay/` | página de produto: o que faz, capturas, Grátis vs Pro, preço à escolha, aviso (i) "They'll always win.", permissões, privacidade, perguntas |
+| `privacy.html` | `/pinchaplay/privacy.html` | Política de Privacidade 1.8 (sem NIF; nome e morada mantêm-se, RGPD art. 13.º) |
+| `terms.html` | `/pinchaplay/terms.html` | Termos de Venda e Licença (EULA) 1.12, a versão em vigor (sem NIF; nome e morada mantêm-se, DL 24/2014). O email de confirmação da Polar aponta para aqui |
+| `refund.html` | `/pinchaplay/refund.html` | Política de Reembolso (sem reembolso por desistência; garantia legal) |
+| `transparency.html` | `/pinchaplay/transparency.html` | Relatório de transparência (permissões, ligações de rede, onde ficam os dados, como verificar, histórico com SHA-256 do pacote). A ficha da Chrome Web Store liga para aqui. Ligado a partir da página do PinchaPlay e da Privacidade |
+
+A versão portuguesa está em `/pt/pinchaplay/`.
+
+**Link da loja:** `PINCHAPLAY_CWS` no gerador (botão "Adicionar ao Chrome" e relatório de transparência).
+
+**Regras**
+- O PinchaPlay não transfere vídeos. Não pôr essa função em texto, tabela nem captura.
+- Não citar outros sites pelo nome nem dizer que é para estudantes/escolas/crianças (regra da Polar sobre menores): "para quem aprende online".
+- Preço: "pague o que achar justo", mínimo 1,99 € até 31/01/2027 e 2,99 € depois, IVA incluído. Nunca "donativo".
+- A frase da caixa de renúncia tem de ser exatamente: "I want immediate access and I accept that I lose my 14-day right of withdrawal." / "Quero acesso imediato e aceito perder o direito de livre resolução de 14 dias."
+- Os limites (i) seguem o `LIMITES.md` da extensão e a skill `pinchavelho-limites`.
+- Capturas provisórias (versão de teste, sem número de versão); as definitivas fazem-se com a 1.0.0.

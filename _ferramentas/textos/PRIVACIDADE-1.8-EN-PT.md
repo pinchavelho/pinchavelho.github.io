@@ -1,22 +1,22 @@
-# Ritmello by Pinchavelho – Privacy Policy
+# PinchaPlay by Pinchavelho – Privacy Policy
 
-Last updated: 9 November 2026 · Version 1.7
+Last updated: 11 November 2026 · Version 1.8
 
-Online: https://pinchavelho.github.io/ritmello/privacy.html
+Online: https://pinchavelho.github.io/pinchaplay/privacy.html
 
 Controller: José Augusto Alves Pinhão, trading as "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal (other trader details in the legal notice: https://pinchavelho.github.io/legal-notice.html). Email: opinchavelho@gmail.com.
 
 1. What the extension does NOT do
 
-Ritmello does not collect, sell or share your browsing history, page content or media you watch. No analytics, no ads, no tracking, no remote code. It does not download media; it only changes how media already playing in your browser is played (speed and sound).
+PinchaPlay does not collect, sell or share your browsing history, page content or media you watch. No analytics, no ads, no tracking, no remote code. It does not download media; it only changes how media already playing in your browser is played (speed and sound).
 
-How Ritmello gets access to a page: it does not ask for access to all websites. It only works on a page after you click its icon or press its shortcut (Alt+Shift+R by default) – Chrome's "activeTab" and "scripting" permissions – and that access ends when you leave the page. With Pro you may choose "Always on for this site": Chrome then asks you to allow that one site, and Ritmello turns on there by itself. This access is used only to control the video and audio on the page; Ritmello does not read what you type or what the page shows, and sends nothing anywhere. You can withdraw any site in Options or in Chrome's extension settings.
+How PinchaPlay gets access to a page: it does not ask for access to all websites. It only works on a page after you click its icon or press its shortcut (Alt+Shift+R by default) – Chrome's "activeTab" and "scripting" permissions – and that access ends when you leave the page. With Pro you may choose "Always on for this site": Chrome then asks you to allow that one site, and PinchaPlay turns on there by itself. This access is used only to control the video and audio on the page; PinchaPlay does not read what you type or what the page shows, and sends nothing anywhere. You can withdraw any site in Options or in Chrome's extension settings.
 
 Skip silences (Pro) measures the volume of the sound that is already playing on your computer, moment by moment, to know when nobody is speaking. Nothing is recorded, stored or sent.
 
 2. Data stored on your device/browser
 
-- Settings (on-screen indicator, Shift+mouse-wheel, list of sites where Ritmello is off) and shortcuts, and – only if you enable it – per-site settings (website hostname + speed/audio settings): chrome.storage.local, on your device. You can delete them in Options or by uninstalling.
+- Settings (on-screen indicator, Shift+mouse-wheel, list of sites where PinchaPlay is off) and shortcuts, and – only if you enable it – per-site settings (website hostname + speed/audio settings): chrome.storage.local, on your device. You can delete them in Options or by uninstalling.
 
 - Study tools (Pro), only if you use them: bookmarks (page address with tracking codes such as utm_ and fbclid removed, the moment in the video and the name you give it, up to 500), "time saved" (one number per day for the last 90 days – no sites or titles) and your skip-silences preferences: chrome.storage.local, on your device. Delete them in Options ("Delete all bookmarks", "Reset to zero") or by uninstalling.
 
@@ -34,7 +34,7 @@ The 15-day trial (all Pro features) runs locally (installation date on your devi
 
 Purchases are made on the checkout of Polar (Polar Software Inc., polar.sh), which acts as merchant of record: Polar is the seller of record, processes the payment (through its payment providers such as Stripe), charges and remits VAT/sales tax and issues the invoice/receipt. Polar collects your email address, billing country/address and payment details under its own privacy policy (https://polar.sh/legal/privacy) and makes the licence key available in its customer portal. We receive from Polar your email address, name if given, country, order date, amount and licence-key status – we never see your card details.
 
-- What the extension sends to Polar: only when you enter a key, the key, our organisation ID and a random activation label (e.g. "Ritmello 3fa9c21b") to https://api.polar.sh, to activate it and re-check it about once a day (an offline grace period applies). No browsing data, URLs or media information are sent.
+- What the extension sends to Polar: only when you enter a key, the key, our organisation ID and a random activation label (e.g. "PinchaPlay 3fa9c21b") to https://api.polar.sh, to activate it and re-check it about once a day (an offline grace period applies). No browsing data, URLs or media information are sent.
 
 - Links you open yourself: "Buy Pro" opens Polar's checkout page (buy.polar.sh) in a new tab, and Options links to this policy online (pinchavelho.github.io). These pages are opened by you; the extension itself sends nothing to them.
 
@@ -55,7 +55,7 @@ Access, rectification, erasure, restriction, objection and portability (GDPR art
 
 5. Children
 
-Ritmello is not directed to children under 13; purchases require being of legal age or parental consent.
+PinchaPlay is not directed to children under 13; purchases require being of legal age or parental consent.
 
 6. California and other US residents
 
@@ -75,23 +75,23 @@ We will update this page and the date above; material changes will be shown in t
 
 ---
 
-# Ritmello by Pinchavelho – Política de Privacidade
+# PinchaPlay by Pinchavelho – Política de Privacidade
 
-Última atualização: 9 de novembro de 2026 · Versão 1.7
+Última atualização: 11 de novembro de 2026 · Versão 1.8
 
 Responsável: José Augusto Alves Pinhão, que usa a designação "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal (restantes dados do vendedor no aviso legal: https://pinchavelho.github.io/pt/legal-notice.html). Email: opinchavelho@gmail.com.
 
 1. O que a extensão NÃO faz
 
-O Ritmello não recolhe, vende nem partilha o seu histórico de navegação, o conteúdo das páginas nem o media que vê. Sem análises, publicidade, rastreio ou código remoto. Não transfere media: só muda a forma como o media que já está a tocar no navegador é reproduzido (velocidade e som).
+O PinchaPlay não recolhe, vende nem partilha o seu histórico de navegação, o conteúdo das páginas nem o media que vê. Sem análises, publicidade, rastreio ou código remoto. Não transfere media: só muda a forma como o media que já está a tocar no navegador é reproduzido (velocidade e som).
 
-Como o Ritmello acede a uma página: não pede acesso a todos os sites. Só funciona numa página depois de clicar no ícone ou de usar o atalho (Alt+Shift+R por omissão) – permissões "activeTab" e "scripting" do Chrome – e esse acesso termina quando sai da página. Com o Pro pode escolher "Ativar sempre neste site": o Chrome pede-lhe autorização para esse site e o Ritmello passa a ligar-se lá sozinho. Este acesso serve só para controlar o vídeo e o áudio da página; o Ritmello não lê o que escreve nem o que a página mostra e não envia nada para lado nenhum. Pode retirar qualquer site nas Opções ou nas definições de extensões do Chrome.
+Como o PinchaPlay acede a uma página: não pede acesso a todos os sites. Só funciona numa página depois de clicar no ícone ou de usar o atalho (Alt+Shift+R por omissão) – permissões "activeTab" e "scripting" do Chrome – e esse acesso termina quando sai da página. Com o Pro pode escolher "Ativar sempre neste site": o Chrome pede-lhe autorização para esse site e o PinchaPlay passa a ligar-se lá sozinho. Este acesso serve só para controlar o vídeo e o áudio da página; o PinchaPlay não lê o que escreve nem o que a página mostra e não envia nada para lado nenhum. Pode retirar qualquer site nas Opções ou nas definições de extensões do Chrome.
 
 Saltar silêncios (Pro) mede, momento a momento, o volume do som que já está a tocar no seu computador para saber quando ninguém está a falar. Nada é gravado, guardado ou enviado.
 
 2. Dados guardados no seu dispositivo/navegador
 
-- Definições (indicador, Shift+roda do rato, lista de sites onde o Ritmello está desligado) e atalhos e, só se ativar, definições por site (nome do site + velocidade/áudio): chrome.storage.local, no seu dispositivo. Pode apagá-los nas Opções ou desinstalando.
+- Definições (indicador, Shift+roda do rato, lista de sites onde o PinchaPlay está desligado) e atalhos e, só se ativar, definições por site (nome do site + velocidade/áudio): chrome.storage.local, no seu dispositivo. Pode apagá-los nas Opções ou desinstalando.
 
 - Ferramentas de estudo (Pro), só se as usar: marcadores (endereço da página sem códigos de rastreio como utm_ e fbclid, o momento do vídeo e o nome que lhe der, até 500), "tempo poupado" (um número por dia dos últimos 90 dias – sem sites nem títulos) e as preferências de saltar silêncios: chrome.storage.local, no seu dispositivo. Apague-os nas Opções ("Apagar todos os marcadores", "Pôr a zeros") ou desinstalando.
 
@@ -109,7 +109,7 @@ O teste de 15 dias (todas as funcionalidades Pro) funciona localmente (data de i
 
 As compras são feitas no checkout da Polar (Polar Software Inc., polar.sh), que atua como merchant of record (revendedor): a Polar é o vendedor registado, processa o pagamento (através dos seus prestadores, como a Stripe), cobra e entrega o IVA/impostos sobre vendas e emite a fatura/recibo. A Polar recolhe o seu email, país/morada de faturação e dados de pagamento ao abrigo da sua própria política (https://polar.sh/legal/privacy) e disponibiliza a chave de licença no seu portal de cliente. Recebemos da Polar o seu email, nome se indicado, país, data, valor e estado da chave – nunca vemos os dados do cartão.
 
-- O que a extensão envia à Polar: só quando introduz uma chave, a chave, o ID da nossa organização e uma etiqueta de ativação aleatória (ex.: "Ritmello 3fa9c21b") para https://api.polar.sh, para a ativar e voltar a verificar cerca de uma vez por dia (com período de graça sem ligação). Nenhum dado de navegação, URL ou informação sobre media é enviado.
+- O que a extensão envia à Polar: só quando introduz uma chave, a chave, o ID da nossa organização e uma etiqueta de ativação aleatória (ex.: "PinchaPlay 3fa9c21b") para https://api.polar.sh, para a ativar e voltar a verificar cerca de uma vez por dia (com período de graça sem ligação). Nenhum dado de navegação, URL ou informação sobre media é enviado.
 
 - Ligações que o próprio utilizador abre: "Comprar Pro" abre a página de checkout da Polar (buy.polar.sh) num novo separador e as Opções têm uma ligação para esta política online (pinchavelho.github.io). É o utilizador que abre estas páginas; a extensão não lhes envia nada.
 
@@ -130,7 +130,7 @@ Acesso, retificação, apagamento, limitação, oposição e portabilidade (arts
 
 5. Menores
 
-O Ritmello não se destina a menores de 13 anos; as compras exigem maioridade ou autorização parental.
+O PinchaPlay não se destina a menores de 13 anos; as compras exigem maioridade ou autorização parental.
 
 6. Residentes na Califórnia e noutros estados dos EUA
 

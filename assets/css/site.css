@@ -82,6 +82,7 @@ a.choice:hover{border-color:var(--ambar)}
 .choice .what{font-size:.85rem;color:var(--muted)}
 .choice.pending{background:var(--surface2);border-style:dashed}
 .choice.pending:first-child{border-style:dashed}
+.other{text-align:center;margin:-.4rem 0 1rem;font-size:.95rem}
 details{border:1px solid var(--border);border-radius:4px 10px 4px 10px;background:var(--surface);padding:.2rem 1rem;margin:.6rem 0}
 summary{cursor:pointer;font-weight:600;padding:.6rem 0;min-height:44px;display:list-item}
 details[open] summary{border-bottom:1px solid var(--border);margin-bottom:.6rem}
@@ -95,7 +96,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 .tablewrap{overflow-x:auto;margin:1rem 0}
 .tablewrap table{margin:0}
 .doc code{overflow-wrap:anywhere}
-/* Ampliar capturas sem JS (:target). Ver _ferramentas/gerar_site.py, ritmello(). */
+/* Ampliar capturas sem JS (:target). Ver _ferramentas/gerar_site.py, pinchaplay(). */
 a.zoomable{display:block;cursor:zoom-in}
 a.zoomable:focus-visible img{outline:3px solid var(--ambar);outline-offset:2px}
 .lightbox{display:none}
@@ -103,3 +104,4 @@ a.zoomable:focus-visible img{outline:3px solid var(--ambar);outline-offset:2px}
 .lightbox a{display:block;max-width:100%;max-height:100%;cursor:zoom-out;text-decoration:none}
 .lightbox img{display:block;width:auto;height:auto;max-width:min(100%,1280px);max-height:calc(100vh - 4rem);border-radius:8px;margin:0 auto}
 .lb-close{display:block;text-align:center;color:#fff;margin-top:.5rem;font-size:.95rem}
+.doc a{overflow-wrap:anywhere}

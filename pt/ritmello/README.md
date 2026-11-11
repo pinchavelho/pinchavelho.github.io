@@ -1,5 +1,3 @@
-# pt/ritmello/ — página e textos legais do Ritmello (em português)
+# /pt/ritmello/ (nome anterior)
 
-> Documentação interna para pessoas e para o bot Grok. Não é publicada no site.
-
-A versão pt-PT de `/ritmello/`, com os mesmos ficheiros (`index.html`, `privacy.html`, `terms.html`, `refund.html`, `transparency.html`). Regras: as mesmas de `ritmello/README.md`. Qualquer alteração faz-se no gerador, nas duas línguas ao mesmo tempo.
+Esta pasta guarda só os endereços antigos de antes de 11/11/2026, quando a app passou a chamar-se PinchaPlay. Cada página redireciona sem JavaScript (`meta refresh`) para a página equivalente em `/pt/pinchaplay/`, tem `noindex` e não está no sitemap. Não pôr aqui conteúdo. Geradas por `_ferramentas/gerar_site.py`. Servem para os links já enviados (emails e notas da Polar, ficha da loja) continuarem a abrir.
