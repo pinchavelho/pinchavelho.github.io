@@ -45,7 +45,7 @@ The privacy practices on the store listing are our own declaration, filled in to
 
 | Version | Date | SHA-256 of the package sent to the store | Result |
 |---|---|---|---|
-| 1.0.0 | 11 November 2026 | `1e91181b00b8220c10fc70e82113e18cc641d918a67520793e7b5546a06398e1` | Automatic checks passed |
+| 1.0.0 | 11 November 2026 | `a52331e52167aab2975812a931240c3b4ad6cb20c1f854170eb72b8b52545f78` | Automatic checks passed |
 
 The Chrome Web Store repackages and signs each upload, so the file you get from the store has a different checksum; the files inside are the same.
 
@@ -103,7 +103,7 @@ As práticas de privacidade na ficha da loja são uma declaração nossa, preenc
 
 | Versão | Data | SHA-256 do pacote enviado à loja | Resultado |
 |---|---|---|---|
-| 1.0.0 | 11 de novembro de 2026 | `1e91181b00b8220c10fc70e82113e18cc641d918a67520793e7b5546a06398e1` | Verificações automáticas aprovadas |
+| 1.0.0 | 11 de novembro de 2026 | `a52331e52167aab2975812a931240c3b4ad6cb20c1f854170eb72b8b52545f78` | Verificações automáticas aprovadas |
 
 A Chrome Web Store volta a empacotar e assina cada envio, por isso o ficheiro que recebe da loja tem outra soma de verificação; os ficheiros lá dentro são os mesmos.
 

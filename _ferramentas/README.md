@@ -10,7 +10,7 @@
 | `textos/TERMOS-1.10-EN-PT.md` | Termos de Venda e EULA do Ritmello 1.10 (a extensão tem de levar o mesmo texto na 1.0.1) |
 | `textos/PRIVACIDADE-1.7-EN-PT.md` | Política de Privacidade do Ritmello 1.7 (a extensão tem de levar o mesmo texto na 1.0.1) |
 | `textos/TRANSPARENCIA-EN-PT.md` | Relatório de transparência do Ritmello (origem: `ritmello/loja/transparencia/` nos ficheiros do projeto). Atualizar o histórico em cada versão |
-| `textos/VEDELLO-TERMOS-1.0-EN-PT.md`, `textos/VEDELLO-PRIVACIDADE-1.0-EN-PT.md` | Rascunhos dos Termos e da Privacidade do Vedello 1.0 (origem: `vedello/faseA/` nos ficheiros do projeto). A rever antes de abrir as vendas do Vedello Pro. O Reembolso do Vedello é o do Ritmello com o nome trocado (`refund(lang, "Vedello", "1.0")`) |
+| `textos/VEDELLO-TERMOS-1.0-EN-PT.md`, `textos/VEDELLO-PRIVACIDADE-1.0-EN-PT.md` | Termos e Privacidade do Vedello 1.0 (iguais aos de `vedello/loja/Vedello-1.0.0-fonte.zip`). O Reembolso do Vedello é o do Ritmello com o nome trocado (`refund(lang, "Vedello", "1.0")`) |
 | `textos/VEDELLO-TRANSPARENCIA-EN-PT.md` | Relatório de transparência do Vedello (origem: `vedello/loja/transparencia/`). Atualizar o histórico em cada versão |
 
 **Como usar:** na raiz do repositório, `python3 -I _ferramentas/gerar_site.py .` e depois o `check_site.py` da skill `pinchavelho-site`.

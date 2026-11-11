@@ -1,6 +1,6 @@
 # Vedello by Pinchavelho – Privacy Policy
 
-Last updated: 9 November 2026 · Version 1.0 (draft, to be reviewed before publication) · This is the same text as on https://pinchavelho.github.io/vedello/privacy.html.
+Last updated: 11 November 2026 · Version 1.0 · This is the same text as on https://pinchavelho.github.io/vedello/privacy.html.
 
 Controller: José Augusto Alves Pinhão, trading as "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal (other trader details in the legal notice: https://pinchavelho.github.io/legal-notice.html). Email: opinchavelho@gmail.com.
 
@@ -70,7 +70,7 @@ We will update this page and the date above; material changes will be shown in t
 
 # Vedello by Pinchavelho – Política de Privacidade
 
-Última atualização: 9 de novembro de 2026 · Versão 1.0 (rascunho, a rever antes de publicar) · Este é o mesmo texto de https://pinchavelho.github.io/pt/vedello/privacy.html.
+Última atualização: 11 de novembro de 2026 · Versão 1.0 · Este é o mesmo texto de https://pinchavelho.github.io/pt/vedello/privacy.html.
 
 Responsável: José Augusto Alves Pinhão, que usa a designação "Pinchavelho", Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal (restantes dados do vendedor no aviso legal: https://pinchavelho.github.io/pt/legal-notice.html). Email: opinchavelho@gmail.com.
 

@@ -1,6 +1,6 @@
 # Vedello Pro – Terms of Sale and Licence
 
-Version 1.0 (draft, to be reviewed before sales open) · 9 November 2026
+Version 1.0 · 11 November 2026
 
 These terms include the End-User Licence Agreement (EULA, clause 8). Vedello is proprietary software. See also the refund policy (https://pinchavelho.github.io/vedello/refund.html) and the privacy policy (https://pinchavelho.github.io/vedello/privacy.html). If translations differ, the English text prevails, without prejudice to mandatory consumer rights. This is the same text as on https://pinchavelho.github.io/vedello/terms.html.
 
@@ -54,7 +54,7 @@ Contact us first. Complaints book: www.livroreclamacoes.pt. Alternative dispute 
 
 # Vedello Pro – Termos de Venda e Licença
 
-Versão 1.0 (rascunho, a rever antes de abrir as vendas) · 9 de novembro de 2026
+Versão 1.0 · 11 de novembro de 2026
 
 Estes termos incluem o Contrato de Licença de Utilizador Final (EULA, cláusula 8). O Vedello é software proprietário. Veja também a política de reembolso (https://pinchavelho.github.io/pt/vedello/refund.html) e a política de privacidade (https://pinchavelho.github.io/pt/vedello/privacy.html). Se as traduções divergirem, prevalece o texto inglês, sem prejuízo dos direitos imperativos do consumidor. Este é o mesmo texto de https://pinchavelho.github.io/pt/vedello/terms.html.
 
