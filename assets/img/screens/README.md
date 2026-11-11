@@ -2,14 +2,14 @@
 
 > Documentação interna para pessoas e para o bot Grok. Não é publicada no site.
 
-**O que existe:** 8 capturas **definitivas** do Ritmello 1.0.0 (iguais às da Chrome Web Store, de `ritmello/loja/imagens/` nos ficheiros do projeto), 4 em inglês e 4 em português, usadas na galeria `.shots` de `/ritmello/` e `/pt/ritmello/`. Ao clicar, ampliam-se sem JS (`:target`).
+**O que existe:** 8 capturas **definitivas** do PinchaPlay 1.0.0 (iguais às da Chrome Web Store, de `pinchaplay/loja/imagens/` nos ficheiros do projeto), 4 em inglês e 4 em português, usadas na galeria `.shots` de `/pinchaplay/` e `/pt/pinchaplay/`. Ao clicar, ampliam-se sem JS (`:target`).
 
 | Ficheiro | Mostra |
 |---|---|
-| `ritmello_01_speed_<en/pt>_1280x800.png` | painel de velocidade ao lado de um vídeo, indicador no ecrã |
-| `ritmello_02_study_<en/pt>_1280x800.png` | ferramentas de estudo (Pro): saltar silêncios, modo foco, loop A-B, marcadores, tempo poupado |
-| `ritmello_03_focus_<en/pt>_1280x800.png` | modo foco (Pro) |
-| `ritmello_04_panel_<en/pt>_1280x800.png` | painel com todos os vídeos da página (Pro) |
+| `pinchaplay_01_speed_<en/pt>_1280x800.png` | painel de velocidade ao lado de um vídeo, indicador no ecrã |
+| `pinchaplay_02_study_<en/pt>_1280x800.png` | ferramentas de estudo (Pro): saltar silêncios, modo foco, loop A-B, marcadores, tempo poupado |
+| `pinchaplay_03_focus_<en/pt>_1280x800.png` | modo foco (Pro) |
+| `pinchaplay_04_panel_<en/pt>_1280x800.png` | painel com todos os vídeos da página (Pro) |
 
 A 5.ª captura da loja (`05_limits_dark`) não entra no site: nomeia um serviço de vídeo e a página já tem o aviso "They'll always win." em texto.
 

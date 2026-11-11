@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>PinchaHide transparency report</title>
+<meta name="description" content="What PinchaHide can access and why, every network connection it makes, where your data stays, and how to check it yourself.">
+<link rel="alternate" hreflang="en" href="https://pinchavelho.github.io/pinchahide/transparency.html">
+<link rel="alternate" hreflang="pt-PT" href="https://pinchavelho.github.io/pt/pinchahide/transparency.html">
+<link rel="alternate" hreflang="x-default" href="https://pinchavelho.github.io/pinchahide/transparency.html">
+<link rel="canonical" href="https://pinchavelho.github.io/pinchahide/transparency.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="PinchaHide transparency report">
+<meta property="og:description" content="What PinchaHide can access and why, every network connection it makes, where your data stays, and how to check it yourself.">
+<meta property="og:url" content="https://pinchavelho.github.io/pinchahide/transparency.html">
+<meta property="og:site_name" content="Pinchavelho">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://pinchavelho.github.io/assets/img/og-image-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pinchavelho">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="/"><picture><source srcset="/assets/img/pinchavelho-horizontal-escuro.svg" media="(prefers-color-scheme: dark)"><img src="/assets/img/pinchavelho-horizontal-claro.svg" alt="Pinchavelho, home page" width="216" height="44"></picture></a>
+<nav class="main" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/pinchaplay/">PinchaPlay</a></li><li><a href="/pinchahide/" aria-current="page">PinchaHide</a></li><li><a href="/about.html">About</a></li><li><a class="lang" href="/pt/pinchahide/transparency.html" hreflang="pt-PT" lang="pt-PT" aria-label="PT – Português">PT</a></li></ul></nav>
+</div></header>
+<main id="main">
+<div class="wrap narrow doc"><h1>PinchaHide transparency report</h1>
+<p><strong>In short:</strong> PinchaHide answers cookie banners and blocks trackers inside your browser, with rules bundled in the extension. Your settings, counts and history stay on your computer. The only connection PinchaHide makes by itself is checking your Pro key with Polar, and only after you enter a key.</p>
+<h2>Permissions and why</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Permission</th><th scope="col">Why</th></tr></thead><tbody><tr><td><code>storage</code></td><td>Keeps your settings, counts, history (Pro), the trial start date and your Pro key only on this computer (not synced).</td></tr><tr><td><code>declarativeNetRequest</code></td><td>Lets Chrome itself apply the rules bundled in PinchaHide: send the Global Privacy Control signal and, with Pro, block trackers and strip tracking parameters from addresses. PinchaHide does not see the requests.</td></tr><tr><td><code>activeTab</code></td><td>Shows in the popup what PinchaHide did on the current tab and lets &quot;Copy clean link&quot; work on the tab where you click.</td></tr><tr><td><code>scripting</code></td><td>Adds the package&#x27;s own scripts to pages to answer banners through the site&#x27;s consent tool and send the GPC signal. No remote code.</td></tr><tr><td><code>alarms</code></td><td>Ends a timed pause and re-checks the Pro key about once a day.</td></tr><tr><td><code>contextMenus</code></td><td>Adds &quot;Copy clean link&quot; to the right-click menu on a link (Pro).</td></tr><tr><td><code>privacy</code> (optional)</td><td>Asked only when you turn on a Chrome setting in Options: turn off third-party cookies, ad APIs and WebRTC leaks, and send Do Not Track (Pro).</td></tr><tr><td><code>cookies</code> (optional)</td><td>Asked only when you turn on &quot;Clear a site&#x27;s cookies when its last tab closes&quot; (Pro). It only deletes cookies; it never reads them for anything else.</td></tr><tr><td>All sites (<code>&lt;all_urls&gt;</code>)</td><td>Cookie banners appear on any site, so PinchaHide runs on every page to find the banner and press Reject. It only looks at the banner (and, with Pro, at newsletter boxes and at the address you copy). Nothing leaves your browser.</td></tr></tbody></table></div>
+<h2>Network connections (version 1.0.0, tested 11 November 2026)</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Address</th><th scope="col">When</th></tr></thead><tbody><tr><td><code>api.polar.sh</code></td><td>Only after you enter a Pro key: activation, then a check about once a day. No browsing data is sent.</td></tr><tr><td><code>buy.polar.sh</code></td><td>Only when you tick the box and click Continue on the Pro screen: the checkout opens in a new tab.</td></tr><tr><td><code>pinchavelho.github.io</code></td><td>Only if you click a link to our site.</td></tr></tbody></table></div>
+<p>We opened local test pages with cookie banners from several consent platforms, a newsletter pop-up, a paywall and links with tracking parameters, copied an address, opened every PinchaHide page, clicked Continue on the Pro screen and entered a test key, and recorded every request with the internet blocked. Nothing else was contacted. The tracker lists bundled in PinchaHide name many tracking services; those names are what PinchaHide blocks, not addresses it contacts.</p>
+<h2>Where your data is</h2>
+<p>On your computer only: settings, per-site exceptions, counts, history (Pro), trial date and Pro key in Chrome&#x27;s extension storage; what was done on each open tab in memory until the tab closes; and the interface language you picked. Delete the history in Options, remove the key with &quot;Remove key&quot;, or uninstall PinchaHide to delete everything.</p>
+<h2>Chrome Web Store</h2>
+<p>The privacy practices on the store listing are our own declaration, filled in to match this report. The link to the listing will be added here once the store approves PinchaHide.</p>
+<h2>Check it yourself</h2>
+<ol><li>Open <code>chrome://extensions</code>, find PinchaHide and click <strong>Details</strong> to see the exact permissions Chrome granted.</li><li>Turn on <strong>Developer mode</strong>, click <strong>Inspect views: service worker</strong>, open the <strong>Network</strong> tab and use PinchaHide: only the addresses above can appear.</li><li>For a full log, open <code>chrome://net-export</code>, record while you browse with PinchaHide and open the file in the NetLog viewer.</li></ol>
+<h2>History</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">SHA-256 of the package sent to the store</th><th scope="col">Result</th></tr></thead><tbody><tr><td>1.0.0</td><td>11 November 2026</td><td><code>238d90dd5179521338011a2f19f7439bc202275cc6c8c8ce7d6a957be709cde1</code></td><td>Automatic checks passed</td></tr></tbody></table></div>
+<p>The Chrome Web Store repackages and signs each upload, so the file you get from the store has a different checksum; the files inside are the same.</p>
+<p>These are checks we ran ourselves. They are not an independent audit or a certification.</p>
+<h2>Report a problem</h2>
+<p>Found something that doesn&#x27;t match this page? Write to <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a>. We answer, fix it and note it here.</p>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+<ul><li><a href="/pinchaplay/privacy.html">PinchaPlay: Privacy</a></li> <li><a href="/pinchaplay/terms.html">PinchaPlay: Terms &amp; EULA</a></li> <li><a href="/pinchaplay/refund.html">PinchaPlay: Refunds</a></li> <li><a href="/legal-notice.html">Legal notice</a></li> <li><a href="/about.html">About</a></li></ul>
+<p>Small, honest tools. No tracking, no ads. This website uses no cookies, no analytics and no third-party resources.</p>
+<p>© 2026 Pinchavelho. All rights reserved. · <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a></p>
+</div></footer>
+</body>
+</html>

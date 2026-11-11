@@ -9,8 +9,8 @@
 | `pt/index.html` → `/pt/` | `index.html` → `/` |
 | `pt/about.html` | `about.html` |
 | `pt/legal-notice.html` | `legal-notice.html` |
-| `pt/ritmello/` | `ritmello/` → `pt/ritmello/README.md` |
-| `pt/vedello/` | `vedello/` → `pt/vedello/README.md` |
+| `pt/pinchaplay/` | `pinchaplay/` → `pt/pinchaplay/README.md` |
+| `pt/pinchahide/` | `pinchahide/` → `pt/pinchahide/README.md` |
 | `pt/playpilot/` | `playpilot/` (só redirecionamentos) |
 
 Não há `pt/404.html`: o GitHub Pages usa só o `404.html` da raiz.

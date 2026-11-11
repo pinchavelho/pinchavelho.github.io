@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>PinchaPlay transparency report</title>
+<meta name="description" content="What PinchaPlay can access and why, every network connection it makes, where your data stays, and how to check it yourself.">
+<link rel="alternate" hreflang="en" href="https://pinchavelho.github.io/pinchaplay/transparency.html">
+<link rel="alternate" hreflang="pt-PT" href="https://pinchavelho.github.io/pt/pinchaplay/transparency.html">
+<link rel="alternate" hreflang="x-default" href="https://pinchavelho.github.io/pinchaplay/transparency.html">
+<link rel="canonical" href="https://pinchavelho.github.io/pinchaplay/transparency.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="PinchaPlay transparency report">
+<meta property="og:description" content="What PinchaPlay can access and why, every network connection it makes, where your data stays, and how to check it yourself.">
+<meta property="og:url" content="https://pinchavelho.github.io/pinchaplay/transparency.html">
+<meta property="og:site_name" content="Pinchavelho">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://pinchavelho.github.io/assets/img/og-image-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pinchavelho">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="/"><picture><source srcset="/assets/img/pinchavelho-horizontal-escuro.svg" media="(prefers-color-scheme: dark)"><img src="/assets/img/pinchavelho-horizontal-claro.svg" alt="Pinchavelho, home page" width="216" height="44"></picture></a>
+<nav class="main" aria-label="Main"><ul><li><a href="/">Home</a></li><li><a href="/pinchaplay/" aria-current="page">PinchaPlay</a></li><li><a href="/pinchahide/">PinchaHide</a></li><li><a href="/about.html">About</a></li><li><a class="lang" href="/pt/pinchaplay/transparency.html" hreflang="pt-PT" lang="pt-PT" aria-label="PT – Português">PT</a></li></ul></nav>
+</div></header>
+<main id="main">
+<div class="wrap narrow doc"><h1>PinchaPlay transparency report</h1>
+<p><strong>In short:</strong> PinchaPlay only enters a page when you click its icon or press Alt+Shift+R. Your settings, bookmarks and time saved stay on your computer. The only connection PinchaPlay makes by itself is checking your Pro key with Polar, and only after you enter a key.</p>
+<h2>Permissions and why</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Permission</th><th scope="col">Why</th></tr></thead><tbody><tr><td><code>storage</code></td><td>Remembers your settings, shortcuts, bookmarks, time saved, the trial start date and your Pro key on this computer only (not synced).</td></tr><tr><td><code>activeTab</code></td><td>Lets PinchaPlay into the current tab only after you click its icon or press Alt+Shift+R; access ends when you leave the page.</td></tr><tr><td><code>scripting</code></td><td>Puts PinchaPlay&#x27;s own packaged controls into the page you chose (and into sites you set to Always on, with Pro). No remote code.</td></tr><tr><td><code>https://api.polar.sh/*</code></td><td>Checks your Pro licence key with Polar, the shop, only after you enter a key, and again about once a day.</td></tr><tr><td><code>https://*/*</code>, <code>http://*/*</code> (optional)</td><td>Never granted at install. Asked one site at a time, only when you choose &quot;Always on for this site&quot; (Pro) and accept Chrome&#x27;s prompt.</td></tr></tbody></table></div>
+<h2>Network connections (version 1.0.0, tested 9 November 2026)</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Address</th><th scope="col">When</th></tr></thead><tbody><tr><td><code>api.polar.sh</code></td><td>Only after you enter a Pro key: activation, then a check about once a day. No browsing data is sent.</td></tr><tr><td><code>buy.polar.sh</code></td><td>Only when you click Buy: the checkout opens in a new tab.</td></tr><tr><td><code>pinchavelho.github.io</code></td><td>Only if you click the link to the privacy policy online.</td></tr></tbody></table></div>
+<p>We opened test pages with video and audio, used the shortcuts, opened every PinchaPlay page, clicked Buy and entered a test key, and recorded every request. Nothing else was contacted.</p>
+<h2>Where your data is</h2>
+<p>On your computer only: settings, shortcuts, bookmarks, time saved, trial date and Pro key in Chrome&#x27;s extension storage, and the interface language you picked. Delete them in PinchaPlay&#x27;s Options or by uninstalling PinchaPlay. Sites you set to &quot;Always on&quot; are kept by Chrome as a permission; remove them in Options or in Chrome.</p>
+<h2>Chrome Web Store</h2>
+<p>The privacy practices on the store listing are our own declaration, filled in to match this report. Listing: <a href="https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn">https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn</a></p>
+<h2>Check it yourself</h2>
+<ol><li>Open <code>chrome://extensions</code>, find PinchaPlay and click <strong>Details</strong> to see the exact permissions Chrome granted.</li><li>Turn on <strong>Developer mode</strong>, click <strong>Inspect views: service worker</strong>, open the <strong>Network</strong> tab and use PinchaPlay: only the addresses above can appear.</li><li>For a full log, open <code>chrome://net-export</code>, record while you use PinchaPlay and open the file in the NetLog viewer.</li></ol>
+<h2>History</h2>
+<div class="tablewrap"><table><thead><tr><th scope="col">Version</th><th scope="col">Date</th><th scope="col">SHA-256 of the package sent to the store</th><th scope="col">Result</th></tr></thead><tbody><tr><td>1.0.0</td><td>9 November 2026</td><td><code>e532065df56931c45234a50bb75b699cef0478b20c730c31395f7d48dc603664</code></td><td>Automatic checks passed; published as &quot;Ritmello&quot;, the earlier name of PinchaPlay</td></tr></tbody></table></div>
+<p>The Chrome Web Store repackages and signs each upload, so the file you download from the store has a different checksum; the files inside are the same.</p>
+<p>These are checks we ran ourselves. They are not an independent audit or a certification.</p>
+<h2>Report a problem</h2>
+<p>Found something that doesn&#x27;t match this page? Write to <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a>. We answer, fix it and note it here.</p>
+</div>
+</main>
+<footer class="site"><div class="wrap">
+<ul><li><a href="/pinchaplay/privacy.html">PinchaPlay: Privacy</a></li> <li><a href="/pinchaplay/terms.html">PinchaPlay: Terms &amp; EULA</a></li> <li><a href="/pinchaplay/refund.html">PinchaPlay: Refunds</a></li> <li><a href="/legal-notice.html">Legal notice</a></li> <li><a href="/about.html">About</a></li></ul>
+<p>Small, honest tools. No tracking, no ads. This website uses no cookies, no analytics and no third-party resources.</p>
+<p>© 2026 Pinchavelho. All rights reserved. · <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a></p>
+</div></footer>
+</body>
+</html>

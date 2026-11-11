@@ -13,8 +13,8 @@
 | `favicon.svg`, `favicon.ico` | favicon (o `.ico` também está na raiz) |
 | `apple-touch-icon.png` | 180×180, sem transparência |
 | `og-image-1200x630.png` | imagem de partilha (`og:image`, `twitter:card`) |
-| `ritmello-icon-128.png`, `ritmello-icone.svg` | ícone do Ritmello (mostrado a 72 px) |
-| `vedello-icon-128.png`, `vedello-icone.svg` | ícone do Vedello (estado ativo) |
+| `pinchaplay-icon-128.png`, `pinchaplay-icone.svg` | ícone do PinchaPlay (mostrado a 72 px) |
+| `pinchahide-icon-128.png`, `pinchahide-icone.svg` | ícone do PinchaHide (estado ativo) |
 | `screens/` | capturas das apps → `screens/README.md` |
 
 **Regras**

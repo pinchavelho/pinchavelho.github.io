@@ -27,7 +27,7 @@
 
 ## Marca (identidade v2 «Manípulo», aprovada a 4/11/2026)
 
-O site usa a identidade v2: o manípulo âmbar (símbolo), o logótipo horizontal claro/escuro e os ícones do Ritmello (play) e do Vedello (traço de "proibido"). Os ficheiros vêm de `identidade-visual/fase5-final/` (pasta do projeto) e as regras estão na skill `pinchavelho-brand` e no `LOGO-GUIA.md`. Os ficheiros da v1 foram apagados do site (ficam no histórico do git e em `identidade-visual/v1-backup`).
+O site usa a identidade v2: o manípulo âmbar (símbolo), o logótipo horizontal claro/escuro e os ícones do PinchaPlay (play) e do PinchaHide (traço de "proibido"). Os ficheiros vêm de `identidade-visual/fase5-final/` (pasta do projeto) e as regras estão na skill `pinchavelho-brand` e no `LOGO-GUIA.md`. Os ficheiros da v1 foram apagados do site (ficam no histórico do git e em `identidade-visual/v1-backup`).
 
 | Nome | Hex | Uso |
 |---|---|---|
@@ -56,9 +56,9 @@ O site usa a identidade v2: o manípulo âmbar (símbolo), o logótipo horizonta
 ├── _config.yml       só para não publicar os .md (ver abaixo)
 ├── _ferramentas/     gerador das páginas e textos legais de origem (não é publicado) → _ferramentas/README.md
 ├── assets/           CSS, fontes e imagens                        → assets/README.md
-├── ritmello/         página e textos legais do Ritmello           → ritmello/README.md
-├── vedello/          página do Vedello (em desenvolvimento)       → vedello/README.md
-├── playpilot/        só redirecionamentos para /ritmello/ (endereços antigos) → playpilot/README.md
+├── pinchaplay/         página e textos legais do PinchaPlay           → pinchaplay/README.md
+├── pinchahide/          página do PinchaHide (em desenvolvimento)       → pinchahide/README.md
+├── playpilot/        só redirecionamentos para /pinchaplay/ (endereços antigos) → playpilot/README.md
 └── pt/               espelho em português de Portugal             → pt/README.md
 ```
 
@@ -72,18 +72,18 @@ Cada pasta tem o seu `README.md` com o que lá existe, as regras e como usar.
 python3 -I _ferramentas/gerar_site.py .
 ```
 
-Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração. Os Termos e a Política de Privacidade do Ritmello vêm de `_ferramentas/textos/` (o mesmo texto que vai dentro da extensão).
+Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração. Os Termos e a Política de Privacidade do PinchaPlay vêm de `_ferramentas/textos/` (o mesmo texto que vai dentro da extensão).
 
 ## Estado (9 nov 2026)
 
-- Apps: **Ritmello by Pinchavelho** (velocidade e som de vídeo, em testes) e **Vedello by Pinchavelho** (banners de cookies, em desenvolvimento). O nome antigo da app de vídeo foi retirado; os endereços antigos redirecionam para `/ritmello/`.
-- O Ritmello **não transfere vídeos** (função removida). O site não a anuncia em lado nenhum.
+- Apps: **PinchaPlay by Pinchavelho** (velocidade e som de vídeo, em testes) e **PinchaHide by Pinchavelho** (banners de cookies, em desenvolvimento). O nome antigo da app de vídeo foi retirado; os endereços antigos redirecionam para `/pinchaplay/`.
+- O PinchaPlay **não transfere vídeos** (função removida). O site não a anuncia em lado nenhum.
 - Preço Pro de cada app: **pague o que achar justo, mínimo 1,99 € até 31/01/2027 e 2,99 € depois**, IVA incluído, pagamento único. Nunca "donativo".
 - Teste Pro: **15 dias**, sem registo.
-- Compra pela **Polar**. O link do produto novo "Ritmello Pro" ainda não existe: os botões de compra aparecem como "brevemente" até se pôr o link em `RITMELLO_CHECKOUT` no gerador. O link **nunca** leva `custom_field_data` (pré-marcaria a caixa de renúncia).
-- **A 1/02/2027:** mudar no gerador `RITMELLO_VALORES` para `(299, 399, 599)` e os mínimos (`MIN_ATUAL`/`MIN_DEPOIS`) e gerar de novo.
-- O Vedello ainda não tem textos legais: publicam-se quando o Vedello Pro existir.
-- As capturas do Ritmello são **provisórias** (versão de teste, sem número de versão); as definitivas fazem-se com a 1.0.0.
+- Compra pela **Polar**. O link do produto novo "PinchaPlay Pro" ainda não existe: os botões de compra aparecem como "brevemente" até se pôr o link em `PINCHAPLAY_CHECKOUT` no gerador. O link **nunca** leva `custom_field_data` (pré-marcaria a caixa de renúncia).
+- **A 1/02/2027:** mudar no gerador `PINCHAPLAY_VALORES` para `(299, 399, 599)` e os mínimos (`MIN_ATUAL`/`MIN_DEPOIS`) e gerar de novo.
+- O PinchaHide ainda não tem textos legais: publicam-se quando o PinchaHide Pro existir.
+- As capturas do PinchaPlay são **provisórias** (versão de teste, sem número de versão); as definitivas fazem-se com a 1.0.0.
 
 ## Como fazer alterações
 
@@ -97,7 +97,7 @@ Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração
 5. Abrir um pull request e esperar pela aprovação do Jose. Não fazer merge sozinho.
 
 ### Adicionar uma app nova
-No gerador: uma função de página nova (copiar `ritmello()` e reescrever tudo, sem deixar texto da outra app), o cartão em `product_card()`, o item no menu (`page()`), o produto no aviso legal e as páginas em `PAGES` (sitemap). Criar `/<app>/README.md` e `/pt/<app>/README.md`. Os textos legais seguem a skill `pinchavelho-legal`.
+No gerador: uma função de página nova (copiar `pinchaplay()` e reescrever tudo, sem deixar texto da outra app), o cartão em `product_card()`, o item no menu (`page()`), o produto no aviso legal e as páginas em `PAGES` (sitemap). Criar `/<app>/README.md` e `/pt/<app>/README.md`. Os textos legais seguem a skill `pinchavelho-legal`.
 
 ## Documentação interna (porque os .md não aparecem no site)
 

@@ -96,7 +96,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 .tablewrap{overflow-x:auto;margin:1rem 0}
 .tablewrap table{margin:0}
 .doc code{overflow-wrap:anywhere}
-/* Ampliar capturas sem JS (:target). Ver _ferramentas/gerar_site.py, ritmello(). */
+/* Ampliar capturas sem JS (:target). Ver _ferramentas/gerar_site.py, pinchaplay(). */
 a.zoomable{display:block;cursor:zoom-in}
 a.zoomable:focus-visible img{outline:3px solid var(--ambar);outline-offset:2px}
 .lightbox{display:none}

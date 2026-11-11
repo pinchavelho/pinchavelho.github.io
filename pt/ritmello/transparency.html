@@ -5,12 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Relatório de transparência do Ritmello</title>
-<meta name="description" content="O que o Ritmello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si.">
-<link rel="alternate" hreflang="en" href="https://pinchavelho.github.io/ritmello/transparency.html">
-<link rel="alternate" hreflang="pt-PT" href="https://pinchavelho.github.io/pt/ritmello/transparency.html">
-<link rel="alternate" hreflang="x-default" href="https://pinchavelho.github.io/ritmello/transparency.html">
-<link rel="canonical" href="https://pinchavelho.github.io/pt/ritmello/transparency.html">
+<meta http-equiv="refresh" content="0; url=/pt/pinchaplay/transparency.html">
+<meta name="robots" content="noindex">
+<title>Esta página mudou de sítio</title>
+<meta name="description" content="Esta página mudou de sítio.">
+<link rel="canonical" href="https://pinchavelho.github.io/pt/pinchaplay/transparency.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -18,9 +17,9 @@
 <link rel="stylesheet" href="/assets/css/site.css">
 <meta name="theme-color" content="#F5F7FA" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1B2D" media="(prefers-color-scheme: dark)">
-<meta property="og:title" content="Relatório de transparência do Ritmello">
-<meta property="og:description" content="O que o Ritmello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si.">
-<meta property="og:url" content="https://pinchavelho.github.io/pt/ritmello/transparency.html">
+<meta property="og:title" content="Esta página mudou de sítio">
+<meta property="og:description" content="Esta página mudou de sítio.">
+<meta property="og:url" content="https://pinchavelho.github.io/pt/pinchaplay/transparency.html">
 <meta property="og:site_name" content="Pinchavelho">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:image" content="https://pinchavelho.github.io/assets/img/og-image-1200x630.png">
@@ -34,32 +33,13 @@
 <a class="skip" href="#main">Saltar para o conteúdo</a>
 <header class="site"><div class="wrap">
 <a class="brand" href="/pt/"><picture><source srcset="/assets/img/pinchavelho-horizontal-escuro.svg" media="(prefers-color-scheme: dark)"><img src="/assets/img/pinchavelho-horizontal-claro.svg" alt="Pinchavelho, página inicial" width="216" height="44"></picture></a>
-<nav class="main" aria-label="Principal"><ul><li><a href="/pt/">Início</a></li><li><a href="/pt/ritmello/" aria-current="page">Ritmello</a></li><li><a href="/pt/vedello/">Vedello</a></li><li><a href="/pt/about.html">Sobre</a></li><li><a class="lang" href="/ritmello/transparency.html" hreflang="en" lang="en" aria-label="EN – English">EN</a></li></ul></nav>
+<nav class="main" aria-label="Principal"><ul><li><a href="/pt/">Início</a></li><li><a href="/pt/pinchaplay/">PinchaPlay</a></li><li><a href="/pt/pinchahide/">PinchaHide</a></li><li><a href="/pt/about.html">Sobre</a></li><li><a class="lang" href="/pinchaplay/transparency.html" hreflang="en" lang="en" aria-label="EN – English">EN</a></li></ul></nav>
 </div></header>
 <main id="main">
-<div class="wrap narrow doc"><h1>Relatório de transparência do Ritmello</h1>
-<p><strong>Em resumo:</strong> o Ritmello só entra numa página quando clica no ícone ou carrega em Alt+Shift+R. As suas definições, marcadores e tempo poupado ficam no seu computador. A única ligação que o Ritmello faz sozinho é verificar a sua chave Pro com a Polar, e só depois de introduzir uma chave.</p>
-<h2>Permissões e porquê</h2>
-<div class="tablewrap"><table><thead><tr><th scope="col">Permissão</th><th scope="col">Porquê</th></tr></thead><tbody><tr><td><code>storage</code></td><td>Guarda as suas definições, atalhos, marcadores, tempo poupado, a data de início do teste e a sua chave Pro só neste computador (sem sincronizar).</td></tr><tr><td><code>activeTab</code></td><td>Deixa o Ritmello entrar no separador atual só depois de clicar no ícone ou carregar em Alt+Shift+R; o acesso acaba quando sai da página.</td></tr><tr><td><code>scripting</code></td><td>Põe os controlos do próprio pacote do Ritmello na página que escolheu (e nos sites com &quot;Ativar sempre&quot;, no Pro). Sem código remoto.</td></tr><tr><td><code>https://api.polar.sh/*</code></td><td>Verifica a sua chave Pro com a Polar, a loja, só depois de introduzir uma chave, e de novo cerca de uma vez por dia.</td></tr><tr><td><code>https://*/*</code>, <code>http://*/*</code> (opcionais)</td><td>Nunca são dadas na instalação. São pedidas um site de cada vez, só quando escolhe &quot;Ativar sempre neste site&quot; (Pro) e aceita o pedido do Chrome.</td></tr></tbody></table></div>
-<h2>Ligações de rede (versão 1.0.0, testada a 9 de novembro de 2026)</h2>
-<div class="tablewrap"><table><thead><tr><th scope="col">Endereço</th><th scope="col">Quando</th></tr></thead><tbody><tr><td><code>api.polar.sh</code></td><td>Só depois de introduzir uma chave Pro: ativação e, depois, uma verificação cerca de uma vez por dia. Não envia dados de navegação.</td></tr><tr><td><code>buy.polar.sh</code></td><td>Só quando clica em Comprar: o checkout abre num separador novo.</td></tr><tr><td><code>pinchavelho.github.io</code></td><td>Só se clicar no link da política de privacidade online.</td></tr></tbody></table></div>
-<p>Abrimos páginas de teste com vídeo e áudio, usámos os atalhos, abrimos todas as páginas do Ritmello, clicámos em Comprar, introduzimos uma chave de teste e registámos todos os pedidos. Não houve mais nenhum endereço.</p>
-<h2>Onde ficam os seus dados</h2>
-<p>Só no seu computador: definições, atalhos, marcadores, tempo poupado, data do teste e chave Pro, no armazenamento da extensão no Chrome, e o idioma da interface que escolheu. Apague-os nas opções do Ritmello ou desinstalando-o. Os sites com &quot;Ativar sempre&quot; ficam guardados pelo Chrome como uma autorização; retire-os nas opções ou no Chrome.</p>
-<h2>Chrome Web Store</h2>
-<p>As práticas de privacidade na ficha da loja são uma declaração nossa, preenchida de acordo com este relatório. Ficha: <a href="https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn">https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn</a></p>
-<h2>Verifique por si</h2>
-<ol><li>Abra <code>chrome://extensions</code>, procure o Ritmello e clique em <strong>Detalhes</strong> para ver as permissões exatas que o Chrome deu.</li><li>Ligue o <strong>Modo de programador</strong>, clique em <strong>Inspecionar vistas: service worker</strong>, abra o separador <strong>Network</strong> e use o Ritmello: só podem aparecer os endereços acima.</li><li>Para um registo completo, abra <code>chrome://net-export</code>, grave enquanto usa o Ritmello e abra o ficheiro no visualizador NetLog.</li></ol>
-<h2>Histórico</h2>
-<div class="tablewrap"><table><thead><tr><th scope="col">Versão</th><th scope="col">Data</th><th scope="col">SHA-256 do pacote enviado à loja</th><th scope="col">Resultado</th></tr></thead><tbody><tr><td>1.0.0</td><td>9 de novembro de 2026</td><td><code>e532065df56931c45234a50bb75b699cef0478b20c730c31395f7d48dc603664</code></td><td>Verificações automáticas aprovadas</td></tr></tbody></table></div>
-<p>A Chrome Web Store volta a empacotar e assina cada envio, por isso o ficheiro descarregado da loja tem outra soma de verificação; os ficheiros lá dentro são os mesmos.</p>
-<p>São verificações feitas por nós. Não são uma auditoria independente nem uma certificação.</p>
-<h2>Comunicar um problema</h2>
-<p>Encontrou algo que não bate certo com esta página? Escreva para <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a>. Respondemos, corrigimos e registamos aqui.</p>
-</div>
+<div class="wrap narrow hero"><h1>Esta página mudou de sítio</h1><p class="lead">Esta página está agora em <a href="/pt/pinchaplay/transparency.html">https://pinchavelho.github.io/pt/pinchaplay/transparency.html</a>.</p></div>
 </main>
 <footer class="site"><div class="wrap">
-<ul><li><a href="/pt/ritmello/privacy.html">Ritmello: Privacidade</a></li> <li><a href="/pt/ritmello/terms.html">Ritmello: Termos e EULA</a></li> <li><a href="/pt/ritmello/refund.html">Ritmello: Reembolsos</a></li> <li><a href="/pt/legal-notice.html">Aviso legal</a></li> <li><a href="/pt/about.html">Sobre</a></li></ul>
+<ul><li><a href="/pt/pinchaplay/privacy.html">PinchaPlay: Privacidade</a></li> <li><a href="/pt/pinchaplay/terms.html">PinchaPlay: Termos e EULA</a></li> <li><a href="/pt/pinchaplay/refund.html">PinchaPlay: Reembolsos</a></li> <li><a href="/pt/legal-notice.html">Aviso legal</a></li> <li><a href="/pt/about.html">Sobre</a></li></ul>
 <p>Ferramentas pequenas e honestas. Sem rastreio, sem publicidade. Este site não usa cookies, analytics nem recursos de terceiros.</p>
 <p>© 2026 Pinchavelho. Todos os direitos reservados. · <a href="mailto:opinchavelho@gmail.com">opinchavelho@gmail.com</a></p>
 </div></footer>
