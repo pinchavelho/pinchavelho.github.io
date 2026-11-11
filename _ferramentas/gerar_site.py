@@ -477,7 +477,7 @@ def pinchahide(lang):
     if lang == "en":
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchahide-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaHide by Pinchavelho · extension for Chrome · in development</p>
+<p class="eyebrow">PinchaHide – Reject Cookie Banners · extension for Chrome · in development</p>
 <h1>Say no to cookies, once.</h1>
 <p class="lead">PinchaHide answers cookie banners with “reject” on your behalf and tells websites you do not want to be tracked. It runs on your computer, collects nothing and sends nothing.</p>
 <div class="actions"><span class="btn pending">Chrome Web Store: coming soon</span></div>
@@ -497,11 +497,11 @@ def pinchahide(lang):
 <p class="note"><a href="/pinchahide/transparency.html">transparency report</a> · <a href="/pinchahide/privacy.html">privacy policy</a> · <a href="/pinchahide/terms.html">terms of sale &amp; EULA</a> · <a href="/pinchahide/refund.html">refund policy</a>. The permissions and the full list of what PinchaHide can’t do will be published here, in plain words, before launch.</p></div></section>
 """
         title = "PinchaHide: reject cookie banners automatically, in Chrome"
-        desc = "PinchaHide by Pinchavelho (in development) answers cookie banners with “reject” for you and sends Global Privacy Control. It runs on your computer and collects nothing."
+        desc = "PinchaHide – Reject Cookie Banners (in development) answers cookie banners with “reject” for you and sends Global Privacy Control. It runs on your computer and collects nothing."
     else:
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchahide-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaHide by Pinchavelho · extensão para o Chrome · em desenvolvimento</p>
+<p class="eyebrow">PinchaHide – Recusar banners de cookies · extensão para o Chrome · em desenvolvimento</p>
 <h1>Diga não aos cookies, uma vez.</h1>
 <p class="lead">O PinchaHide responde aos banners de cookies com “rejeitar” por si e diz aos sites que não quer ser rastreado. Corre no seu computador, não recolhe nada e não envia nada.</p>
 <div class="actions"><span class="btn pending">Chrome Web Store: brevemente</span></div>
@@ -521,7 +521,7 @@ def pinchahide(lang):
 <p class="note"><a href="/pt/pinchahide/transparency.html">relatório de transparência</a> · <a href="/pt/pinchahide/privacy.html">política de privacidade</a> · <a href="/pt/pinchahide/terms.html">termos de venda e EULA</a> · <a href="/pt/pinchahide/refund.html">política de reembolso</a>. As permissões e a lista completa do que o PinchaHide não faz vão ser publicadas aqui, em linguagem simples, antes do lançamento.</p></div></section>
 """
         title = "PinchaHide: rejeitar banners de cookies automaticamente, no Chrome"
-        desc = "O PinchaHide by Pinchavelho (em desenvolvimento) responde aos banners de cookies com “rejeitar” por si e envia o Global Privacy Control. Corre no seu computador e não recolhe nada."
+        desc = "O PinchaHide – Recusar banners de cookies (em desenvolvimento) responde aos banners de cookies com “rejeitar” por si e envia o Global Privacy Control. Corre no seu computador e não recolhe nada."
     body = body.format(mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], md=MIN_DEPOIS[lang], ini=INICIO_DEPOIS[lang])
     return page(lang, "/pinchahide/", title, desc, body, current="pinchahide")
 
@@ -755,7 +755,7 @@ def legal_notice(lang):
     if lang == "en":
         body = """<div class="wrap narrow doc"><h1>Legal notice</h1><p class="meta">Last updated: 9 November 2026</p>
 <h2>Who we are</h2><dl class="trader"><dt>Trader</dt><dd>{nome}, trading as “Pinchavelho” (sole trader)</dd><dt>Address</dt><dd>{morada}</dd><dt>NIF / Tax ID</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Website</dt><dd><a href="https://pinchavelho.github.io/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay by Pinchavelho and PinchaHide by Pinchavelho (in development). Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
+<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay by Pinchavelho and PinchaHide (in development). Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
 <h2>Disclaimer</h2><p>Our software is provided “as is” to the extent permitted by law. Nothing in this notice limits your mandatory consumer rights, including the legal guarantee of conformity for paid features. You are responsible for how you use our tools: respect copyright and each website’s terms. Our tools do not host or provide any content, and never get around copy protection (DRM), encryption, paywalls or other technical protection measures.</p>
 <h2>Complaints and disputes</h2><p>Please contact us first at <a href="mailto:{email}">{email}</a>. Electronic complaints book: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Alternative dispute resolution: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) or the competent ADR centre.</p>
 <h2>This website and your privacy</h2><p>No cookies, no analytics, no trackers and no third-party resources; fonts are self-hosted. Hosted by GitHub Pages (GitHub, Inc., USA), which may log visitors’ IP addresses for security, under <a href="{gh}">GitHub’s privacy statement</a>. For PinchaPlay, see its <a href="/pinchaplay/privacy.html">privacy policy</a>.</p>
@@ -764,7 +764,7 @@ def legal_notice(lang):
     else:
         body = """<div class="wrap narrow doc"><h1>Aviso legal</h1><p class="meta">Última atualização: 9 de novembro de 2026</p>
 <h2>Quem somos</h2><dl class="trader"><dt>Comerciante</dt><dd>{nome}, que usa a designação “Pinchavelho” (empresário em nome individual)</dd><dt>Morada</dt><dd>{morada}</dd><dt>NIF</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Site</dt><dd><a href="https://pinchavelho.github.io/pt/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay by Pinchavelho e PinchaHide by Pinchavelho (em desenvolvimento). As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
+<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay by Pinchavelho e PinchaHide (em desenvolvimento). As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
 <h2>Exclusão de responsabilidade</h2><p>O nosso software é fornecido “tal como está”, na medida permitida por lei. Nada neste aviso limita os seus direitos imperativos de consumidor, incluindo a garantia legal de conformidade das funcionalidades pagas. É responsável pela forma como usa as nossas ferramentas: respeite os direitos de autor e os termos de cada site. As nossas ferramentas não alojam nem fornecem conteúdos e nunca contornam proteções contra cópia (DRM), cifragem, paywalls ou outras medidas técnicas de proteção.</p>
 <h2>Reclamações e litígios</h2><p>Contacte-nos primeiro em <a href="mailto:{email}">{email}</a>. Livro de Reclamações Eletrónico: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Resolução alternativa de litígios: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) ou o centro de arbitragem competente.</p>
 <h2>Este site e a sua privacidade</h2><p>Sem cookies, analytics, rastreadores nem recursos de terceiros; as fontes estão alojadas no próprio site. Alojado no GitHub Pages (GitHub, Inc., EUA), que pode registar o endereço IP dos visitantes por segurança, ao abrigo da <a href="{gh}">declaração de privacidade do GitHub</a>. Para o PinchaPlay, veja a sua <a href="/pt/pinchaplay/privacy.html">política de privacidade</a>.</p>
