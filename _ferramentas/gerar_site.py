@@ -19,12 +19,12 @@ EMAIL = "opinchavelho@gmail.com"
 LASTMOD = "2026-11-09"
 
 # Link do checkout da Polar para o produto "Ritmello Pro" (Pay what you want).
-# None = botões de compra aparecem como "brevemente" (sem ligação).
+# None = botões de compra aparecem como "brevemente" (sem ligação). Produto atual criado a 9/11/2026.
 # Quando o Jose criar o produto novo, pôr aqui o link (ex.: "https://buy.polar.sh/polar_cl_...")
 # e voltar a correr o script. NUNCA acrescentar custom_field_data ao link: pré-marcaria a caixa de renúncia.
 # Ficha do Ritmello na Chrome Web Store (publicado a 10-11/11/2026).
 RITMELLO_CWS = "https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn"
-RITMELLO_CHECKOUT = None
+RITMELLO_CHECKOUT = "https://buy.polar.sh/polar_cl_ysg4lrAleNzT1fhy9MqU7tUREqkss0piC9yqe0KMSBI"  # produto 263e1114-4e1f-451c-8597-481c663d9d75
 # Valores rápidos (cêntimos) até 31/01/2027. A 1/02/2027: (299, 399, 599) e MIN_* abaixo.
 RITMELLO_VALORES = (199, 299, 499)
 MIN_ATUAL = {"en": "€1.99", "pt": "1,99 €"}
@@ -322,15 +322,23 @@ def limits_block(lang):
 
 
 def buy_buttons(lang):
-    labels = {"en": ("minimum", "suggested", "or another amount"), "pt": ("mínimo", "sugerido", "ou outro valor")}[lang]
+    labels = {"en": ("minimum", "suggested", ""), "pt": ("mínimo", "sugerido", "")}[lang]
+    other = {"en": "or another amount", "pt": "ou outro valor"}[lang]
     out = []
     for cents, lab in zip(RITMELLO_VALORES, labels):
-        inner = '<span class="amount">%s</span><span class="what">%s</span>' % (euro(cents, lang), lab)
+        inner = '<span class="amount">%s</span>' % euro(cents, lang)
+        if lab:
+            inner += '<span class="what">%s</span>' % lab
         if RITMELLO_CHECKOUT:
             out.append('<a class="choice" href="%s?amount=%d" rel="noopener">%s</a>' % (e(RITMELLO_CHECKOUT), cents, inner))
         else:
             out.append('<span class="choice pending">%s</span>' % inner)
-    return '<div class="choices">%s</div>' % "".join(out)
+    # "Outro valor": abre o checkout sem ?amount=, com o mínimo, e o cliente escreve o valor lá.
+    if RITMELLO_CHECKOUT:
+        tail = '<p class="other"><a href="%s" rel="noopener">%s</a></p>' % (e(RITMELLO_CHECKOUT), other)
+    else:
+        tail = '<p class="other">%s</p>' % other
+    return '<div class="choices">%s</div>%s' % ("".join(out), tail)
 
 
 def ritmello(lang):
