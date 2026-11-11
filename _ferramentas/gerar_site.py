@@ -486,7 +486,7 @@ def vedello(lang):
 </div></section>
 <section class="wrap" aria-labelledby="price"><h2 id="price">Price</h2><div class="card pricing narrow">
 <p>The essentials will be free. Vedello Pro will be sold on its own, with the same rules as Ritmello: pay what you think is fair, with a minimum of <strong>{mn}</strong>, VAT included, until {fim} ({md} from {ini}); one-time payment; 15 days of Pro free from installation, no sign-up, no card.</p>
-<p class="note">The permissions, the privacy policy, the terms and the full list of what Vedello can’t do will be published here, in plain words, before launch.</p></div></section>
+<p class="note"><a href="/vedello/transparency.html">transparency report</a> · <a href="/vedello/privacy.html">privacy policy</a> · <a href="/vedello/terms.html">terms of sale &amp; EULA</a> · <a href="/vedello/refund.html">refund policy</a>. The permissions and the full list of what Vedello can’t do will be published here, in plain words, before launch.</p></div></section>
 """
         title = "Vedello: reject cookie banners automatically, in Chrome"
         desc = "Vedello by Pinchavelho (in development) answers cookie banners with “reject” for you and sends Global Privacy Control. It runs on your computer and collects nothing."
@@ -510,7 +510,7 @@ def vedello(lang):
 </div></section>
 <section class="wrap" aria-labelledby="price"><h2 id="price">Preço</h2><div class="card pricing narrow">
 <p>O essencial vai ser grátis. O Vedello Pro vai ser vendido em separado, com as mesmas regras do Ritmello: pague o que achar justo, com um mínimo de <strong>{mn}</strong>, IVA incluído, até {fim} ({md} a partir de {ini}); pagamento único; 15 dias de Pro grátis a contar da instalação, sem registo e sem cartão.</p>
-<p class="note">As permissões, a política de privacidade, os termos e a lista completa do que o Vedello não faz vão ser publicados aqui, em linguagem simples, antes do lançamento.</p></div></section>
+<p class="note"><a href="/pt/vedello/transparency.html">relatório de transparência</a> · <a href="/pt/vedello/privacy.html">política de privacidade</a> · <a href="/pt/vedello/terms.html">termos de venda e EULA</a> · <a href="/pt/vedello/refund.html">política de reembolso</a>. As permissões e a lista completa do que o Vedello não faz vão ser publicadas aqui, em linguagem simples, antes do lançamento.</p></div></section>
 """
         title = "Vedello: rejeitar banners de cookies automaticamente, no Chrome"
         desc = "O Vedello by Pinchavelho (em desenvolvimento) responde aos banners de cookies com “rejeitar” por si e envia o Global Privacy Control. Corre no seu computador e não recolhe nada."
@@ -559,7 +559,7 @@ def md_inline(t):
 
 def md_block(src):
     """Títulos ##, parágrafos, tabelas | a | b | e listas 1. (o texto de origem não tem HTML)."""
-    out, rows, items = [], [], []
+    out, rows, items, bullets = [], [], [], []
 
     def flush():
         if rows:
@@ -572,6 +572,9 @@ def md_block(src):
         if items:
             out.append("<ol>%s</ol>" % "".join("<li>%s</li>" % md_inline(i) for i in items))
             items.clear()
+        if bullets:
+            out.append("<ul>%s</ul>" % "".join("<li>%s</li>" % md_inline(i) for i in bullets))
+            bullets.clear()
 
     for l in src.splitlines():
         l = l.strip()
@@ -583,7 +586,14 @@ def md_block(src):
             continue
         m = re.match(r"^\d+\. (.*)", l)
         if m:
+            if bullets:
+                flush()
             items.append(m.group(1))
+            continue
+        if l.startswith("- "):
+            if items:
+                flush()
+            bullets.append(l[2:])
             continue
         flush()
         if l.startswith("## "):
@@ -594,14 +604,19 @@ def md_block(src):
     return "\n".join(out)
 
 
-def transparency(lang):
-    src = split_md(os.path.join(HERE, "textos", "TRANSPARENCIA-EN-PT.md"))[lang]
+def transparency(lang, app="Ritmello", fname="TRANSPARENCIA-EN-PT.md"):
+    src = split_md(os.path.join(HERE, "textos", fname))[lang]
     lines = [l for l in src.splitlines() if l.strip() and not l.startswith("<!--")]
     h1 = lines[0].lstrip("# ").strip()
     body = '<div class="wrap narrow doc"><h1>%s</h1>\n%s\n</div>' % (e(h1), md_block("\n".join(lines[1:])))
-    desc = {"en": "What Ritmello can access and why, every network connection it makes, where your data stays, and how to check it yourself.",
-            "pt": "O que o Ritmello pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si."}[lang]
-    return page(lang, "/ritmello/transparency.html", h1, desc, body, current="ritmello")
+    desc = {"en": "What %s can access and why, every network connection it makes, where your data stays, and how to check it yourself." % app,
+            "pt": "O que o %s pode aceder e porquê, todas as ligações de rede que faz, onde ficam os seus dados e como verificar por si." % app}[lang]
+    slug = app.lower()
+    return page(lang, "/%s/transparency.html" % slug, h1, desc, body, current=slug)
+
+
+def vedello_transparency(lang):
+    return transparency(lang, "Vedello", "VEDELLO-TRANSPARENCIA-EN-PT.md")
 
 
 def privacy(lang):
@@ -636,7 +651,7 @@ def privacy(lang):
     return page(lang, "/ritmello/privacy.html", h1, desc, body, current="ritmello")
 
 
-def refund(lang):
+def refund(lang, app="Ritmello", terms_v="1.9"):
     if lang == "en":
         body = """<div class="wrap narrow doc"><h1>Ritmello Pro – Refund policy</h1><p class="meta">Last updated: 10 November 2026 · Matches the Terms of sale, version 1.10</p>
 <h2 id="s1">1. Try it first</h2>
@@ -671,7 +686,39 @@ def refund(lang):
 <p>A Polar, enquanto vendedora registada, pode também decidir reembolsos ao abrigo dos seus próprios termos de comprador, por exemplo para evitar estornos.</p>
 </div>""".replace("{email}", EMAIL)
         h1, desc = "Ritmello Pro – Política de reembolso", "Política de reembolso do Ritmello Pro: primeiro 15 dias de teste grátis; sem reembolso por desistência depois da renúncia; a garantia legal aplica-se sempre."
-    return page(lang, "/ritmello/refund.html", h1, desc, body, current="ritmello")
+    if app != "Ritmello":
+        body, h1, desc = (re.sub(r"(version|versão) 1\.\d+", r"\g<1> " + terms_v, x.replace("Ritmello", app))
+                          for x in (body, h1, desc))
+    slug = app.lower()
+    return page(lang, "/%s/refund.html" % slug, h1, desc, body, current=slug)
+
+
+def vedello_legal(lang, fname, path, desc, callout=""):
+    """Termos e Privacidade do Vedello: markdown com títulos ## (iguais aos do pacote do Vedello)."""
+    src = split_md(os.path.join(HERE, "textos", fname))[lang]
+    lines = [l for l in src.splitlines() if l.strip()]
+    h1, meta = lines[0].lstrip("# ").strip(), lines[1].strip()
+    call = '<p class="callout">%s</p>' % callout if callout else ""
+    body = '<div class="wrap narrow doc"><h1>%s</h1><p class="meta">%s</p>%s\n%s\n</div>' % (e(h1), md_inline(meta), call, md_block("\n".join(lines[2:])))
+    return page(lang, path, h1, desc[lang], body, current="vedello")
+
+
+def vedello_terms(lang):
+    return vedello_legal(lang, "VEDELLO-TERMOS-1.0-EN-PT.md", "/vedello/terms.html", {
+        "en": "Terms of sale and licence (EULA) for Vedello Pro: pay what you think is fair from a minimum, 15-day free trial, right of withdrawal waiver, legal guarantee.",
+        "pt": "Termos de venda e licença (EULA) do Vedello Pro: pague o que achar justo a partir de um mínimo, 15 dias de teste, renúncia à livre resolução, garantia legal."})
+
+
+def vedello_privacy(lang):
+    return vedello_legal(lang, "VEDELLO-PRIVACIDADE-1.0-EN-PT.md", "/vedello/privacy.html", {
+        "en": "Privacy policy for Vedello: no analytics or tracking, data stays on your device; the only network connection is the licence check with Polar.",
+        "pt": "Política de privacidade do Vedello: sem analítica nem rastreio, os dados ficam no seu dispositivo; a única ligação de rede é a verificação da licença na Polar."},
+        {"en": 'What Vedello can access, every network connection it makes and how to check it yourself: <a href="/vedello/transparency.html">transparency report</a>.',
+         "pt": 'O que o Vedello pode aceder, todas as ligações de rede que faz e como verificar por si: <a href="/pt/vedello/transparency.html">relatório de transparência</a>.'}[lang])
+
+
+def vedello_refund(lang):
+    return refund(lang, "Vedello", "1.0")
 
 
 # ---------------------------------------------------------------- about, legal notice, 404, redirects
@@ -739,7 +786,7 @@ def moved(lang, old, new):
 
 # ---------------------------------------------------------------- sitemap
 PAGES = ["/", "/ritmello/", "/ritmello/transparency.html", "/ritmello/privacy.html", "/ritmello/terms.html", "/ritmello/refund.html",
-         "/vedello/", "/about.html", "/legal-notice.html"]
+         "/vedello/", "/vedello/transparency.html", "/vedello/privacy.html", "/vedello/terms.html", "/vedello/refund.html", "/about.html", "/legal-notice.html"]
 
 
 def sitemap():
@@ -768,7 +815,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 if __name__ == "__main__":
     root = sys.argv[1] if len(sys.argv) > 1 else "."
     gens = {"index.html": home, "ritmello/index.html": ritmello, "ritmello/privacy.html": privacy,
-            "ritmello/terms.html": terms, "ritmello/transparency.html": transparency, "ritmello/refund.html": refund, "vedello/index.html": vedello,
+            "ritmello/terms.html": terms, "ritmello/transparency.html": transparency, "ritmello/refund.html": refund, "vedello/index.html": vedello, "vedello/terms.html": vedello_terms, "vedello/privacy.html": vedello_privacy, "vedello/refund.html": vedello_refund, "vedello/transparency.html": vedello_transparency,
             "about.html": about, "legal-notice.html": legal_notice}
     for rel, fn in gens.items():
         write(root, rel, fn("en"))
