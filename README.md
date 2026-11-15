@@ -56,9 +56,9 @@ O site usa a identidade v2: o manípulo âmbar (símbolo), o logótipo horizonta
 ├── _config.yml       só para não publicar os .md (ver abaixo)
 ├── _ferramentas/     gerador das páginas e textos legais de origem (não é publicado) → _ferramentas/README.md
 ├── assets/           CSS, fontes e imagens                        → assets/README.md
-├── pinchaplay/         página e textos legais do PinchaPlay           → pinchaplay/README.md
-├── pinchahide/          página do PinchaHide       → pinchahide/README.md
-├── playpilot/        só redirecionamentos para /pinchaplay/ (endereços antigos) → playpilot/README.md
+├── pinchaplay/       página e textos legais do PinchaPlay          → pinchaplay/README.md
+├── pinchahide/       página e textos legais do PinchaHide          → pinchahide/README.md
+├── playpilot/, ritmello/, vedello/  só redirecionamentos (nomes antigos) → README.md de cada uma
 └── pt/               espelho em português de Portugal             → pt/README.md
 ```
 
@@ -72,9 +72,9 @@ Cada pasta tem o seu `README.md` com o que lá existe, as regras e como usar.
 python3 -I _ferramentas/gerar_site.py .
 ```
 
-Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração. Os Termos e a Política de Privacidade do PinchaPlay vêm de `_ferramentas/textos/` (o mesmo texto que vai dentro da extensão).
+Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração. Os Termos, a Privacidade e a Transparência das duas apps vêm de `_ferramentas/textos/`.
 
-## Estado (9 nov 2026)
+## Estado (15 nov 2026)
 
 - Apps: **PinchaPlay** (velocidade e som de vídeo) e **PinchaHide** (banners de cookies), as duas publicadas na Chrome Web Store. O nome antigo da app de vídeo foi retirado; os endereços antigos redirecionam para `/pinchaplay/`.
 - O PinchaPlay **não transfere vídeos** (função removida). O site não a anuncia em lado nenhum.
@@ -82,8 +82,8 @@ Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração
 - Teste Pro: **15 dias**, sem registo.
 - Compra pela **Polar**. Os links de checkout estão no gerador: `PINCHAPLAY_CHECKOUT` e `PINCHAHIDE_CHECKOUT` (com `None`, os botões aparecem como "brevemente", sem ligação). O link **nunca** leva `custom_field_data` (pré-marcaria a caixa de renúncia).
 - **A 1/02/2027:** mudar no gerador `PINCHAPLAY_VALORES` (usado pelas duas apps) para `(299, 399, 599)` e os mínimos (`MIN_ATUAL`/`MIN_DEPOIS`) e gerar de novo.
-- O PinchaHide ainda não tem textos legais: publicam-se quando o PinchaHide Pro existir.
-- As capturas do PinchaPlay são **provisórias** (versão de teste, sem número de versão); as definitivas fazem-se com a 1.0.0.
+- Textos legais em vigor (só no site): PinchaPlay Termos 1.12 e Privacidade 1.8; PinchaHide Termos 1.1 e Privacidade 1.0. As versões dentro dos pacotes (Termos 1.11 e 1.0) ficam em `_ferramentas/textos/` como histórico.
+- As capturas das duas apps são as da loja (sem número de versão nem marcas de terceiros), em `assets/img/screens/`.
 
 ## Como fazer alterações
 
