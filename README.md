@@ -57,7 +57,7 @@ O site usa a identidade v2: o manípulo âmbar (símbolo), o logótipo horizonta
 ├── _ferramentas/     gerador das páginas e textos legais de origem (não é publicado) → _ferramentas/README.md
 ├── assets/           CSS, fontes e imagens                        → assets/README.md
 ├── pinchaplay/         página e textos legais do PinchaPlay           → pinchaplay/README.md
-├── pinchahide/          página do PinchaHide (em desenvolvimento)       → pinchahide/README.md
+├── pinchahide/          página do PinchaHide       → pinchahide/README.md
 ├── playpilot/        só redirecionamentos para /pinchaplay/ (endereços antigos) → playpilot/README.md
 └── pt/               espelho em português de Portugal             → pt/README.md
 ```
@@ -76,12 +76,12 @@ Editar um `.html` à mão funciona, mas a próxima geração apaga a alteração
 
 ## Estado (9 nov 2026)
 
-- Apps: **PinchaPlay by Pinchavelho** (velocidade e som de vídeo, em testes) e **PinchaHide by Pinchavelho** (banners de cookies, em desenvolvimento). O nome antigo da app de vídeo foi retirado; os endereços antigos redirecionam para `/pinchaplay/`.
+- Apps: **PinchaPlay** (velocidade e som de vídeo) e **PinchaHide** (banners de cookies), as duas publicadas na Chrome Web Store. O nome antigo da app de vídeo foi retirado; os endereços antigos redirecionam para `/pinchaplay/`.
 - O PinchaPlay **não transfere vídeos** (função removida). O site não a anuncia em lado nenhum.
 - Preço Pro de cada app: **pague o que achar justo, mínimo 1,99 € até 31/01/2027 e 2,99 € depois**, IVA incluído, pagamento único. Nunca "donativo".
 - Teste Pro: **15 dias**, sem registo.
-- Compra pela **Polar**. O link do produto novo "PinchaPlay Pro" ainda não existe: os botões de compra aparecem como "brevemente" até se pôr o link em `PINCHAPLAY_CHECKOUT` no gerador. O link **nunca** leva `custom_field_data` (pré-marcaria a caixa de renúncia).
-- **A 1/02/2027:** mudar no gerador `PINCHAPLAY_VALORES` para `(299, 399, 599)` e os mínimos (`MIN_ATUAL`/`MIN_DEPOIS`) e gerar de novo.
+- Compra pela **Polar**. Os links de checkout estão no gerador: `PINCHAPLAY_CHECKOUT` e `PINCHAHIDE_CHECKOUT` (com `None`, os botões aparecem como "brevemente", sem ligação). O link **nunca** leva `custom_field_data` (pré-marcaria a caixa de renúncia).
+- **A 1/02/2027:** mudar no gerador `PINCHAPLAY_VALORES` (usado pelas duas apps) para `(299, 399, 599)` e os mínimos (`MIN_ATUAL`/`MIN_DEPOIS`) e gerar de novo.
 - O PinchaHide ainda não tem textos legais: publicam-se quando o PinchaHide Pro existir.
 - As capturas do PinchaPlay são **provisórias** (versão de teste, sem número de versão); as definitivas fazem-se com a 1.0.0.
 

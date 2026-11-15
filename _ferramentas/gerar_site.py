@@ -16,7 +16,7 @@ import sys
 # ---------------------------------------------------------------- CONFIG
 SITE = "https://pinchavelho.github.io"
 EMAIL = "opinchavelho@gmail.com"
-LASTMOD = "2026-11-11"
+LASTMOD = "2026-11-15"
 
 # Link do checkout da Polar para o produto "PinchaPlay Pro" (Pay what you want).
 # None = botões de compra aparecem como "brevemente" (sem ligação). Produto atual criado a 9/11/2026.
@@ -25,7 +25,11 @@ LASTMOD = "2026-11-11"
 # Ficha do PinchaPlay na Chrome Web Store (publicado a 10-11/11/2026).
 PINCHAPLAY_CWS = "https://chromewebstore.google.com/detail/lcbdnpliajnokjhmlbgdcaeggbpjpahn"
 PINCHAPLAY_CHECKOUT = "https://buy.polar.sh/polar_cl_ysg4lrAleNzT1fhy9MqU7tUREqkss0piC9yqe0KMSBI"  # produto 263e1114-4e1f-451c-8597-481c663d9d75
-# Valores rápidos (cêntimos) até 31/01/2027. A 1/02/2027: (299, 399, 599) e MIN_* abaixo.
+# PinchaHide (publicado na Chrome Web Store a 15/11/2026) e checkout de produção do PinchaHide Pro
+# (produto f30ab9b4-f351-451d-ae23-4075663ed8df). Os mesmos valores rápidos e o mesmo mínimo do PinchaPlay.
+PINCHAHIDE_CWS = "https://chromewebstore.google.com/detail/fceapkacofhlmcmojhbkkmlnaofmdlcd"
+PINCHAHIDE_CHECKOUT = "https://buy.polar.sh/polar_cl_hFIUGaZVHQu1owWgaa4F7qrd0yRbqNaMbKFA90KrLeo"
+# Valores rápidos (cêntimos) das duas apps até 31/01/2027. A 1/02/2027: (299, 399, 599) e MIN_* abaixo.
 PINCHAPLAY_VALORES = (199, 299, 499)
 MIN_ATUAL = {"en": "€1.99", "pt": "1,99 €"}
 MIN_DEPOIS = {"en": "€2.99", "pt": "2,99 €"}
@@ -202,9 +206,9 @@ def product_card(lang, app):
         pill = {"en": "Chrome · available", "pt": "Chrome · disponível"}[lang]
     else:
         name, icon, href = "PinchaHide", "/assets/img/pinchahide-icon-128.png", url(lang, "/pinchahide/")
-        txt = {"en": "Answers cookie banners with “reject” for you and sends a do-not-track signal. Everything runs on your computer.",
-               "pt": "Responde aos banners de cookies com “rejeitar” por si e envia um sinal para não ser rastreado. Tudo corre no seu computador."}[lang]
-        pill = {"en": "Chrome · in development", "pt": "Chrome · em desenvolvimento"}[lang]
+        txt = {"en": "Answers cookie banners with “reject” for you and sends a do-not-track signal. Everything runs on your computer. Free core features; Pro: pay what you think is fair, from %s." % MIN_ATUAL["en"],
+               "pt": "Responde aos banners de cookies com “rejeitar” por si e envia um sinal para não ser rastreado. Tudo corre no seu computador. O essencial é grátis; Pro: pague o que achar justo, a partir de %s." % MIN_ATUAL["pt"]}[lang]
+        pill = {"en": "Chrome · available", "pt": "Chrome · disponível"}[lang]
     return ('<div class="card product"><img src="%s" alt="" width="72" height="72"><div><h3><a href="%s">%s</a> '
             '<span class="pill">%s</span></h3><p>%s</p></div></div>' % (icon, href, name, pill, e(txt)))
 
@@ -323,7 +327,10 @@ def limits_block(lang):
             % (summ, e(r["limits_title"]), e(r["limits_intro"]), items, linkify(r["limits_outro"])))
 
 
-def buy_buttons(lang):
+def buy_buttons(lang, checkout="pinchaplay"):
+    # checkout: link do checkout da app; None = botões "brevemente" sem ligação.
+    if checkout == "pinchaplay":
+        checkout = PINCHAPLAY_CHECKOUT
     labels = {"en": ("minimum", "suggested", ""), "pt": ("mínimo", "sugerido", "")}[lang]
     other = {"en": "or another amount", "pt": "ou outro valor"}[lang]
     out = []
@@ -331,13 +338,13 @@ def buy_buttons(lang):
         inner = '<span class="amount">%s</span>' % euro(cents, lang)
         if lab:
             inner += '<span class="what">%s</span>' % lab
-        if PINCHAPLAY_CHECKOUT:
-            out.append('<a class="choice" href="%s?amount=%d" rel="noopener">%s</a>' % (e(PINCHAPLAY_CHECKOUT), cents, inner))
+        if checkout:
+            out.append('<a class="choice" href="%s?amount=%d" rel="noopener">%s</a>' % (e(checkout), cents, inner))
         else:
             out.append('<span class="choice pending">%s</span>' % inner)
     # "Outro valor": abre o checkout sem ?amount=, com o mínimo, e o cliente escreve o valor lá.
-    if PINCHAPLAY_CHECKOUT:
-        tail = '<p class="other"><a href="%s" rel="noopener">%s</a></p>' % (e(PINCHAPLAY_CHECKOUT), other)
+    if checkout:
+        tail = '<p class="other"><a href="%s" rel="noopener">%s</a></p>' % (e(checkout), other)
     else:
         tail = '<p class="other">%s</p>' % other
     return '<div class="choices">%s</div>%s' % ("".join(out), tail)
@@ -475,56 +482,185 @@ def pinchaplay(lang):
 
 
 # ---------------------------------------------------------------- pinchahide
+PH = {
+    "en": dict(
+        shots=[("pinchahide_01_refuse_en_1280x800.png", "PinchaHide’s popup on a sample news page: the cookie banner was refused, trackers blocked and Global Privacy Control sent."),
+               ("pinchahide_02_free_pro_en_1280x800.png", "What is free and what comes with Pro, side by side."),
+               ("pinchahide_03_clean_links_en_1280x800.png", "Clean Links (Pro): addresses copied without tracking codes, and “Copy clean link” in the right-click menu."),
+               ("pinchahide_04_control_en_1280x800.png", "Options (Pro): turn Pop-up Cleaner, Clean Links and the local history on or off.")],
+        free=["Rejects cookie banners automatically (about 40 consent platforms and a careful generic check)",
+              "Hides a banner that offers no way to refuse, without ever accepting it",
+              "Sends the Global Privacy Control signal",
+              "Pause, and “protection off on this site”",
+              "What was done on the current page, and totals"],
+        pro=["Blocks trackers: analytics, advertising and session recording",
+             "Removes tracking parameters from addresses (utm_, fbclid, gclid…)",
+             "Clean Links: copy addresses without tracking",
+             "Objects to “legitimate interest” where the site’s consent tool allows it",
+             "Pop-up Cleaner: newsletter, “allow notifications” and “install the app” boxes",
+             "Blocks tracking pings and, if you want, social widgets",
+             "Chrome privacy settings: third-party cookies, ad APIs, Do Not Track, WebRTC",
+             "Clears a site’s cookies when you close its last tab",
+             "Per-site exceptions and a local history of the last 30 days"],
+        perms=[("storage", "Keeps your settings, counts, history (Pro), the trial start date and your Pro key on this computer only."),
+               ("declarativeNetRequest", "Lets Chrome itself apply the rules that come inside PinchaHide: send Global Privacy Control and, with Pro, block trackers and tracking parameters. PinchaHide does not see your requests."),
+               ("activeTab", "Shows in the popup what PinchaHide did on the current tab, and lets “Copy clean link” work where you click."),
+               ("scripting", "Adds PinchaHide’s own scripts to pages to answer the banner. Only files inside the extension, never code from the internet."),
+               ("alarms", "Ends a timed pause and re-checks the Pro key about once a day."),
+               ("contextMenus", "Adds “Copy clean link” to the right-click menu on a link (Pro)."),
+               ("privacy (optional)", "Asked only when you turn on a Chrome privacy setting in Options (Pro)."),
+               ("cookies (optional)", "Asked only when you turn on “Clear a site’s cookies when its last tab closes” (Pro). It only deletes cookies."),
+               ("All sites", "Cookie banners appear on any site, so PinchaHide runs on every page to find the banner and press Reject. Nothing leaves your browser.")],
+    ),
+    "pt": dict(
+        shots=[("pinchahide_01_refuse_pt_1280x800.png", "A janela do PinchaHide numa página de notícias de exemplo: o banner de cookies foi recusado, os rastreadores bloqueados e o Global Privacy Control enviado."),
+               ("pinchahide_02_free_pro_pt_1280x800.png", "O que é grátis e o que vem com o Pro, lado a lado."),
+               ("pinchahide_03_clean_links_pt_1280x800.png", "Clean Links (Pro): endereços copiados sem códigos de rastreio e “Copiar link limpo” no menu do botão direito."),
+               ("pinchahide_04_control_pt_1280x800.png", "Opções (Pro): ligue ou desligue o Pop-up Cleaner, o Clean Links e o histórico local.")],
+        free=["Recusa banners de cookies automaticamente (cerca de 40 plataformas de consentimento e uma deteção genérica cuidadosa)",
+              "Esconde o banner que não dá forma de recusar, sem nunca o aceitar",
+              "Envia o sinal Global Privacy Control",
+              "Pausa e “sem proteção neste site”",
+              "O que foi feito na página atual e totais"],
+        pro=["Bloqueia rastreadores: analítica, publicidade e gravação de sessões",
+             "Remove parâmetros de rastreio dos endereços (utm_, fbclid, gclid…)",
+             "Clean Links: copia endereços sem rastreio",
+             "Opõe-se ao “interesse legítimo” quando a ferramenta de consentimento do site o permite",
+             "Pop-up Cleaner: caixas de newsletter, “ativar notificações” e “instale a app”",
+             "Bloqueia pings de rastreio e, se quiser, widgets sociais",
+             "Definições de privacidade do Chrome: cookies de terceiros, APIs de publicidade, Do Not Track, WebRTC",
+             "Apaga os cookies de um site ao fechar o último separador dele",
+             "Exceções por site e histórico local dos últimos 30 dias"],
+        perms=[("storage", "Guarda as definições, as contagens, o histórico (Pro), a data de início do teste e a chave Pro só neste computador."),
+               ("declarativeNetRequest", "Deixa o próprio Chrome aplicar as regras que vêm dentro do PinchaHide: enviar o Global Privacy Control e, com o Pro, bloquear rastreadores e parâmetros de rastreio. O PinchaHide não vê os seus pedidos."),
+               ("activeTab", "Mostra na janela o que o PinchaHide fez no separador atual e faz funcionar “Copiar link limpo” onde clica."),
+               ("scripting", "Põe nas páginas os scripts do próprio PinchaHide para responder ao banner. Só ficheiros que vêm dentro da extensão, nunca código da internet."),
+               ("alarms", "Termina uma pausa com hora marcada e volta a verificar a chave Pro cerca de uma vez por dia."),
+               ("contextMenus", "Junta “Copiar link limpo” ao menu do botão direito sobre um link (Pro)."),
+               ("privacy (opcional)", "Só é pedida quando liga uma definição de privacidade do Chrome nas Opções (Pro)."),
+               ("cookies (opcional)", "Só é pedida quando liga “Apagar os cookies de um site ao fechar o último separador” (Pro). Só apaga cookies."),
+               ("Todos os sites", "Os banners de cookies aparecem em qualquer site, por isso o PinchaHide corre em todas as páginas para encontrar o banner e carregar em Rejeitar. Nada sai do seu navegador.")],
+    ),
+}
+
+
+def shots_html(lang, shots):
+    """Capturas com ampliação sem JS (:target). Clicar na imagem ampliada volta a #see."""
+    zoom_l, close_l = ("Enlarge image", "Close") if lang == "en" else ("Ampliar imagem", "Fechar")
+    s = "".join(
+        '<figure><a class="zoomable" href="#zoom-%d" aria-label="%s: %s"><img src="/assets/img/screens/%s" alt="%s" width="1280" height="800" loading="lazy" decoding="async"></a><figcaption>%s</figcaption></figure>'
+        % (i, zoom_l, e(a), f, e(a), e(a)) for i, (f, a) in enumerate(shots, 1))
+    z = "".join(
+        '<div class="lightbox" id="zoom-%d"><a href="#see" aria-label="%s"><img src="/assets/img/screens/%s" alt="%s" width="1280" height="800" loading="lazy" decoding="async"><span class="lb-close">%s ×</span></a></div>'
+        % (i, close_l, f, e(a), close_l) for i, (f, a) in enumerate(shots, 1))
+    return s, z
+
+
 def pinchahide(lang):
-    if lang == "en":
+    p = PH[lang]
+    en = lang == "en"
+    shots, shots_zoom = shots_html(lang, p["shots"])
+    rows = "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), yes(lang), yes(lang)) for x in p["free"])
+    rows += "".join('<tr><th scope="row">%s</th><td class="c">%s</td><td class="c">%s</td></tr>' % (e(x), no(lang), yes(lang)) for x in p["pro"])
+    perm_rows = "".join(('<tr><th scope="row"><code>%s</code></th><td>%s</td></tr>' if a[0].islower() else '<tr><th scope="row">%s</th><td>%s</td></tr>') % (e(a), e(b)) for a, b in p["perms"])
+    cws = '<a class="btn" href="%s" rel="noopener">%s</a>' % (PINCHAHIDE_CWS, "Add to Chrome, free" if en else "Adicionar ao Chrome, grátis")
+    buy_top = '<a class="btn ghost" href="#price">%s</a>' % ("PinchaHide Pro: pay what you think is fair" if en else "PinchaHide Pro: pague o que achar justo")
+    if en:
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchahide-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaHide – Reject Cookie Banners · extension for Chrome · in development</p>
+<p class="eyebrow">PinchaHide – Reject Cookie Banners · extension for Chrome</p>
 <h1>Say no to cookies, once.</h1>
-<p class="lead">PinchaHide answers cookie banners with “reject” on your behalf and tells websites you do not want to be tracked. It runs on your computer, collects nothing and sends nothing.</p>
-<div class="actions"><span class="btn pending">Chrome Web Store: coming soon</span></div>
-<p class="note">PinchaHide is still being built and tested. This page will grow before launch.</p></div></div></section>
-<section class="wrap" aria-labelledby="what"><h2 id="what">What it will do</h2><div class="grid">
-<div class="card"><h3>Rejects cookie banners</h3><p>Clicks “Reject all”, or unticks every purpose and saves, on the main consent platforms and on many sites with their own banner.</p></div>
+<p class="lead">PinchaHide answers cookie banners with “reject” on your behalf and tells websites you do not want to be tracked. It never presses Accept. It runs on your computer, collects nothing and sends nothing.</p>
+<div class="actions">{cws}{buy}</div>
+<p class="note">For Google Chrome. Nothing to set up: install it and browse as usual. Every Pro feature can be tried free for 15 days.</p></div></div></section>
+<section class="wrap" aria-labelledby="see"><h2 id="see">See it</h2><p class="note">Click an image to enlarge it.</p><div class="shots">{shots}</div>{shots_zoom}</section>
+<section class="wrap" aria-labelledby="what"><h2 id="what">What it does</h2><div class="grid">
+<div class="card"><h3>Rejects cookie banners</h3><p>Presses “Reject all”, or unticks every optional purpose and saves, on the main consent platforms and on many sites with their own banner.</p></div>
 <div class="card"><h3>Sends privacy signals</h3><p>Global Privacy Control tells every site you do not allow your data to be sold or shared.</p></div>
-<div class="card"><h3>You stay in charge</h3><p>Pause it, or turn it off on a site that stops working. Statistics stay on your computer.</p></div>
-<div class="card"><h3>More with Pro</h3><p>Blocks known third-party trackers in your own browser, objects to “legitimate interest”, cleans tracking codes from links and more.</p></div>
+<div class="card"><h3>You stay in charge</h3><p>Click the icon to see what it did on the page. Pause it, or turn it off on a site that stops working. Counts stay on your computer.</p></div>
+<div class="card"><h3>More with Pro</h3><p>Blocks known trackers in your own browser, cleans tracking codes from links, closes newsletter pop-ups and more.</p></div>
 </div></section>
+<section class="wrap" aria-labelledby="cmp"><h2 id="cmp">Free and Pro</h2>
+<table><caption class="visually-hidden">Features in the free version and in Pro</caption><thead><tr><th scope="col">Feature</th><th scope="col" class="c">Free</th><th scope="col" class="c">Pro</th></tr></thead><tbody>{rows}</tbody></table></section>
 <section class="wrap" aria-labelledby="not"><h2 id="not">What it won’t do</h2><div class="grid two">
-<div class="card"><h3>Paywalls and “consent or pay”</h3><p>PinchaHide never hides or gets around paywalls, login or registration walls, paid content or “accept or pay” pages. Those are the site’s choice.</p></div>
-<div class="card"><h3>Not a VPN</h3><p>No traffic goes through any server. Its blocking rules are our own and ship inside the extension; nothing is fetched from the internet while it runs.</p></div>
+<div class="card"><h3>Paywalls and “accept or pay”</h3><p>PinchaHide never hides or gets around paywalls, “accept or pay” pages, sign-in walls, prices or age checks. Those are the site’s choice.</p></div>
+<div class="card"><h3>Its limits</h3><p>It can’t make a site respect your refusal, and it can’t refuse every banner on every site. The full list, and why, is in the app before you buy.</p></div>
 </div></section>
-<section class="wrap" aria-labelledby="price"><h2 id="price">Price</h2><div class="card pricing narrow">
-<p>The essentials will be free. PinchaHide Pro will be sold on its own, with the same rules as PinchaPlay: pay what you think is fair, with a minimum of <strong>{mn}</strong>, VAT included, until {fim} ({md} from {ini}); one-time payment; 15 days of Pro free from installation, no sign-up, no card.</p>
-<p class="note"><a href="/pinchahide/transparency.html">transparency report</a> · <a href="/pinchahide/privacy.html">privacy policy</a> · <a href="/pinchahide/terms.html">terms of sale &amp; EULA</a> · <a href="/pinchahide/refund.html">refund policy</a>. The permissions and the full list of what PinchaHide can’t do will be published here, in plain words, before launch.</p></div></section>
+<section class="wrap" aria-labelledby="price"><h2 id="price">Price</h2><div class="grid two">
+<div class="card pricing"><h3>PinchaHide Pro: pay what you think is fair</h3>
+<p>Minimum <strong>{mn}</strong>, VAT included, until {fim}. From {ini} the minimum is {md}.</p>
+{buttons}
+<p>One-time payment. Lifetime personal licence. No subscription, no automatic renewal. Paying more doesn’t add features: everyone gets the same Pro. You can still change the amount on the checkout. PinchaHide Pro is sold separately from PinchaPlay Pro.</p>
+<p class="note">Secure checkout by Polar, our merchant of record, which handles payment, VAT and your invoice. The final amount is shown before you pay.</p></div>
+<div class="card"><h3>Try first, decide later</h3><ul>
+<li>15 days of every Pro feature, free, from installation. No sign-up, no card.</li>
+<li>After the trial, PinchaHide simply goes back to the free version, which keeps refusing cookie banners.</li>
+<li>Before paying, the checkout asks you to tick: “I want immediate access and I accept that I lose my 14-day right of withdrawal.” So there is no refund for a change of mind.</li>
+<li>If Pro doesn’t work as described, the legal guarantee applies: we fix it, reduce the price or refund what you paid. <a href="/pinchahide/refund.html">Refund policy</a>.</li></ul></div>
+</div></section>
+<section class="wrap" aria-labelledby="perm"><h2 id="perm">Permissions, in plain words</h2>
+<table><caption class="visually-hidden">Chrome permissions PinchaHide asks for and why</caption><thead><tr><th scope="col">Permission</th><th scope="col">Why</th></tr></thead><tbody>{perms}</tbody></table>
+<p class="note">The blocking rules are our own and come inside the extension; nothing is fetched from the internet while it runs. The only connection PinchaHide makes by itself is checking your Pro key with Polar, and only after you enter a key.</p></section>
+<section class="wrap faq" aria-labelledby="faq"><h2 id="faq">Questions</h2>
+<details><summary>Does it accept cookies when it can’t refuse?</summary><p>No. PinchaHide never presses Accept. If a banner offers no way to refuse, it hides the banner without answering it.</p></details>
+<details><summary>A site stopped working. What do I do?</summary><p>Click the PinchaHide icon and turn protection off for that site. You can also pause PinchaHide for an hour or until you resume it.</p></details>
+<details><summary>What happens when the trial ends?</summary><p>The Pro features stop and PinchaHide goes back to the free version, which keeps refusing cookie banners. Your Pro settings stay saved. Nothing is charged: there is no card to charge.</p></details>
+<details><summary>Do I need an account?</summary><p>No. After payment your licence key is in the Polar customer portal: open it from the link in Polar’s confirmation email or sign in with the email you used to buy; you paste it into PinchaHide’s Options.</p></details>
+<details><summary>Does a PinchaPlay key work in PinchaHide?</summary><p>No. Each app has its own Pro and its own key.</p></details>
+</section>
+<section class="wrap"><p><a href="/pinchahide/transparency.html">Transparency report</a> · <a href="/pinchahide/privacy.html">Privacy policy</a> · <a href="/pinchahide/terms.html">Terms of sale &amp; EULA</a> · <a href="/pinchahide/refund.html">Refund policy</a></p></section>
 """
         title = "PinchaHide: reject cookie banners automatically, in Chrome"
-        desc = "PinchaHide – Reject Cookie Banners (in development) answers cookie banners with “reject” for you and sends Global Privacy Control. It runs on your computer and collects nothing."
+        desc = "PinchaHide – Reject Cookie Banners for Chrome answers cookie banners with “reject” for you and sends Global Privacy Control. Free; Pro from %s. Runs on your computer and collects nothing." % MIN_ATUAL["en"]
     else:
         body = """
 <section class="hero wrap"><div class="card product bare"><img src="/assets/img/pinchahide-icon-128.png" alt="" width="72" height="72"><div>
-<p class="eyebrow">PinchaHide – Recusar banners de cookies · extensão para o Chrome · em desenvolvimento</p>
+<p class="eyebrow">PinchaHide – Recusar banners de cookies · extensão para o Chrome</p>
 <h1>Diga não aos cookies, uma vez.</h1>
-<p class="lead">O PinchaHide responde aos banners de cookies com “rejeitar” por si e diz aos sites que não quer ser rastreado. Corre no seu computador, não recolhe nada e não envia nada.</p>
-<div class="actions"><span class="btn pending">Chrome Web Store: brevemente</span></div>
-<p class="note">O PinchaHide ainda está a ser construído e testado. Esta página vai crescer antes do lançamento.</p></div></div></section>
-<section class="wrap" aria-labelledby="what"><h2 id="what">O que vai fazer</h2><div class="grid">
-<div class="card"><h3>Rejeita banners de cookies</h3><p>Carrega em “Rejeitar tudo”, ou desmarca todas as finalidades e guarda, nas principais plataformas de consentimento e em muitos sites com banner próprio.</p></div>
+<p class="lead">O PinchaHide responde aos banners de cookies com “rejeitar” por si e diz aos sites que não quer ser rastreado. Nunca carrega em Aceitar. Corre no seu computador, não recolhe nada e não envia nada.</p>
+<div class="actions">{cws}{buy}</div>
+<p class="note">Para o Google Chrome. Não há nada para configurar: instale e navegue como sempre. Todas as funcionalidades Pro podem ser experimentadas grátis durante 15 dias.</p></div></div></section>
+<section class="wrap" aria-labelledby="see"><h2 id="see">Veja</h2><p class="note">Clique numa imagem para a ampliar.</p><div class="shots">{shots}</div>{shots_zoom}</section>
+<section class="wrap" aria-labelledby="what"><h2 id="what">O que faz</h2><div class="grid">
+<div class="card"><h3>Rejeita banners de cookies</h3><p>Carrega em “Rejeitar tudo”, ou desmarca todas as finalidades opcionais e guarda, nas principais plataformas de consentimento e em muitos sites com banner próprio.</p></div>
 <div class="card"><h3>Envia sinais de privacidade</h3><p>O Global Privacy Control diz a cada site que não autoriza a venda nem a partilha dos seus dados.</p></div>
-<div class="card"><h3>Quem manda é você</h3><p>Pause-o, ou desligue-o num site que deixe de funcionar. As estatísticas ficam no seu computador.</p></div>
-<div class="card"><h3>Mais com o Pro</h3><p>Bloqueia rastreadores de terceiros conhecidos no seu próprio navegador, opõe-se ao “interesse legítimo”, limpa códigos de rastreio dos links e mais.</p></div>
+<div class="card"><h3>Quem manda é você</h3><p>Clique no ícone para ver o que fez na página. Pause-o, ou desligue-o num site que deixe de funcionar. As contagens ficam no seu computador.</p></div>
+<div class="card"><h3>Mais com o Pro</h3><p>Bloqueia rastreadores conhecidos no seu próprio navegador, limpa códigos de rastreio dos links, fecha caixas de newsletter e mais.</p></div>
 </div></section>
-<section class="wrap" aria-labelledby="not"><h2 id="not">O que não vai fazer</h2><div class="grid two">
-<div class="card"><h3>Paywalls e “consentir ou pagar”</h3><p>O PinchaHide nunca esconde nem contorna paywalls, muros de login ou registo, conteúdo pago ou páginas “aceitar ou pagar”. Essa escolha é do site.</p></div>
-<div class="card"><h3>Não é uma VPN</h3><p>Nenhum tráfego passa por um servidor. As regras de bloqueio são nossas e vêm dentro da extensão; nada é obtido da internet enquanto funciona.</p></div>
+<section class="wrap" aria-labelledby="cmp"><h2 id="cmp">Grátis e Pro</h2>
+<table><caption class="visually-hidden">Funcionalidades da versão gratuita e do Pro</caption><thead><tr><th scope="col">Funcionalidade</th><th scope="col" class="c">Grátis</th><th scope="col" class="c">Pro</th></tr></thead><tbody>{rows}</tbody></table></section>
+<section class="wrap" aria-labelledby="not"><h2 id="not">O que não faz</h2><div class="grid two">
+<div class="card"><h3>Paywalls e “aceitar ou pagar”</h3><p>O PinchaHide nunca esconde nem contorna paywalls, páginas “aceitar ou pagar”, muros de login, preços ou confirmações de idade. Essa escolha é do site.</p></div>
+<div class="card"><h3>Os seus limites</h3><p>Não consegue obrigar um site a respeitar a recusa, nem recusar todos os banners em todos os sites. A lista completa, e porquê, está na app antes de comprar.</p></div>
 </div></section>
-<section class="wrap" aria-labelledby="price"><h2 id="price">Preço</h2><div class="card pricing narrow">
-<p>O essencial vai ser grátis. O PinchaHide Pro vai ser vendido em separado, com as mesmas regras do PinchaPlay: pague o que achar justo, com um mínimo de <strong>{mn}</strong>, IVA incluído, até {fim} ({md} a partir de {ini}); pagamento único; 15 dias de Pro grátis a contar da instalação, sem registo e sem cartão.</p>
-<p class="note"><a href="/pt/pinchahide/transparency.html">relatório de transparência</a> · <a href="/pt/pinchahide/privacy.html">política de privacidade</a> · <a href="/pt/pinchahide/terms.html">termos de venda e EULA</a> · <a href="/pt/pinchahide/refund.html">política de reembolso</a>. As permissões e a lista completa do que o PinchaHide não faz vão ser publicadas aqui, em linguagem simples, antes do lançamento.</p></div></section>
+<section class="wrap" aria-labelledby="price"><h2 id="price">Preço</h2><div class="grid two">
+<div class="card pricing"><h3>PinchaHide Pro: pague o que achar justo</h3>
+<p>Mínimo de <strong>{mn}</strong>, IVA incluído, até {fim}. A partir de {ini}, o mínimo passa a {md}.</p>
+{buttons}
+<p>Pagamento único. Licença pessoal vitalícia. Sem subscrição nem renovação automática. Pagar mais não acrescenta funcionalidades: todos recebem o mesmo Pro. Ainda pode alterar o valor no checkout. O PinchaHide Pro é vendido em separado do PinchaPlay Pro.</p>
+<p class="note">Pagamento seguro na Polar, o nosso revendedor (merchant of record), que trata do pagamento, do IVA e da sua fatura. O valor final é mostrado antes de pagar.</p></div>
+<div class="card"><h3>Experimente primeiro, decida depois</h3><ul>
+<li>15 dias de todas as funcionalidades Pro, grátis, a contar da instalação. Sem registo e sem cartão.</li>
+<li>No fim do teste, o PinchaHide volta simplesmente à versão gratuita, que continua a recusar banners de cookies.</li>
+<li>Antes de pagar, o checkout pede-lhe que marque: “Quero acesso imediato e aceito perder o direito de livre resolução de 14 dias.” Por isso não há reembolso por desistência.</li>
+<li>Se o Pro não funcionar como descrito, aplica-se a garantia legal: corrigimos, reduzimos o preço ou devolvemos o que pagou. <a href="/pt/pinchahide/refund.html">Política de reembolso</a>.</li></ul></div>
+</div></section>
+<section class="wrap" aria-labelledby="perm"><h2 id="perm">Permissões, em linguagem simples</h2>
+<table><caption class="visually-hidden">Permissões do Chrome que o PinchaHide pede e porquê</caption><thead><tr><th scope="col">Permissão</th><th scope="col">Porquê</th></tr></thead><tbody>{perms}</tbody></table>
+<p class="note">As regras de bloqueio são nossas e vêm dentro da extensão; nada é obtido da internet enquanto funciona. A única ligação que o PinchaHide faz sozinho é verificar a sua chave Pro na Polar, e só depois de introduzir uma chave.</p></section>
+<section class="wrap faq" aria-labelledby="faq"><h2 id="faq">Perguntas</h2>
+<details><summary>Aceita os cookies quando não consegue recusar?</summary><p>Não. O PinchaHide nunca carrega em Aceitar. Se um banner não der forma de recusar, esconde o banner sem lhe responder.</p></details>
+<details><summary>Um site deixou de funcionar. O que faço?</summary><p>Clique no ícone do PinchaHide e desligue a proteção nesse site. Também pode pausar o PinchaHide durante uma hora ou até o retomar.</p></details>
+<details><summary>O que acontece quando o teste acaba?</summary><p>As funcionalidades Pro deixam de ser aplicadas e o PinchaHide volta à versão gratuita, que continua a recusar banners de cookies. As suas definições Pro ficam guardadas. Não é cobrado nada: não há cartão para cobrar.</p></details>
+<details><summary>Preciso de uma conta?</summary><p>Não. Depois do pagamento, a chave de licença fica no portal de cliente da Polar: abra-o pelo link do email de confirmação ou entre com o email que usou na compra; cola-a nas Opções do PinchaHide.</p></details>
+<details><summary>Uma chave do PinchaPlay funciona no PinchaHide?</summary><p>Não. Cada app tem o seu Pro e a sua chave.</p></details>
+</section>
+<section class="wrap"><p><a href="/pt/pinchahide/transparency.html">Relatório de transparência</a> · <a href="/pt/pinchahide/privacy.html">Política de privacidade</a> · <a href="/pt/pinchahide/terms.html">Termos de venda e EULA</a> · <a href="/pt/pinchahide/refund.html">Política de reembolso</a></p></section>
 """
         title = "PinchaHide: rejeitar banners de cookies automaticamente, no Chrome"
-        desc = "O PinchaHide – Recusar banners de cookies (em desenvolvimento) responde aos banners de cookies com “rejeitar” por si e envia o Global Privacy Control. Corre no seu computador e não recolhe nada."
-    body = body.format(mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], md=MIN_DEPOIS[lang], ini=INICIO_DEPOIS[lang])
+        desc = "PinchaHide – Recusar banners de cookies, para o Chrome: responde aos banners com “rejeitar” por si e envia o Global Privacy Control. Grátis; Pro a partir de %s. Não recolhe nada." % MIN_ATUAL["pt"]
+    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom, rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
+                       md=MIN_DEPOIS[lang], buttons=buy_buttons(lang, PINCHAHIDE_CHECKOUT), perms=perm_rows)
     return page(lang, "/pinchahide/", title, desc, body, current="pinchahide")
 
 
@@ -757,7 +893,7 @@ def legal_notice(lang):
     if lang == "en":
         body = """<div class="wrap narrow doc"><h1>Legal notice</h1><p class="meta">Last updated: 9 November 2026</p>
 <h2>Who we are</h2><dl class="trader"><dt>Trader</dt><dd>{nome}, trading as “Pinchavelho” (sole trader)</dd><dt>Address</dt><dd>{morada}</dd><dt>NIF / Tax ID</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Website</dt><dd><a href="https://pinchavelho.github.io/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay and PinchaHide (in development). Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
+<h2>Products and sales</h2><p>Pinchavelho makes the browser extensions PinchaPlay and PinchaHide. Pro licences are sold by Polar Software Inc. (polar.sh) as our reseller and merchant of record; Polar handles payment, VAT/sales tax and invoices. Software, licences and support are provided by the trader above. Each product has its own privacy policy, terms of sale and refund policy, linked from its page.</p>
 <h2>Disclaimer</h2><p>Our software is provided “as is” to the extent permitted by law. Nothing in this notice limits your mandatory consumer rights, including the legal guarantee of conformity for paid features. You are responsible for how you use our tools: respect copyright and each website’s terms. Our tools do not host or provide any content, and never get around copy protection (DRM), encryption, paywalls or other technical protection measures.</p>
 <h2>Complaints and disputes</h2><p>Please contact us first at <a href="mailto:{email}">{email}</a>. Electronic complaints book: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Alternative dispute resolution: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) or the competent ADR centre.</p>
 <h2>This website and your privacy</h2><p>No cookies, no analytics, no trackers and no third-party resources; fonts are self-hosted. Hosted by GitHub Pages (GitHub, Inc., USA), which may log visitors’ IP addresses for security, under <a href="{gh}">GitHub’s privacy statement</a>. For PinchaPlay, see its <a href="/pinchaplay/privacy.html">privacy policy</a>.</p>
@@ -766,7 +902,7 @@ def legal_notice(lang):
     else:
         body = """<div class="wrap narrow doc"><h1>Aviso legal</h1><p class="meta">Última atualização: 9 de novembro de 2026</p>
 <h2>Quem somos</h2><dl class="trader"><dt>Comerciante</dt><dd>{nome}, que usa a designação “Pinchavelho” (empresário em nome individual)</dd><dt>Morada</dt><dd>{morada}</dd><dt>NIF</dt><dd>{nif}</dd><dt>Email</dt><dd><a href="mailto:{email}">{email}</a></dd><dt>Site</dt><dd><a href="https://pinchavelho.github.io/pt/">https://pinchavelho.github.io</a></dd></dl>
-<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay e PinchaHide (em desenvolvimento). As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
+<h2>Produtos e vendas</h2><p>A Pinchavelho faz as extensões de navegador PinchaPlay e PinchaHide. As licenças Pro são vendidas pela Polar Software Inc. (polar.sh), o nosso revendedor e merchant of record; a Polar trata do pagamento, do IVA/impostos e das faturas. O software, as licenças e o suporte são fornecidos pelo comerciante acima. Cada produto tem a sua política de privacidade, termos de venda e política de reembolso, com ligação na sua página.</p>
 <h2>Exclusão de responsabilidade</h2><p>O nosso software é fornecido “tal como está”, na medida permitida por lei. Nada neste aviso limita os seus direitos imperativos de consumidor, incluindo a garantia legal de conformidade das funcionalidades pagas. É responsável pela forma como usa as nossas ferramentas: respeite os direitos de autor e os termos de cada site. As nossas ferramentas não alojam nem fornecem conteúdos e nunca contornam proteções contra cópia (DRM), cifragem, paywalls ou outras medidas técnicas de proteção.</p>
 <h2>Reclamações e litígios</h2><p>Contacte-nos primeiro em <a href="mailto:{email}">{email}</a>. Livro de Reclamações Eletrónico: <a href="https://www.livroreclamacoes.pt">www.livroreclamacoes.pt</a>. Resolução alternativa de litígios: CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo (<a href="https://www.cniacc.pt">www.cniacc.pt</a>) ou o centro de arbitragem competente.</p>
 <h2>Este site e a sua privacidade</h2><p>Sem cookies, analytics, rastreadores nem recursos de terceiros; as fontes estão alojadas no próprio site. Alojado no GitHub Pages (GitHub, Inc., EUA), que pode registar o endereço IP dos visitantes por segurança, ao abrigo da <a href="{gh}">declaração de privacidade do GitHub</a>. Para o PinchaPlay, veja a sua <a href="/pt/pinchaplay/privacy.html">política de privacidade</a>.</p>
