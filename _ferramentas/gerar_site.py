@@ -28,6 +28,25 @@ PINCHAPLAY_CHECKOUT = "https://buy.polar.sh/polar_cl_ysg4lrAleNzT1fhy9MqU7tUREqk
 # PinchaHide (publicado na Chrome Web Store a 15/11/2026) e checkout de produção do PinchaHide Pro
 # (produto f30ab9b4-f351-451d-ae23-4075663ed8df). Os mesmos valores rápidos e o mesmo mínimo do PinchaPlay.
 PINCHAHIDE_CWS = "https://chromewebstore.google.com/detail/fceapkacofhlmcmojhbkkmlnaofmdlcd"
+# Vídeos curtos (Shorts). No site o vídeo é servido por nós (sem leitor do YouTube, sem pedidos a terceiros);
+# o YouTube é só um link de texto. Ficheiros em /assets/video/ (ver o README dessa pasta).
+SHORTS = {
+    "pinchaplay": ("https://youtube.com/shorts/MS9SUBm9KGw",
+                   {"en": "A 28-second demo: speed up to 16x, keyboard shortcuts, time left and time saved, focus mode. Silent, on a demo page we made ourselves.",
+                    "pt": "Uma demonstração de 28 segundos: velocidade até 16x, atalhos de teclado, tempo que falta e tempo poupado, modo foco. Sem som, numa página de demonstração feita por nós."}),
+    "pinchahide": ("https://youtube.com/shorts/W9z3cl2GvdQ",
+                   {"en": "A 24-second demo: PinchaHide rejects a cookie banner by itself, and Pro copies a link without tracking codes. Silent, on a demo page we made ourselves.",
+                    "pt": "Uma demonstração de 24 segundos: o PinchaHide recusa sozinho um banner de cookies e o Pro copia um link sem códigos de rastreio. Sem som, numa página de demonstração feita por nós."}),
+}
+
+
+def short_video(lang, app):
+    """Vídeo curto alojado no site (preload=none: nada se descarrega até carregar em play)."""
+    yt, cap = SHORTS[app]
+    watch = "Watch it on YouTube" if lang == "en" else "Ver no YouTube"
+    return ('<figure class="short"><video controls muted playsinline preload="none" width="360" height="640" '
+            'poster="/assets/video/%s-short-poster.jpg" aria-describedby="short-cap"><source src="/assets/video/%s-short.mp4" type="video/mp4"></video>'
+            '<figcaption id="short-cap">%s <a href="%s" rel="noopener">%s</a></figcaption></figure>' % (app, app, e(cap[lang]), yt, watch))
 PINCHAHIDE_CHECKOUT = "https://buy.polar.sh/polar_cl_hFIUGaZVHQu1owWgaa4F7qrd0yRbqNaMbKFA90KrLeo"
 # Valores rápidos (cêntimos) das duas apps até 31/01/2027. A 1/02/2027: (299, 399, 599) e MIN_* abaixo.
 PINCHAPLAY_VALORES = (199, 299, 499)
@@ -41,7 +60,7 @@ VENDEDOR_NOME = "José Augusto Alves Pinhão"
 VENDEDOR_MORADA = "Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal"
 VENDEDOR_NIF = "218449283"
 
-CSP = "default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"
+CSP = "default-src 'none'; img-src 'self'; media-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"
 OG_IMG = SITE + "/assets/img/og-image-1200x630.png"
 
 # ---------------------------------------------------------------- helpers
@@ -476,7 +495,7 @@ def pinchaplay(lang):
         buynote = "" if PINCHAPLAY_CHECKOUT else "A compra abre brevemente. "
     perm_rows = "".join('<tr><th scope="row"><code>%s</code></th><td>%s</td></tr>' % (e(a), e(b)) if not a.startswith(("Sites",)) else
                         '<tr><th scope="row">%s</th><td>%s</td></tr>' % (e(a), e(b)) for a, b in perms)
-    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom, rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
+    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom + short_video(lang, "pinchaplay"), rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
                        md=MIN_DEPOIS[lang], buttons=buy_buttons(lang), buynote=buynote, limits=limits_block(lang), perms=perm_rows)
     return page(lang, "/pinchaplay/", title, desc, body, current="pinchaplay")
 
@@ -659,7 +678,7 @@ def pinchahide(lang):
 """
         title = "PinchaHide: rejeitar banners de cookies automaticamente, no Chrome"
         desc = "PinchaHide – Recusar banners de cookies, para o Chrome: responde aos banners com “rejeitar” por si e envia o Global Privacy Control. Grátis; Pro a partir de %s. Não recolhe nada." % MIN_ATUAL["pt"]
-    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom, rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
+    body = body.format(cws=cws, buy=buy_top, shots=shots, shots_zoom=shots_zoom + short_video(lang, "pinchahide"), rows=rows, mn=MIN_ATUAL[lang], fim=FIM_MIN[lang], ini=INICIO_DEPOIS[lang],
                        md=MIN_DEPOIS[lang], buttons=buy_buttons(lang, PINCHAHIDE_CHECKOUT), perms=perm_rows)
     return page(lang, "/pinchahide/", title, desc, body, current="pinchahide")
 
