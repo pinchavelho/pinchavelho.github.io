@@ -55,7 +55,10 @@ MIN_DEPOIS = {"en": "€2.99", "pt": "2,99 €"}
 FIM_MIN = {"en": "31 January 2027", "pt": "31 de janeiro de 2027"}
 INICIO_DEPOIS = {"en": "1 February 2027", "pt": "1 de fevereiro de 2027"}
 
-# Dados do vendedor: completos (com NIF) só no Aviso legal (regra do Jose, 9/11/2026). Termos e Privacidade têm nome e morada, sem NIF.
+# Regra do Jose (24/11/2026): nunca fazemos nada ilegal e pedimos o máximo de anonimato que a lei permita.
+# O NIF aparece SÓ no Aviso legal, porque o DL 7/2004, art. 10.º, n.º 1, al. d) o exige a quem presta serviços em linha.
+# Nunca nos Termos, na Privacidade nem noutro lado. Termos e Privacidade têm só o nome e a morada (DL 24/2014; RGPD, art. 13.º).
+# (Substitui a regra de 9/11/2026.)
 VENDEDOR_NOME = "José Augusto Alves Pinhão"
 VENDEDOR_MORADA = "Estrada V Centenario Vila Sol I, Bloco B 3CE, 9360-500 Ponta do Sol, Portugal"
 VENDEDOR_NIF = "218449283"
@@ -133,11 +136,12 @@ def page(lang, path, title, desc, body, current=None, noindex=False, alt_path=No
         '<link rel="alternate" hreflang="en" href="%s">\n<link rel="alternate" hreflang="pt-PT" href="%s">\n'
         '<link rel="alternate" hreflang="x-default" href="%s">\n' % (en_url, pt_url, en_url))
     # Nas páginas do PinchaHide o rodapé liga aos textos do PinchaHide; nas restantes, aos do PinchaPlay.
-    fapp, fslug = ("PinchaHide", "pinchahide") if current == "pinchahide" else ("PinchaPlay", "pinchaplay")
-    foot_links = [
-        (fapp + ": " + t["privacy"], "/%s/privacy.html" % fslug),
-        (fapp + ": " + t["terms"], "/%s/terms.html" % fslug),
-        (fapp + ": " + t["refunds"], "/%s/refund.html" % fslug),
+    # Nas páginas de cada app, o rodapé liga aos textos dessa app; nas restantes (início, Sobre, Aviso legal…), aos das duas.
+    apps = {"pinchaplay": [("PinchaPlay", "pinchaplay")], "pinchahide": [("PinchaHide", "pinchahide")]}.get(
+        current, [("PinchaPlay", "pinchaplay"), ("PinchaHide", "pinchahide")])
+    foot_links = [(fapp + ": " + t[k], "/%s/%s.html" % (fslug, f))
+                  for fapp, fslug in apps for k, f in (("privacy", "privacy"), ("terms", "terms"), ("refunds", "refund"))]
+    foot_links += [
         (t["legal"], "/legal-notice.html"),
         (t["about"], "/about.html"),
     ]
